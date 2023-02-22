@@ -4,30 +4,33 @@
 
     <style>
       html, body {
-          height: 100%;
-          margin: 0;
-          font-family: "Helvetica Neue",Arial,sans-serif;
-          font-size: 13px;
-          background-color: white;
-        }
-      .scene {
-        right: 0;
-        left: 0;
-        top: 0;
-        min-width: 800px;
-        min-height: 600px;
-        height: 99vh;
-        width: 98vw;
+        height: 100%;
         margin: 0;
-        border: 15px solid white;
-        
+        font-family: "Helvetica Neue",Arial,sans-serif;
+        font-size: 13px;
+        background-color: white;
       }
 
+      #scenelist {
+        left: 0;
+        top: 0;
+        margin: 0;
+        border: 15px solid white;
+      }
+
+      .scene {
+        min-width: 1600px;
+        min-height: 1300px;
+        /*height: 99vh;
+        width: 98vw;*/
+        padding-bottom: 15px;
+      }
 
       @media (max-width: 1250px) {
         .scene {
           object-position: left top;
-          min-width: 800px;
+          min-width: 1200px;
+          min-height: 1300px;
         }
       }
 
@@ -38,6 +41,12 @@
         width: 500px;
         min-height: 10%;
         opacity: 0.1;
+      }
+
+      @media (max-width: 768px) {
+        .sceneover {
+          opacity: 1.0;
+        }
       }
 
       .sceneover:hover {
@@ -54,6 +63,12 @@
 
       #sc1 {
         background-image: url(images/DSCF9779.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      #sc2 {
+        background-image: url(images/P7091312.jpg);
         background-repeat: no-repeat;
         background-size: contain;
         
@@ -78,11 +93,16 @@
 
     </div>
 
-    <div id="sc1" class="scene">
-      
+    <div id="scenelist">
+      <div id="sc1" class="scene">
+        
 
+      </div>
+      
+      <div id="sc2" class="scene">
+
+        </div>
     </div>
-    
     <script type="text/javascript">
       
 
