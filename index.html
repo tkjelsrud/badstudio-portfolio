@@ -15,14 +15,14 @@
         left: 0;
         top: 0;
         margin: 0;
+        max-width: 1900px;
         border: 15px solid white;
       }
 
       .scene {
         min-width: 1600px;
-        min-height: 1300px;
-        /*height: 99vh;
-        width: 98vw;*/
+        min-height: 1600px;
+        max-width: 1700px;
         padding-bottom: 15px;
       }
 
@@ -34,13 +34,24 @@
         }
       }
 
-      .sceneover{
+      .sceneover {
         position: fixed;
         top: 75%;
         left: 2%;
         width: 500px;
         min-height: 10%;
         opacity: 0.1;
+      }
+
+      .logoover {
+        position: fixed;
+        top: 85%;
+        right: 2%;
+        min-width: 100px;
+        min-height: 100px;
+        background-image: url(images/badger-studio.png);
+        background-repeat: no-repeat;
+        background-size: contain;
       }
 
       @media (max-width: 768px) {
@@ -61,6 +72,12 @@
         box-shadow: 2px 2px 2px #666;
       }
 
+      #sc5 {
+        background-image: url(images/P1141653.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
       #sc1 {
         background-image: url(images/DSCF9779.jpg);
         background-repeat: no-repeat;
@@ -69,6 +86,20 @@
 
       #sc2 {
         background-image: url(images/P7091312.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+      }
+
+      #sc3 {
+        background-image: url(images/P7050416bw.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+      }
+
+      #sc4 {
+        background-image: url(images/P1202391bw.jpg);
         background-repeat: no-repeat;
         background-size: contain;
         
@@ -93,7 +124,19 @@
 
     </div>
 
+    <div class="logoover">&nbsp;</div>
+
     <div id="scenelist">
+      <div id="sc5" class="scene">
+        
+
+      </div>
+
+      <div id="sc3" class="scene">
+        
+
+      </div>
+
       <div id="sc1" class="scene">
         
 
@@ -101,7 +144,13 @@
       
       <div id="sc2" class="scene">
 
-        </div>
+      </div>
+
+
+      
+      <div id="sc4" class="scene">
+
+      </div>
     </div>
     <script type="text/javascript">
       
