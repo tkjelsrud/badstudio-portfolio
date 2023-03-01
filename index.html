@@ -62,7 +62,7 @@
 
       .sceneover {
         position: fixed;
-        top: 75%;
+        top: 78%;
         left: 2%;
         width: 500px;
         min-height: 10%;
@@ -82,14 +82,15 @@
         -1px 1px 0 #000,
         1px 1px 0 #000; 
         text-align: right;
+        font-size: 18px;
       }
 
       .logoover {
         position: fixed;
-        top: 85%;
-        right: 2%;
-        min-width: 100px;
-        min-height: 100px;
+        top: 88%;
+        right: 3%;
+        min-width: 70px;
+        min-height: 70px;
         background-image: url(images/badger-studio.png);
         background-repeat: no-repeat;
         background-size: contain;
@@ -109,7 +110,7 @@
         background-color: #FBFBFB;
         color: #999;
         padding: 15px;
-        margin-bottom: 15px;
+        margin-top: 6px;
         box-shadow: 2px 2px 2px #666;
       }
 
@@ -161,6 +162,14 @@
         background-position: center top;
       }
 
+
+      #sc8 {
+        background-image: url(images/IMG_4055.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+      }
+
     </style>
 
   </head>
@@ -168,23 +177,27 @@
   <body class="mandatory-scroll-snapping">
 
 
-    <div class="sceneover">
-      <div class="label">Some info here</div>
+    <div id="player" class="sceneover">
       <iframe style="border: 0; width: 100%; height: 120px;box-shadow: 3px 3px 3px #666;" src="https://bandcamp.com/EmbeddedPlayer/album=3005798670/size=large/bgcol=FFFFFF/linkcol=0f91ff/tracklist=false/artwork=small/track=322855741/transparent=true/" seamless><a href="https://notoms.bandcamp.com/album/ambijens">Ambijens by Notoms</a></iframe>
       <audio src="music/2021m5-SESSIONS2_raise.mp3" ><!-- autoplay -->
         <p>If you are reading this, it is because your browser does not support the audio element.     </p>
         <embed src="music/2021m5-SESSIONS2_raise.mp3" hidden="false" />
       </audio>
-
+      <div class="label">Some info here</div>
     </div>
 
-    <div id="intro" class="introover">badstudio.no<br/>Thomas Kjelsrud<br/></br/>Lydproduksjon<br/>Nettsider<br/>Foto</div>
+    <div id="intro" class="introover">badstudio.no<br/>Thomas Kjelsrud<br/></br/>audio | photo | web</div>
 
     <div class="logoover">&nbsp;</div>
 
     <div id="scenelist">
 
       <div id="sc5" class="scene">
+        
+
+      </div>
+
+      <div id="sc8" class="scene">
         
 
       </div>
@@ -213,17 +226,20 @@
 
       </div>
 
-      <div id="sc7" class="scene">
+      <!--div id="sc7" class="scene">
 
-      </div>
+      </div-->
       
 
     </div>
     <script type="text/javascript">
       
       function scrollHandler() {
-        var element = document.getElementById('intro');
-        element.style.opacity = 1 - Math.min(1, window.pageYOffset / 2000);
+        let elIntro = document.getElementById('intro');
+        let elPlayer = document.getElementById('player');
+
+        elIntro.style.opacity = 1 - Math.min(1, window.pageYOffset / 2000);
+        elPlayer.style.opacity = 1 - Math.min(1, window.pageYOffset / 4000);
       }
 
       window.addEventListener('scroll', scrollHandler);
