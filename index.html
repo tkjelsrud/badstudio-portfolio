@@ -72,9 +72,9 @@
   <body>
     <div id="top"><img style="width:48px;height:48px" src="images/badger-studio.png" /></div>
     <div id="menu">
-      <span onclick="window.location.href='#';">releases</span>
-      <span onclick="window.location.href='#book';">dj booking</span>
-      <span onclick="window.location.href='#about';">about/contact</span>
+      <span onclick="window.location.href='#';updateView();">releases</span>
+      <span onclick="window.location.href='#book';updateView();">dj booking</span>
+      <span onclick="window.location.href='#about';updateView();">about/contact</span>
     </div>
     <div id="main">
       <div class="storeItem" onclick="window.location.href='item';">123
@@ -94,21 +94,27 @@
 
     <script type="text/javascript">
       let page = "";
-      
-      if(window.location.href.indexOf("#") != -1) {
-        page = window.location.href.substring(window.location.href.indexOf("#"));
+
+      function updateView() {
+        if(window.location.href.indexOf("#") != -1) {
+          page = window.location.href.substring(window.location.href.indexOf("#"));
+        }
+  
+        if(page == "" || page == "#") {
+          // Main stuff
+          document.getElementById("main").style.visibility = "";
+        }
+        if(page == "#book") {
+          document.getElementById("main").style.visibility = "hidden";
+        }
+        if(page == "#about") {
+          document.getElementById("main").style.visibility = "hidden";
+        }
+
+        return null;
       }
 
-      if(page == "" || page == "#") {
-        // Main stuff
-        document.getElementById("main").style.visibility = "";
-      }
-      if(page == "#book") {
-        document.getElementById("main").style.visibility = "hidden";
-      }
-      if(page == "#about") {
-        document.getElementById("main").style.visibility = "hidden";
-      }
+      updateView();
     </script>
   </body>
 </html>
