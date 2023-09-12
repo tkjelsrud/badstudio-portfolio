@@ -104,12 +104,18 @@
         if(page == "" || page == "#") {
           // Main stuff
           document.getElementById("main").style.visibility = "";
+          document.getElementById("book").style.visibility = "hidden";
+          document.getElementById("about").style.visibility = "hidden";
         }
         if(page == "#book") {
           document.getElementById("main").style.visibility = "hidden";
+          document.getElementById("book").style.visibility = "";
+          document.getElementById("about").style.visibility = "hidden";
         }
         if(page == "#about") {
           document.getElementById("main").style.visibility = "hidden";
+          document.getElementById("book").style.visibility = "hidden";
+          document.getElementById("about").style.visibility = "";
         }
 
         return null;
