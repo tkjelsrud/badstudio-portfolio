@@ -84,5 +84,24 @@
       </div>
       <div class="storeItem" onclick="">123</div>
     </div>
+
+    <script type="text/javascript">
+      let page = "";
+      
+      if(window.location.href.indexOf("#") != -1) {
+        page = window.location.href.substring(window.location.href.indexOf("#"));
+      }
+
+      if(page == "" || page == "#") {
+        // Main stuff
+        document.getElementById("main").style.visibility = "";
+      }
+      if(page == "#book") {
+        document.getElementById("main").style.visibility = "hidden";
+      }
+      if(page == "#about") {
+        document.getElementById("main").style.visibility = "hidden";
+      }
+    </script>
   </body>
 </html>
