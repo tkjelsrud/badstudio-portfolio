@@ -5,6 +5,7 @@
     <!--  
           #f2f0eb snow white
           #d8e9e5 hushed green
+          #f4ecc2 trans yellow
           #f3774d coral
           #5e5347 canteen (text)
     -->
@@ -49,7 +50,6 @@
         height: 288px;
         margin: 32px;
       }
-
       .bottomItem {
         margin-top: 238px;
         margin-bottom: 0;
@@ -57,11 +57,7 @@
         left: 0;
         width: 100%;
         height: 32px;
-        background-color: #f2f0eb;
-        background-image:
-        linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-        linear-gradient(#eee .1em, transparent .1em);
-        background-size: 100% 1.2em;
+        background-color: #f4ecc2;
       }
     </style>
   </head>
@@ -69,18 +65,18 @@
   <body>
     <div id="top"><img style="width:48px;height:48px" src="images/badger-studio.png" /></div>
     <div id="menu">
-      <span>badstudio.no</span>
-      <span>releases</span>
-      <span>dj booking</span>
-      <span>about/contact</span>
+      <span onClick="#main">releases</span>
+      <span onClick="#book">dj booking</span>
+      <span onClick="#about">about/contact</span>
     </div>
     <div id="main">
-      <div class="storeItem">123
+      <div class="storeItem" onClick="">123
         <div class="bottomItem">We have X of X left</div>
       </div>
-      <div class="storeItem">123</div>
-      <div class="storeItem">123</div>
-      <div class="storeItem">123</div>
+      <div class="storeItem" onClick="">123
+        <div class="bottomItem">We have X of X left</div>
+      </div>
+      <div class="storeItem" onClick="">123</div>
     </div>
   </body>
 </html>
