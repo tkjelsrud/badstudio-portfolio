@@ -59,10 +59,16 @@
 
       #book {
         float: none;
+        text-align: center;
       }
 
       #about {
         float: none;
+        text-align: center;
+      }
+
+      #about > span {
+        text-align: left;
       }
       
       .storeItem {
@@ -96,18 +102,18 @@
       <span onclick="window.location.href='#about';updateView();">about/contact</span>
     </div>
     <div id="main">
-      <div class="storeItem" onclick="window.location.href='item';">123
+      <div class="storeItem" onclick="window.location.href='item';">
         <div class="bottomItem">We have X of X left</div>
       </div>
-      <div class="storeItem" onclick="">123
+      <div class="storeItem" onclick="">
         <div class="bottomItem">We have X of X left</div>
       </div>
-      <div class="storeItem" onclick="">123</div>
+      <div class="storeItem" onclick="">&nbsp;</div>
     </div>
-    <div id="book" style="display:none">
+    <div id="pnBook" style="display:none">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSpWjl8ZZPX0hZq3SwLinpc2xWLJtFvsvwTrH2k9XAudhIsw/viewform?embedded=true" width="640" height="1683" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-    <div id="about" style="display:none">
+    <div id="pnBbout" style="display:none">
       About here...
     </div>
 
@@ -122,18 +128,18 @@
         if(page == "" || page == "#") {
           // Main stuff
           document.getElementById("main").style.display = "";
-          document.getElementById("book").style.display = "none";
-          document.getElementById("about").style.display = "none";
+          document.getElementById("pnBook").style.display = "none";
+          document.getElementById("pnBbout").style.display = "none";
         }
         if(page == "#book") {
           document.getElementById("main").style.display = "none";
-          document.getElementById("book").style.display = "";
-          document.getElementById("about").style.display = "none";
+          document.getElementById("pnBook").style.display = "";
+          document.getElementById("pnBbout").style.display = "none";
         }
         if(page == "#about") {
           document.getElementById("main").style.display = "none";
-          document.getElementById("book").style.display = "none";
-          document.getElementById("about").style.display = "";
+          document.getElementById("pnBook").style.display = "none";
+          document.getElementById("pnBbout").style.display = "";
         }
 
         return null;
