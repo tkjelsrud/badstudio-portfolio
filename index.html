@@ -47,16 +47,18 @@
 
       .bottomItem {
         box-sizing: border-box;
-        font-size: 0.8em;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 0.7em;
+        font-weight: bold;
         margin-top: 256px;
         margin-bottom: 0;
         padding-left: 32px;
-        padding-top: 2px;
+        padding-top: 8px;
         bottom: 0;
         left: 0;
         width: 288px;
         height: 32px;
-        background-color: #f4ecc2;
+        background-color: #bae1d3;
         opacity: 0.0;
       }
 
@@ -69,6 +71,10 @@
       .bottomItem:hover {
         opacity: 1.0;
         cursor: pointer;
+      }
+
+      .panel {
+        margin-left: 160px;
       }
     </style>
   </head>
@@ -83,19 +89,21 @@
     <div id="main">
       <div id="si1" class="storeItem" onclick="window.location.href='ambijens-cassette.html';"
         style="background-image: url(images/badstudio-tester-cassette.jpg);background-size: 288px;">
-        <div class="bottomItem">Limited ed cassette &amp; digital download, 5/5 available</div>
+        <div class="bottomItem">Limited ed cassette &amp; download, 5/5 available</div>
       </div>
       <div id="si2" class="storeItem" onclick="" 
         style="background-image: url(images/arvoll-eks.jpg);background-size: 288px;">
         <div class="bottomItem">Digital artwork, 1 print available</div>
       </div>
       <div id="si3" class="storeItem" onclick=""
-        style="background-image: url(images/my-releases-on-wall.jpg);background-size: 288px;">&nbsp;</div>
+        style="background-image: url(images/my-releases-on-wall.jpg);background-size: 288px;">
+        <div class="bottomItem">All music releases</div>
+      </div>
     </div>
-    <div id="pnBook" style="display:none">
+    <div id="pnBook" style="display:none" class="panel">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSpWjl8ZZPX0hZq3SwLinpc2xWLJtFvsvwTrH2k9XAudhIsw/viewform?embedded=true" width="640" height="1983" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-    <div id="pnAbout" style="display:none">
+    <div id="pnAbout" style="display:none" class="panel">
       <span>More here about me and my creations. Purpose. Inspiration. Want your work on?</span>
     </div>
 

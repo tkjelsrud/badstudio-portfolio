@@ -5,12 +5,13 @@ body {
     background-color: #f2f0eb;
     color: #5e5347;
     font-size: 1em;
+    zoom: 1.1;
 }
 
 /*@media (max-width:800px) {*/
 @media screen and (orientation:portrait) {
     body {
-        zoom: 1.3 !important;
+        zoom: 2.0 !important;
     }
 }
 
