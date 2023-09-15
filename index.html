@@ -11,47 +11,9 @@
 
           https://margaret2.github.io/pantone-colors/
     -->
+    <link rel="stylesheet" href="lib/style.css" />
     <style>
-      @font-face { font-family: DMSans; src: url('DMSans-Regular.ttf'); } 
-      body {
-        font-family: DMSans, Georgia, serif;
-        background-color: #f2f0eb;
-        color: #5e5347;
-        font-size: 1em;
-      }
-
-      #top {
-        height: 96px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 16px;
-        text-align: center;
-        width: 90%;
-      }
-
-      @media (max-width: 768px) {
-        #top {
-          font-size: 1.5em;
-        }
-      }
       
-      #menu {
-        height: 64px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        width: 90%;
-      }
-
-      #menu > span {
-        padding-left: 48px;
-      }
-
-      #menu > span:hover {
-          cursor: pointer;
-      }
 
       #main {
         display: flex;
@@ -79,7 +41,12 @@
         height: 288px;
         margin: 32px;
         box-sizing: border-box;
+        cursor: pointer;
       }
+      .storeItem:hover > .bottomItem {
+        opacity: 1.0;
+      }
+
       .bottomItem {
         box-sizing: border-box;
         font-size: 0.8em;
@@ -92,10 +59,18 @@
         width: 288px;
         height: 32px;
         background-color: #f4ecc2;
-        opacity: 0.5;
+        opacity: 0.0;
       }
+
+      @media only screen and (max-width: 768px){
+        .bottomItem {
+          opacity: 1.0;
+        }
+      }
+
       .bottomItem:hover {
         opacity: 1.0;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -108,45 +83,42 @@
       <span onclick="window.location.href='#about';updateView();">about/contact</span>
     </div>
     <div id="main">
-      <div class="storeItem" onclick="window.location.href='item';">
+      <div id="si1" class="storeItem" onclick="window.location.href='ambijens-cassette.html';"
+        style="background-image: url(images/badstudio-tester-cassette.jpg);background-size: 288px;">
         <div class="bottomItem">Limited ed cassette &amp; digital download, 5/5 available</div>
       </div>
-      <div class="storeItem" onclick="" style="background-image: url(images/arvoll-eks.jpg);background-size: 288px;">
+      <div id="si2" class="storeItem" onclick="" 
+        style="background-image: url(images/arvoll-eks.jpg);background-size: 288px;">
         <div class="bottomItem">Digital artwork, 1 print available</div>
       </div>
-      <div class="storeItem" onclick="">&nbsp;</div>
+      <div id="si3" class="storeItem" onclick="">&nbsp;</div>
     </div>
     <div id="pnBook" style="display:none">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSpWjl8ZZPX0hZq3SwLinpc2xWLJtFvsvwTrH2k9XAudhIsw/viewform?embedded=true" width="640" height="1983" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-    <div id="pnBbout" style="display:none">
+    <div id="pnAbout" style="display:none">
       <span>More here about me and my creations. Purpose. Inspiration. Want your work on?</span>
     </div>
 
     <script type="text/javascript">
-      let page = "";
+      let page = "#";
+      const views = {'#': 'main', '#book': 'pnBook', '#about': 'pnAbout'};
 
       function updateView() {
         if(window.location.href.indexOf("#") != -1) {
           page = window.location.href.substring(window.location.href.indexOf("#"));
         }
-  
-        if(page == "" || page == "#") {
-          // Main stuff
-          document.getElementById("main").style.display = "";
-          document.getElementById("pnBook").style.display = "none";
-          document.getElementById("pnBbout").style.display = "none";
+
+        for(view in views) {
+          document.getElementById(views[view]).style.display = "none";
         }
-        if(page == "#book") {
-          document.getElementById("main").style.display = "none";
-          document.getElementById("pnBook").style.display = "";
-          document.getElementById("pnBbout").style.display = "none";
-        }
-        if(page == "#about") {
-          document.getElementById("main").style.display = "none";
-          document.getElementById("pnBook").style.display = "none";
-          document.getElementById("pnBbout").style.display = "";
-        }
+
+        document.getElementById(views[page]).style.display = "";
+
+        return null;
+      }
+
+      function highlightItem(id, high) {
 
         return null;
       }
