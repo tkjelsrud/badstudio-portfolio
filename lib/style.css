@@ -7,7 +7,8 @@ body {
     font-size: 1em;
 }
 
-@media (max-width:800px) {
+/*@media (max-width:800px) {*/
+@media screen and (orientation:portrait) {
     body {
         zoom: 1.3 !important;
     }
@@ -23,7 +24,7 @@ body {
     width: 90%;
 }
 
-@media (max-width:800px) {
+@media screen and (orientation:portrait) {
     #top {
         font-size: 1.5em;
     }
