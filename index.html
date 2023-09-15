@@ -82,9 +82,9 @@
   <body>
     <div id="top"><img style="width:48px;height:48px" src="images/badger-studio.png" /></div>
     <div id="menu">
-      <span onclick="window.location.href='#';updateView();">releases</span>
-      <span onclick="window.location.href='#book';updateView();">dj booking</span>
-      <span onclick="window.location.href='#about';updateView();">about/contact</span>
+      <span onclick="updateView('#');">releases</span>
+      <!--span onclick="updateView('#book');">dj booking</span-->
+      <span onclick="updateView('#about');">about/contact</span>
     </div>
     <div id="main">
       <div id="si1" class="storeItem" onclick="window.location.href='ambijens-cassette.html';"
@@ -95,7 +95,7 @@
         style="background-image: url(images/arvoll-eks.jpg);background-size: 288px;">
         <div class="bottomItem">Digital artwork, 1 print available</div>
       </div>
-      <div id="si3" class="storeItem" onclick=""
+      <div id="si3" class="storeItem" onclick="updateView('#releases');"
         style="background-image: url(images/my-releases-on-wall.jpg);background-size: 288px;">
         <div class="bottomItem">All music releases</div>
       </div>
@@ -106,15 +106,35 @@
     <div id="pnAbout" style="display:none" class="panel">
       <span>More here about me and my creations. Purpose. Inspiration. Want your work on?</span>
     </div>
+    <div id="pnReleases" style="display:none" class="panel">
+      <p><a href="index.html">back to front page</a></p><br/><br/>
+      <span>List of digital releases</span>
+      <div>
+        <table>
+          <thead>
+            <tr><td>Date</td><td>&nbsp;</td><td>Title</td><td>Desc</td><td>Format</td><td>Link</td></tr>
+          </thead>
+          <tbody>
+            <tr><td>2023</td><td>ICN</td><td>Neon Horizon</td><td>...</td><td>Single</td><td>4</td></tr>
+            <tr><td>2022</td><td>ICN</td><td>Ambijens</td><td>...</td><td>3</td><td>4</td></tr>
+            <tr><td>2021</td><td>ICN</td><td>Guitar and Drum</td><td>...</td><td>3</td><td>4</td></tr>
+            <tr><td>1</td><td>ICN</td><td>2</td><td>3</td></tr>
+            <tr><td>1</td><td>ICN</td><td>2</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <script type="text/javascript">
       let page = "#";
-      const views = {'#': 'main', '#book': 'pnBook', '#about': 'pnAbout'};
-
-      function updateView() {
-        if(window.location.href.indexOf("#") != -1) {
+      const views = {'#': 'main', '#book': 'pnBook', '#about': 'pnAbout', '#releases': 'pnReleases'};
+      
+      if(window.location.href.indexOf("#") != -1) {
           page = window.location.href.substring(window.location.href.indexOf("#"));
-        }
+      }
+
+      function updateView(page) {
+        window.location.href = page;
 
         for(view in views) {
           document.getElementById(views[view]).style.display = "none";
@@ -130,7 +150,7 @@
         return null;
       }
 
-      updateView();
+      updateView(page);
     </script>
   </body>
 </html>

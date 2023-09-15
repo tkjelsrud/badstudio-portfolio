@@ -47,3 +47,25 @@ body {
 #menu > span:hover {
         cursor: pointer;
 }
+
+table {
+    margin-top: 32px;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: #dce4d7;
+}
+
+thead {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    background-color: #9bbea9;
+    padding: 4px;
+    border-bottom: 2px solid #a7ae9e;
+}
+
+td {
+    min-width: 98px;
+}
