@@ -69,3 +69,16 @@ thead {
 td {
     min-width: 98px;
 }
+
+.buyPanel {
+    background-color: #f4ecc2;
+    border: 1px solid grey;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+.button {
+    background-color: #f3774d;
+    font-weight: bolder;
+    padding: 2px;
+    border: 1px solid grey;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
