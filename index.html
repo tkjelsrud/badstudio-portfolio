@@ -110,16 +110,12 @@
       <p><a href="index.html">back to front page</a></p><br/><br/>
       <span>List of digital releases</span>
       <div>
-        <table>
+        <table id="badReleases">
           <thead>
             <tr><td>Date</td><td>&nbsp;</td><td>Title</td><td>Desc</td><td>Format</td><td>Link</td></tr>
           </thead>
           <tbody>
-            <tr><td>2023</td><td>ICN</td><td>Neon Horizon</td><td>...</td><td>Single</td><td>4</td></tr>
-            <tr><td>2022</td><td>ICN</td><td>Ambijens</td><td>...</td><td>3</td><td>4</td></tr>
-            <tr><td>2021</td><td>ICN</td><td>Guitar and Drum</td><td>...</td><td>3</td><td>4</td></tr>
-            <tr><td>1</td><td>ICN</td><td>2</td><td>3</td></tr>
-            <tr><td>1</td><td>ICN</td><td>2</td><td>3</td></tr>
+            <tr><td colspan="6"><span class="loading">Loading...</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -152,5 +148,6 @@
 
       updateView(page);
     </script>
+    <script type="text/javascript" src="lib/tsvToTable.js"></script>
   </body>
 </html>

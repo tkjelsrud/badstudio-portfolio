@@ -71,6 +71,10 @@ td {
 }
 
 .buyPanel {
+    float: left;
+    font-size: 0.8em;
+    margin: 16px;
+    margin-right: 64px;
     border-top: 8px solid #d8e9e5;
     padding: 16px;
     border-bottom: 8px solid #d8e9e5;
@@ -78,7 +82,7 @@ td {
 
 .button {
   appearance: none;
-  background-color: #d8e9e5;
+  background-color: #6dce87;
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -125,4 +129,18 @@ td {
 .button:active {
   background-color: #298e46;
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.loading {
+    animation: animate 2s infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(45deg) translate(-2px, -2px);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translate(8px, 8px);
+    }
 }
