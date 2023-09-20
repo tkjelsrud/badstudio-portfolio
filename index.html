@@ -76,6 +76,12 @@
       .panel {
         margin-left: 160px;
       }
+      
+      @media screen and (orientation:portrait) {
+        .panel {
+          margin-left: 16px;
+        }
+      }
     </style>
   </head>
 
@@ -110,14 +116,18 @@
       <p><a href="index.html">back to front page</a></p><br/><br/>
       <span>List of digital releases</span>
       <div>
-        <table id="badReleases">
-          <thead>
-            <tr><td>Date</td><td>&nbsp;</td><td>Title</td><td>Desc</td><td>Format</td><td>Link</td></tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="6"><span class="loading">Loading...</span></td></tr>
-          </tbody>
-        </table>
+        <pre id="badReleases">
+          Date		Title                     Link
+          2023		Ambijens EP & Cassette    - 
+          2023		Neon Horizon              <a href="https://soundcloud.com/notoms">soundcloud.com/notoms</a>
+          2022		Ambijens                  -
+          2021		Guitar and Drum           <a href="https://open.spotify.com/artist/3K726Coqr6Ni2mY7zIa8Le">Spotify</a>
+          2021		Undecide ft. Japee        <a href="https://soundcloud.com/notoms">soundcloud.com/notoms</a>
+          2021		Mindful ft. Japee         <a href="https://soundcloud.com/notoms">soundcloud.com/notoms</a>
+          2019		Ambient 6 LNNS            <a href="https://soundcloud.com/notoms/ambient-6-lnns">soundcloud.com/notoms</a>
+          2017		Cassette Dub #1           <a href="https://soundcloud.com/notoms">soundcloud.com/notoms</a>
+          2016		Oid                       <a href="https://soundcloud.com/notoms">soundcloud.com/notoms</a>
+        </pre>
       </div>
     </div>
 
@@ -148,6 +158,6 @@
 
       updateView(page);
     </script>
-    <script type="text/javascript" src="lib/tsvToTable.js"></script>
+    <script type="text/javascript" src="lib/dataToTable.js"></script>
   </body>
 </html>
