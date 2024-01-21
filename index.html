@@ -82,6 +82,30 @@
           margin-left: 16px;
         }
       }
+
+      #contactFormContainer {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: #fff;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          z-index: 1000;
+      }
+      
+      .hidden {
+          display: none;
+      }
+      
+      #closeContactForm {
+          cursor: pointer;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: #333;
+      }
     </style>
   </head>
 
@@ -93,16 +117,25 @@
       <span onclick="updateView('#about');">about/contact</span>
     </div>
     <div id="main">
+      <!-- https://script.google.com/macros/s/AKfycbxmwS7ptwA_7cOozo0E7uMxCMt6Y2gTETDL6YqWQSSbDPwahzrF4v1FzOMzTorWrvNrww/exec -->
+      <button id="openContactForm">Contact Me</button>
+
+      <!-- The contact form popup container (initially hidden) -->
+      <div id="contactFormContainer" class="hidden">
+          <div id="closeContactForm">Close</div>
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+      </div>
+      
       <div id="si1" class="storeItem" onclick="window.location.href='https://notoms.bandcamp.com/album/ambijens';"
         style="background-image: url(images/DSCF0734xb.jpg);background-size: 288px;">
         <div class="bottomItem">Limited ed cassette &amp; download, 7/10 available</div>
       </div>
-      <div id="si2" class="storeItem" onclick="" 
+      <div id="si2" class="storeItem" onclick="document.getElementById('openContactForm').classList.remove('hidden');" 
         style="background-image: url(images/2024-snowflake-a3.jpg);background-size: 288px;">
         <div class="bottomItem">Photo/Digital artwork 33x48cm, available</div>
       </div>
       
-      <div id="si3" class="storeItem" onclick="" 
+      <div id="si3" class="storeItem" onclick="document.getElementById('openContactForm').classList.remove('hidden');" 
         style="background-image: url(images/arvoll-eks.jpg);background-size: 288px;">
         <div class="bottomItem">Digital artwork, 1 print available</div>
       </div>
@@ -112,7 +145,7 @@
       </div>
     </div>
     <div id="pnBook" style="display:none" class="panel">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdSpWjl8ZZPX0hZq3SwLinpc2xWLJtFvsvwTrH2k9XAudhIsw/viewform?embedded=true" width="640" height="1983" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1pQMZOP1Egl1NLO36BvNvtURG3lb7nRM8_e2SNVbtH0E/viewform?embedded=true" width="640" height="1983" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
     <div id="pnAbout" style="display:none" class="panel">
       <span>tkjelsrud@gmail.com / <a href="https://linktr.ee/notoms">https://linktr.ee/notoms</a></span>
@@ -143,6 +176,7 @@
       if(window.location.href.indexOf("#") != -1) {
           page = window.location.href.substring(window.location.href.indexOf("#"));
       }
+
 
       function updateView(page) {
         window.location.href = page;
