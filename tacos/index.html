@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <!--  
+          #f2f0eb snow white
+          #d8e9e5 hushed green
+          #f4ecc2 trans yellow
+          #f3774d coral
+          #5e5347 canteen (text)
+
+          https://margaret2.github.io/pantone-colors/
+    -->
+    <link rel="stylesheet" href="../lib/style.css" />
+    <style>
+      #main {
+          /*display: flex;*/
+          /*flex-wrap: wrap;*/
+          justify-content: center;
+          max-width: 900px; /* Set your desired max-width */
+          margin: 0 auto; /* Center the element horizontally */
+          background-color: #f0f0f0; /* Set your desired background color for the offset */
+          padding: 80px; /* Add padding if needed */
+          box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      }
+
+      .track {
+        height: 36x;
+        vertical-align: top;
+        background-color: antiquewhite;
+        margin-bottom: 4px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .smaller {
+        font-size: 11px;
+        background-color: antiquewhite;
+      }
+
+      i {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="top"><img style="width:48px;height:48px" src="../images/badger-studio.png" /></div>
+    <div id="menu">
+      <span onclick="void(window.location.href = 'index.html');">back to main</span>
+    </div>
+    <div id="main">
+      <h1>Prosjekt: "Tacos" 2024</h1>
+      <p>Prosjektet startet vår/sommer 2024 med bakgrunn i jamming med bass med mål å få frem noe delvis hardere eller mer rock basert enn tidligere ambient låtmateriale.</p>
+      <p>Prosjektet krever fortsatt mye jobb for å ferdigstille, men konturene av 2 låter er på plass. Konsept er under arbeid for 1 låt til. Siste låt er enten instrumental/jam eller utgår.</p>
+      <p></p>
+      <h2>Om musikken</h2>
+      <p>Stilarten er en type prog-rock eller alternativ synth rock, med en miks av det mer akustiske med rent elektriske. Inspirasjon kan f.eks være NIN.
+        Musikken skal ha en tydelig flyt og energi, samtidig som den kombinerer dette med litt uvanlig timing og valg av atmosfære.</p>
+        <p>Det har latt seg gjøre å sy sammen til en låt på relativt kort tid. Det som er tidkrevende er vokalopptak.
+          En utfordring blir å levere overbevisende vokal i god kvalitet. Tekstskrivingen pågår og er basert på temaer som svirrer rundt mens musikken lages. Det blir forhåpentligvis mulig via prosessering og trening og få til et passende vokalspor.
+          Stilarten til musikken lar den ikke fungere uten vokal.
+        </p>
+      <p>Musikkprodusjon<br/>
+        <span class="smaller">
+          Artistnavn: Notoms (?)<br/>
+          EP tittel: ?<br/>
+          Låtskriving: TK Vokal: TK (foreløpig), Koring: TK <br/>
+          Trommer: Foreløpig programmert. Vurdere live opptak.<br/>
+          Bass/synth: TK<br/>
+          Mix/mastering: Adrian + mastering?<br/>
+          Promotering: flere klipp, med visuelt på Instagram<br/>
+          Visuelt: Edmond? animasjoner?<br/>
+          Lyttergruppe: alle som har tilgang til denne siden og vil gi feedback eller bidra i prosjektet<br/>
+          Plattform for release: Bandcamp. Demo på Soundcloud. Lite trolig Spotify.
+        </span>
+      </p>
+      <h3>Liste over spor</h3>
+      <div>
+        <div>
+          <div class="track">
+            1   Soul, free <a href="https://www.jottacloud.com/s/0210ed2f9ac94e1428ba296e6794df12f47">link til wav</a>
+            <!--audio controls>
+                <source src="https://www.jottacloud.com/s/0210ed2f9ac94e1428ba296e6794df12f47" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio-->
+          </div>
+          <div class="track">
+            2   Rooted <a href="https://www.jottacloud.com/s/021a613a0b6a3b0493c8f52fc26a32c7c58">link til wav</a>
+            <!--audio controls>
+              <source src="https://your-jottacloud-url.com/path/to/yourfile.wav" type="audio/wav">
+              Your browser does not support the audio element.
+          </audio-->   
+          </div>  
+          <div class="track"> 
+            3   I need a band (TBA)
+          </div> 
+          <div class="track"> 
+            (4) TBA 
+          </div>       
+      </div>
+        (<a href="javascript:void(showHidden())">vis detaljer</a>)
+        <span class="hidden smaller">
+          Produsert i Ableton Live<br/>
+          1: Soul, free, filnavn:2024-7 Drum Programming.als, xxx bpm 7/4 D#, <a href="1_soul_free.txt">link til tekst</a><br/>
+          2: Rooted, filnavn:2024-7 I need A Band Tacos.als, xxx bpm, 4/4, Key, Sharp: +20 cent, Lead bass: BOSS SYN-1 preset Pad:2, <a href="2_rooted.txt">link til tekst</a><br/>
+          3: TBA <br/>
+          4: TBA
+
+        </span>
+      </div>
+      <h3>Promo tekst</h3>
+      <p>Må skrives...</p>
+    </div>
+    <script type="text/javascript">
+      function showHidden() {
+        const hiddenElements = document.querySelectorAll('.hidden');
+        // Loop through each element and change the display property to 'block'
+        hiddenElements.forEach(element => {
+            element.style.display = 'block';
+        });
+      }
+    </script>
+  </body>
+</html>
