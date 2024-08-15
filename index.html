@@ -173,6 +173,9 @@
           2016		Oid                       <a href="https://soundcloud.com/notoms">soundcloud.com/notoms</a>
         </pre>
       </div>
+      <div id="releases">
+        ...
+      </div>
     </div>
 
     <script type="text/javascript">
@@ -202,6 +205,42 @@
       }
 
       updateView(page);
+
+      // Fetch the releases.json file
+fetch('/music/releases.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Process the JSON data
+        const releasesContainer = document.getElementById('releases');
+
+        data.forEach(release => {
+            // Create a div for each release
+            const releaseDiv = document.createElement('div');
+            releaseDiv.classList.add('release');
+
+            // Add content to the div
+            releaseDiv.innerHTML = `
+                <h2>${release.releaseTitle} (${release.year})</h2>
+                <p><strong>Format:</strong> ${release.format}</p>
+                <p><strong>State:</strong> ${release.state}</p>
+                <p><strong>Instruments:</strong> Synth - ${release.production.instruments.synth}, Sampler - ${release.production.instruments.sampler}</p>
+                <p><strong>Download:</strong> <a href="${release.downloadUrl}" target="_blank">Download Link</a></p>
+                <p><strong>Listen:</strong> <a href="${release.playerUrl}" target="_blank">Listen Here</a></p>
+                <p><strong>Lyrics:</strong> <a href="${release.lyricsUrl}" target="_blank">View Lyrics</a></p>
+            `;
+
+            // Append the div to the releases container
+            releasesContainer.appendChild(releaseDiv);
+        });
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
     </script>
   </body>
 </html>
