@@ -3,6 +3,7 @@ TripHopGlowRaw-v1.2-112.mp3.txt
 Name: ?
 112 bpm
 Key Am?
+Author: Thomas "notoms" Kjelsrud
 
 Every lines is straight
 and your cheeks glow
