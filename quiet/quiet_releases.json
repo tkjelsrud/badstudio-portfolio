@@ -12,21 +12,27 @@
         "production": {
             "bpm": 112,
             "key": "Am",
-            "length": 0,
+            "length": "3:34",
             "notes": "",
             "instruments": {
                 "synth": "DSI Mopho X4",
                 "sampler": "Elektron Octatrack",
-                "drum_samples": "TripHop Attack (Loopmasters)"
+                "daw": "Reaper DAW",
+                "drum_samples": "TripHop Attack (Loopmasters)",
+                "vocals": "notoms",
+                "bass": "Fender Precision Lyte '93"
+            },
+            "chains": {
+                
             }
         },
-        "feedbackText": "",
         "artworkUrl": "",
         "downloadUrl": "",
         "playerUrl": "",
         "lyricsUrl": "TripHopGlowRaw-v1.2-112.mp3.txt",
         "credits": {
             "writer": "Thomas Kjelsrud",
+            "producer": "Thomas Kjelsrud",
             "mixer": "",
             "mastering": ""
         }
