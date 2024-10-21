@@ -182,3 +182,50 @@ td {
         transform: rotate(-45deg) translate(8px, 8px);
     }
 }
+
+#main {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    max-width: 900px; /* Set your desired max-width */
+    margin: 0 auto; /* Center the element horizontally */
+    background-color: #f0f0f0; /* Set your desired background color for the offset */
+    padding: 80px; /* Add padding if needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.track {
+  height: 36x;
+  vertical-align: top;
+  background-color: antiquewhite;
+  margin-bottom: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.smaller {
+  font-size: 11px;
+  background-color: antiquewhite;
+}
+
+.warn {
+    background-color: palevioletred;
+}
+
+em {
+  font-size: 11px;
+}
+
+.tag {
+    display: inline-block;           /* Ensures the tag fits around the text */
+    background-color: #e6dede;       /* Light background color */
+    color: #333;                     /* Text color */
+    padding: 4px 10px;               /* Padding to give space inside the tag */
+    border-radius: 15px;             /* Rounds the corners */
+    font-size: 14px;                 /* Font size */
+    font-weight: 500;                /* Slightly bold text */
+    margin: 5px;                     /* Space around each tag */
+    cursor: default;                 /* Cursor for interaction (can be changed) */
+}
