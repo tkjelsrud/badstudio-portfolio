@@ -54,7 +54,10 @@
         (<a href="javascript:void(showHidden())">vis detaljer</a>)
         <span id="release-info" class="hidden smaller">
           <script type="text/javascript">
-            document.getElementById('release-info').innerHTML = await loadReleaseData('quiet_releases.json');
+            document.addEventListener("DOMContentLoaded", async function() {
+                const releaseInfo = await loadReleaseData('quiet_releases.json');
+                document.getElementById('release-info').innerHTML = releaseInfo;
+            });
           </script>
         </span>
       </div>
