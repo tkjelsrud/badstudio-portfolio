@@ -26,6 +26,7 @@ h2, h3 {
 }
 
 #top {
+    position: relative;
     height: 96px;
     display: block;
     margin-left: auto;
@@ -33,6 +34,7 @@ h2, h3 {
     margin-top: 16px;
     text-align: center;
     width: 90%;
+    z-index: 2;
 }
 
 @media screen and (orientation:portrait) {
@@ -40,14 +42,29 @@ h2, h3 {
         font-size: 1.5em;
     }
 }
+
+/* Background container styling */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Fixed to viewport height */
+    z-index: 1; /* Place behind the content */
+    pointer-events: none; /* Prevent interaction with the background */
+    overflow: hidden; /* Ensure background doesn't overflow */
+}
+
     
 #menu {
+    position: relative;
     height: 64px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     width: 90%;
+    z-index: 2;
 }
 
 #menu > span {
@@ -184,14 +201,15 @@ td {
 }
 
 #main {
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
+    position: relative;
     justify-content: center;
     max-width: 900px; /* Set your desired max-width */
     margin: 0 auto; /* Center the element horizontally */
     background-color: #f0f0f0; /* Set your desired background color for the offset */
-    padding: 80px; /* Add padding if needed */
+    padding: 64px; /* Add padding if needed */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    z-index: 2;
+    box-shadow: 2px 4px 6px 2px rgba(0, 0, 0, 0.1);
 }
 
 .track {
@@ -229,3 +247,4 @@ em {
     margin: 5px;                     /* Space around each tag */
     cursor: default;                 /* Cursor for interaction (can be changed) */
 }
+
