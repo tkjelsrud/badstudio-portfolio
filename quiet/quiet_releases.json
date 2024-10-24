@@ -15,8 +15,7 @@
             "length": "4:00",
             "notes": "",
             "instruments": {
-                "synth": "DSI Mopho X4",
-                "sampler": "Elektron Octatrack",
+                "synth": "DSI Mopho X4, U-he Diva, ++",
                 "daw": "Reaper DAW",
                 "drum_samples": "TripHop Attack (Loopmasters)",
                 "vocals": "notoms",
@@ -27,6 +26,7 @@
                 "Vocal": "SSL Vocalstrip -> MS-20 Filter (drive) -> Flexverb",
                 "Vocal-ref": "+ ValhallaSpaceModulator",
                 "Vocal-amb": "ReaTune -> VocalStrip -> ValhallaPlate",
+                "Hats": "Audiothing SR-88 + Addictive Drums 2 -> SpaceModulator -> MS-20",
                 "Arps": "U-He Diva -> MS-20 Filter",
                 "Chords": "Felt Ins Lekko: Half-speed sustains -> Tappe Mello-FI -> Things Texture",
                 "Highs": "DecentSampler: GentleVibes -> MS-20 -> ValhallaShimmer",
@@ -45,6 +45,5 @@
             "mixer": "",
             "mastering": ""
         }
-    },
-    { }
+    }
 ]
