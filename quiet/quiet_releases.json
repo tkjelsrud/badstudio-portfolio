@@ -32,9 +32,9 @@
                 "Drone": "ReaSynth -> AUDistortion",
                 "Dron2": "Modular Sample -> ValhallaSupermassive",
                 "Highs": "DecentSampler: GentleVibes -> MS-20 -> ValhallaShimmer",
-                "Send Rev": "D16 ToraVerb 2: Ambience 100%",
-                "Send Dly": "Audiothing Outer Space: 1/2D 1/8D",
-                "Master/Bus": "D16 Redoptor -> Console 1 -> D16 Frontier -5db/0.5db"
+                "Send Rev": "D16 ToraVerb 2: Ambience",
+                "Send Dly": "Audiothing Outer Space",
+                "Master/Bus": "D16 Redoptor -> Console 1 -> D16 Frontier"
             }
         },
         "artworkUrl": "",
