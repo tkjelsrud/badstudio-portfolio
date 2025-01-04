@@ -118,7 +118,7 @@
   <body>
     <div id="top"><img style="width:48px;height:48px" src="images/badger-studio.png" /></div>
     <div id="menu">
-      <!--span onclick="updateView('#');">releases</span-->
+      <span onclick="updateView('#');">releases</span>
       <!-- updateView('#'); -->
       <!--span onclick="updateView('#book');">dj booking</span-->
       <span onclick="updateView('#about');">about/contact</span>
@@ -132,7 +132,23 @@
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSci9ncj1uGS31XybzLNYKAnzTsEE1c2CrI1ECX88KeXjKSGxA/viewform?embedded=true" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
       </div>
       
-      <div id="x"><p>New pages will be created</p></div>
+      <div id="si1" class="storeItem" onclick="window.location.href='https://notoms.bandcamp.com/album/ambijens';"
+        style="background-image: url(images/DSCF0734xb.jpg);background-size: 288px;">
+        <div class="bottomItem">Limited ed cassette &amp; download, 7/10 available</div>
+      </div>
+      <div id="si2" class="storeItem" onclick="document.getElementById('contact').classList.remove('hidden');" 
+        style="background-image: url(images/2024-snowflake-a3.jpg);background-size: 288px;">
+        <div class="bottomItem">Photo/Digital artwork 33x48cm, available</div>
+      </div>
+      
+      <div id="si3" class="storeItem" onclick="document.getElementById('contact').classList.remove('hidden');" 
+        style="background-image: url(images/arvoll-eks.jpg);background-size: 288px;">
+        <div class="bottomItem">Digital artwork, 1 print available</div>
+      </div>
+      <div id="si4" class="storeItem" onclick="updateView('#releases');"
+        style="background-image: url(images/my-releases-on-wall.jpg);background-size: 288px;">
+        <div class="bottomItem">All music releases</div>
+      </div>
     </div>
     <div id="pnBook" style="display:none" class="panel">
       <iframe src="https://docs.google.com/forms/d/e/1pQMZOP1Egl1NLO36BvNvtURG3lb7nRM8_e2SNVbtH0E/viewform?embedded=true" width="640" height="1983" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
