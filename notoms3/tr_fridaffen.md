@@ -1,14 +1,16 @@
 ## Track: Fridaffen
 
 **Tempo:** 102 bpm  
-**Key:** Em  
+**Key:** C (mixolydisk)  
 **Time:** 4/4
 
 ### Intro
-|| C6 | . | A#6 | Dm | C | Dm ||
+| Dm  |
+| C6  | Bb6 | C6    | Bb6 |
+| Dm  | C   | Dm/X  | C   |
 
 ### Verse
-|| C6 | . | A#6 | Dm | C | Dm ||
+|| C6 | . | Bb6 | Dm | C | Dm ||
 
 
 ### Notes
