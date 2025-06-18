@@ -14,6 +14,16 @@
 ```
 || C6 | . | Bb6 | Dm | C | Dm ||
 ```
+A quiet Channel
+A tape deck Hum
+post junction
+leave by crumbs
+
+verse del 2
+
+. and we leave by this (samme akkorder, men mer energisk/opp)
+. we weave on
+. lala
 
 ### Outro
 ```
