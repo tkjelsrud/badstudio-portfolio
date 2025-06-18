@@ -4,13 +4,13 @@
 **Key:** C (mixolydisk)  
 **Time:** 4/4
 
-### Intro
+Intro
 ```
 | Dm  |
 | C6  | Bb6 | C6    | Bb6 |
 | Dm  | C   | Dm/X  | C   |
 ```
-### Verse
+Verse
 ```
 || C6 | . | Bb6 | Dm | C | Dm ||
 
