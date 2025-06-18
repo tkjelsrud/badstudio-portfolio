@@ -15,6 +15,11 @@
 || C6 | . | Bb6 | Dm | C | Dm ||
 ```
 
+### Outro
+```
+| Em |
+```
+
 ### Notes
 - Spilt med fingerplukk
 - Vurdere å legge inn shaker-sving
