@@ -13,7 +13,7 @@
 ### Verse
 ```
 || C6 | . | Bb6 | Dm | C | Dm ||
-```
+
 A quiet Channel
 A tape deck Hum
 post junction
@@ -24,6 +24,9 @@ verse del 2
 . and we leave by this (samme akkorder, men mer energisk/opp)
 . we weave on
 . lala
+```
+
+
 
 ### Outro
 ```
