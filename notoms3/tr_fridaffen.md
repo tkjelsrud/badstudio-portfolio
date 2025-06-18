@@ -12,12 +12,20 @@ Intro
 ```
 Verse
 ```
-|| C6 | . | Bb6 | Dm | C | Dm ||
+|| C6 | Bb6 | C6 | Bb6 |
+| Dm | C | Dm  ||
 
 A quiet Channel
 A tape deck Hum
 post junction
-leave by crumbs
+left by crumbs
+
+circle round
+and leave out
+critique
+old scout
+
+
 
 verse del 2
 
