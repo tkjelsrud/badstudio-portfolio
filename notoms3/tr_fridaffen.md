@@ -1,15 +1,15 @@
 ## Track: Fridaffen
 
-**Tempo:** 84 bpm  
+**Tempo:** 102 bpm  
 **Key:** Em  
 **Time:** 4/4
 
 ### Intro
-| Em | Cmaj7 | G | Dsus4 |
+|| C6 | . | A#6 | Dm | C | Dm ||
 
 ### Verse
-"Looped guitars with reverse pad behind"
-| Em7 | Em7 | C6 | C6 |
+|| C6 | . | A#6 | Dm | C | Dm ||
+
 
 ### Notes
 - Spilt med fingerplukk
