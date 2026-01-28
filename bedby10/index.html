@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bandet Vårt - Låter</title>
+
+    <style>
+        .header {
+            background-color: #dbdca5;
+            color: #747070;
+            padding: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
     
     <!-- Importer CSS -->
     <link rel="stylesheet" href="https://tkjelsrud.github.io/chords/lib/chord-simple.css">
@@ -12,9 +23,14 @@
     <!-- OPTIONAL: Enkel JS for auto-parsing (laster nederst) -->
 </head>
 <body>
+    <div class="header">Other links: <a href="recordings.html">Recordings ('25)</a></div>
+
+    <nav style="padding: 10px; text-align: center;">
+        <a href="#the-architect">The Architect (Fafa)</a> | <a href="#pheromones">Pheromones</a>
+    </nav>
 
     <song>
-        <h2>🏛️ The Architect (Fafa)</h2>
+        <h2 id="the-architect">The Architect (Fafa)</h2>
         <song-meta data-octave-offset="+1">
             <span>Toneart: D#m</span>
             <span>Tuning: D-tuning</span>
@@ -81,7 +97,7 @@
     </song>
 
     <song>
-        <h2>💫 Pheromones</h2>
+        <h2 id="pheromones">Pheromones</h2>
         <song-meta>
             <span>Toneart: C</span>
             <span>Tempo: 112 BPM</span>
@@ -156,7 +172,7 @@
     </song>
 
     <!-- Libraries for chord diagrams -->
-    <script src="https://unpkg.com/vexchords@1.2.0/dist/vexchords.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexchords@1.2.0/dist/vexchords.js"></script>
     <script src="https://tkjelsrud.github.io/chords/lib/chord-fingerings.js"></script>
     <script src="https://tkjelsrud.github.io/chords/lib/chord-simple.js"></script>
 
