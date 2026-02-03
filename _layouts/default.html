@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/lib/base.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/lib/riso.css' | relative_url }}">
+  </head>
+  <body>
+    {% include header.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+  </body>
+</html>

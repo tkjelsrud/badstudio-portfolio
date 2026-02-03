@@ -1,0 +1,258 @@
+
+@font-face { font-family: DMSans; src: url('DMSans-Regular.ttf'); } 
+body {
+    font-family: DMSans, Georgia, serif;
+    background-color: #f2f0eb;
+    color: #5e5347;
+    font-size: 1em;
+    zoom: 1.0;
+}
+
+/*@media (max-width:800px) {*/
+@media screen and (orientation:portrait) {
+    body {
+        zoom: 1.15 !important;
+    }
+}
+
+h1 {
+    font-size: 1.3em;
+}
+
+h2, h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+}
+
+#top {
+    position: relative;
+    height: 96px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+}
+
+@media screen and (orientation:portrait) {
+    #top {
+        font-size: 1.5em;
+    }
+}
+
+/* Background container styling */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Fixed to viewport height */
+    z-index: 1; /* Place behind the content */
+    pointer-events: none; /* Prevent interaction with the background */
+    overflow: hidden; /* Ensure background doesn't overflow */
+}
+
+    
+#menu {
+    position: relative;
+    height: 64px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+}
+
+#menu > span {
+    padding-left: 48px;
+}
+
+#menu > span:hover {
+        cursor: pointer;
+}
+
+table {
+    margin-top: 32px;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+tbody > tr:first-child {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    background-color: #9bbea9;
+    padding: 4px;
+    border-bottom: 2px solid #a7ae9e;
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: #dce4d7;
+}
+
+tbody > tr > td:nth-child(4) {
+    display: none;
+}
+tbody > tr > td:nth-child(5) {
+    display: none;
+}
+tbody > tr > td:nth-child(6) {
+    display: none;
+}
+tbody > tr > td:nth-child(7) {
+    display: none;
+}
+
+#badReleases {
+    background-color: #dce4d7;
+    border-bottom: 2px solid #a7ae9e;
+    border-top: 2px solid #a7ae9e;
+    width: 650px;
+}
+
+/*thead {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    background-color: #9bbea9;
+    padding: 4px;
+    border-bottom: 2px solid #a7ae9e;
+}*/
+
+td {
+    min-width: 98px;
+}
+
+.buyPanel {
+    float: left;
+    font-size: 0.8em;
+    margin: 16px;
+    margin-right: 64px;
+    border-top: 8px solid #d8e9e5;
+    padding: 16px;
+    border-bottom: 8px solid #d8e9e5;
+}
+
+.button {
+  appearance: none;
+  background-color: #6dce87;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #2c974b;
+}
+
+.button:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.loading {
+    animation: animate 2s infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(45deg) translate(-2px, -2px);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translate(8px, 8px);
+    }
+}
+
+#main {
+    position: relative;
+    justify-content: center;
+    max-width: 900px; /* Set your desired max-width */
+    margin: 0 auto; /* Center the element horizontally */
+    background-color: #f0f0f0; /* Set your desired background color for the offset */
+    padding: 64px; /* Add padding if needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    z-index: 2;
+    box-shadow: 2px 4px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.track {
+  height: 36x;
+  vertical-align: top;
+  background-color: antiquewhite;
+  margin-bottom: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.smaller {
+  font-size: 11px;
+  background-color: antiquewhite;
+}
+
+.warn {
+    background-color: palevioletred;
+}
+
+em {
+  font-size: 11px;
+}
+
+.tag {
+    display: inline-block;           /* Ensures the tag fits around the text */
+    background-color: #e6dede;       /* Light background color */
+    color: #333;                     /* Text color */
+    padding: 4px 10px;               /* Padding to give space inside the tag */
+    border-radius: 15px;             /* Rounds the corners */
+    font-size: 14px;                 /* Font size */
+    font-weight: 500;                /* Slightly bold text */
+    margin: 5px;                     /* Space around each tag */
+    cursor: default;                 /* Cursor for interaction (can be changed) */
+}
+
+ul {
+    font-size: 0.6em; /* gjør punktet mindre */
+    color: #777;
+}
+
+li {
+    font-size: 12px;
+}

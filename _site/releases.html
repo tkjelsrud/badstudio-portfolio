@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Releases — Bad Studio</title>
+    <link rel="stylesheet" href="lib/base.css">
+    <link rel="stylesheet" href="lib/riso.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">Bad Studio</div>
+      <div class="tagline">Releases</div>
+    </header>
+
+    <main class="container">
+      <div style="max-width:720px;margin:0 auto;">
+        <h1>Releases</h1>
+        <p class="muted">Musikk utgitt under ulike prosjektnavn — Notoms, Quiet, og mer.</p>
+        <div id="releasesList" style="margin-top:2em;">Laster releases…</div>
+        <p style="margin-top:3em"><a href="index.html">← Tilbake til forsiden</a></p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a href="index.html">Hjem</a> • <a href="about.html">Om</a>
+    </footer>
+
+    <script>
+      fetch('/music/releases.json')
+        .then(r => r.json())
+        .then(data => {
+          const out = document.getElementById('releasesList');
+          out.innerHTML = '';
+          data.forEach(rel => {
+            const el = document.createElement('div');
+            el.className = 'article';
+            el.innerHTML = `<h3>${rel.releaseTitle} <small class="muted">(${rel.year})</small></h3>
+              <p><strong>Format:</strong> ${rel.format} — <a href="${rel.playerUrl}" target="_blank">Listen</a></p>`;
+            out.appendChild(el);
+          });
+        })
+        .catch(err => { document.getElementById('releasesList').innerText = 'Kunne ikke laste releases.json'; console.error(err) })
+    </script>
+  </body>
+</html>

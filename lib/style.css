@@ -5,13 +5,13 @@ body {
     background-color: #f2f0eb;
     color: #5e5347;
     font-size: 1em;
-    zoom: 1.1;
+    zoom: 1.0;
 }
 
 /*@media (max-width:800px) {*/
 @media screen and (orientation:portrait) {
     body {
-        zoom: 2.0 !important;
+        zoom: 1.15 !important;
     }
 }
 
@@ -248,3 +248,11 @@ em {
     cursor: default;                 /* Cursor for interaction (can be changed) */
 }
 
+ul {
+    font-size: 0.6em; /* gjør punktet mindre */
+    color: #777;
+}
+
+li {
+    font-size: 12px;
+}

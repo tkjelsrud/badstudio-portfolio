@@ -1,0 +1,8 @@
+title: Bad Studio
+baseurl: ""
+url: ""
+markdown: kramdown
+
+# Note: Removed `paginate` to avoid requiring the jekyll-paginate plugin
+# which is not enabled by default on GitHub Pages. Add plugins here only
+# if you build with GitHub Actions or a custom build pipeline.

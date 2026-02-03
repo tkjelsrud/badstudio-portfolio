@@ -1,0 +1,21 @@
+:root{
+    --riso-paper: #e8dfcc;
+    --riso-black: #222;
+    --riso-green: #9bbea9;
+    --riso-beige: #e6e397;
+    --riso-yellow: #f6f0d8;
+    --riso-pink: #ff6ba7;
+    --riso-blue: #3a7ca5;
+    --text: #353b35;
+    --text-muted: #888;
+}
+
+/* Color helpers only. Keep layout & typography in base.css */
+a{color:var(--riso-blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Lists: small markers by default */
+ul{padding-left:1.25rem}
+li::marker{font-size:0.75em;color:var(--text-muted)}
+
+.riso-accent{background:var(--riso-yellow);padding:2px 6px;border-radius:3px}
