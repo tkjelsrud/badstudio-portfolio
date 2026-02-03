@@ -1,68 +1,49 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8' />
-    <!--  
-          #f2f0eb snow white
-          #d8e9e5 hushed green
-          #f4ecc2 trans yellow
-          #f3774d coral
-          #5e5347 canteen (text)
+---
+layout: default
+title: Ambijens — Cassette Edition
+---
 
-          https://margaret2.github.io/pantone-colors/
-    -->
-    <link rel="stylesheet" href="lib/style.css" />
-    <style>
-        #main {
-          float: left;
-          margin-left: 160px;
-        }
-        @media screen and (orientation:portrait) {
-          #main {
-            margin-left: 16px;
-          }
-        }
-        
-        .imageColumn {
-            float: left;
-            width: 320px;
-        }
+<div class="container">
+  <div class="layout">
+    <main class="article-list" role="main">
+      <article class="article">
+        <div class="lede">Release • 2023</div>
+        <h1>Ambijens — Cassette Edition</h1>
+        <p>Bad Studio presents <strong>Ambijens</strong>, released as a limited cassette edition and digital download.</p>
+        <p>Ambijens melds sci‑fi stories and breakbeat elements with massive synth soundscapes — from melancholic valleys to brighter vistas.</p>
+        <a href="https://notoms.bandcamp.com/album/ambijens">https://notoms.bandcamp.com/album/ambijens</a>
+        <br/>
+        <br/>
+        <div class="release-grid">
+          
+          <figure>
+            <img src="{{ '/images/0033690084_10.jpg' | relative_url }}" alt="Ambijens cassette" style="width: 420px;" />
+            <figcaption>Cassette art</figcaption>
+          </figure>
+          <figure>
+            <img src="{{ '/images/0033690086_10.jpg' | relative_url }}" alt="Ambijens cassette" style="width: 420px;" />
+            <figcaption>Cassette art</figcaption>
+          </figure>
+          <figure>
+            <img src="{{ '/images/badstudio-tester-cassette.jpg' | relative_url }}" alt="Ambijens detail" style="width: 420px;"/>
+            <figcaption>A bit of trial and error, both in the physical media and the digital realm</figcaption>
+          </figure>
+        </div>
 
-        .imageColumn > div {
-            height: 288px;
-            width: 288px; 
-            margin-bottom: 32px;
-        }
+        <p>This release includes remixes and previously unreleased material. For listening and ordering, see the Bandcamp embed below.</p>
 
-        .textColumn {
-          float: left;
-            margin-top: 0px;
-            width: 320px;
-        }
-        </style>
-        </head>
-        <body>
+        <div class="bandcamp-embed">
+          <iframe style="border:0;width:100%;height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=3005798670/size=large/bgcol=FFFFFF/linkcol=0f91ff/tracklist=false/artwork=small/track=322855741/transparent=true/" seamless><a href="https://notoms.bandcamp.com/album/ambijens">Ambijens by Notoms</a></iframe>
+        </div>
 
-            <div id="top"><img style="width:48px;height:48px" src="images/badger-studio.png" /></div>
-            <div id="main">
-                <p><a href="index.html">back to front page</a></p><br/><br/>
-                <div class="imageColumn">
-                    <div style="background-image: url(images/badstudio-tester-cassette-2.jpg);background-size: 288px;">&nbsp;</div>
-                    <div style="background-image: url(images/badstudio-tester-cassette.jpg);background-size: 288px;">&nbsp;</div>
-                    <div style="background-image: url(images/badstudio-tester-cassette.jpg);background-size: 288px;">&nbsp;</div>
-                
-                </div>       
-                <div class="textColumn" >
-                    <p>Badstudio presents Ambijens released by a very limited number of cassette and digital download.</p>
-                    <p>Ambijens melds sci-fi stories, breakbeat elements with massive synth soundscapes. It curves through stories, through valleys of melancholy to brighter and lifting vistas.</p>
-                    <p>This new release has been remixed with additional unreleased material has been added.</p>
-                  
-                    <div class="buyPanel">
-                      <p>Info about buying here</p>
-                      <a class="button" href="#buylink">Pre order here</a>
-                    </div>
-                    <p>Additional info, tracks and copyright</p>
-                </div>
-            </div>
-        </body>
-        </html>
+        <p class="muted">Copyright © 2023 Notoms / Bad Studio</p>
+      </article>
+    </main>
+
+    {% include menu.html %}
+  </div>
+</div>
+
+
+
+
