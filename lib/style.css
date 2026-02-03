@@ -248,6 +248,12 @@ em {
     cursor: default;                 /* Cursor for interaction (can be changed) */
 }
 
+ol {
+    margin-left: 1em;
+    font-size: 0.6em; /* gjør punktet mindre */
+    color: #777;
+}
+
 ul {
     font-size: 0.6em; /* gjør punktet mindre */
     color: #777;

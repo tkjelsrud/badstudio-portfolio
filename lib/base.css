@@ -194,3 +194,24 @@ footer.site-footer {
     padding: 2px 6px;
     border-radius: 3px
 }
+
+/* Compact releases table */
+.releases-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+.releases-table th,
+.releases-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+.releases-table th {
+    color: var(--text-muted, #888);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+.releases-table tr:last-child td { border-bottom: none; }
