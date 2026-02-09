@@ -6,13 +6,13 @@ title: Releases
 <div class="container">
   <div style="max-width:720px;margin:0 auto;">
     <main role="main">
-      <h1>Releases</h1>
-      <p class="muted">Catalog of releases</p>
+      <h1>Utgivelser</h1>
+      <p class="muted">Katalog over utgivelser</p>
       <div id="releasesList" style="margin-top:2em;">
         {% assign releases = site.data.releases | sort: 'year' | reverse %}
         <table class="releases-table">
           <thead>
-            <tr><th>Year</th><th>Title</th><th>Format</th><th></th></tr>
+            <tr><th>År</th><th>Tittel</th><th>Format</th><th></th></tr>
           </thead>
           <tbody>
             {% for rel in releases %}
@@ -25,7 +25,7 @@ title: Releases
                 <td>{{ rel.year }}</td>
                 <td>{{ rel.releaseTitle }}</td>
                 <td>{{ rel.format }}</td>
-                <td>{% if rel.playerUrl %}<a href="{{ rel.playerUrl }}" target="_blank">Listen</a>{% endif %}</td>
+                <td>{% if rel.playerUrl %}<a href="{{ rel.playerUrl }}" target="_blank">Link</a>{% endif %}</td>
               </tr>
             {% endfor %}
           </tbody>
