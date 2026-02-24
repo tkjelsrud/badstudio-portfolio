@@ -232,5 +232,23 @@
         "playerUrl": "https://soundcloud.com/notoms/som-om-ingenting-rakett-i-bane",
         "lyricsUrl": "",
         "credits": {}
+    },
+        {
+        "isin": "NOD3R2601010",
+        "year": 2026,
+        "workingTitle": "",
+        "releaseTitle": "Kra",
+        "releaseDate": "",
+        "sequenceId": 10,
+        "state": "finished",
+        "format": "single",
+        "promoText": "",
+        "production": {},
+        "feedbackText": "",
+        "artworkUrl": "",
+        "downloadUrl": "",
+        "playerUrl": "https://soundcloud.com/notoms/kra",
+        "lyricsUrl": "",
+        "credits": {}
     }
 ]
