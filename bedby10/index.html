@@ -25,83 +25,74 @@
 <body>
     <div class="header">Other links: <a href="/bedby10/setlist/">setlist 2026</a> | <a href="recordings.html">Recordings ('25)</a> | <a href="pics.html">Pics</a> | <a href="https://tkjelsrud.github.io/chords/examples/">Other chords</a></div>
 
-    <nav style="padding: 4px;">
-        <a href="#the-architect">The Architect (Fafa)</a> |
-        <a href="#pheromones">Pheromones</a> |
-        <a href="#sabotage">Sabotage (cover)</a> |
-        <a href="#be-your-dog">I wanna be your dog (cover)</a> |
-        <a href="#empathy">Empathy (Bonding 2)</a> |
-        <a href="#maps">Maps (Fast cover)</a>
-    </nav>
+    <nav id="song-nav" style="padding: 4px;"></nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nav = document.getElementById("song-nav");
+            const headings = Array.from(document.querySelectorAll("song h2[id]"));
+            if (!nav || headings.length === 0) return;
+
+            nav.textContent = "";
+            headings.forEach((heading, index) => {
+                const link = document.createElement("a");
+                link.href = "#" + heading.id;
+                link.textContent = heading.textContent.trim();
+                nav.appendChild(link);
+                if (index < headings.length - 1) {
+                    nav.appendChild(document.createTextNode(" | "));
+                }
+            });
+        });
+    </script>
 
     <song>
-        <h2 id="the-architect">The Architect (Fafa)</h2>
-        <song-meta data-octave-offset="+1">
-            <span>Key: D#m</span>
-            <span>Effect/crunch B03</span>
+        <h2 id="be-your-dog">I wanna be your dog (cover)</h2>
+        <song-meta>
+            <span>Key: Abm</span>
+            <span>Effect/fuzz/dist Bank 01</span>
         </song-meta>
-        
-        <h3>Intro/Verse</h3>
-        <p>2 first bars: gitar starts (octaves)</p>
-        <chord oct="2">D#m</chord>
-        <chord oct="1">G#m</chord>
-        <chord>B</chord>
-        <chord>F#</chord><br/>
-        <chord>D#m</chord>
-        <chord up>G#m</chord>
-        <chord up>B</chord>
-        <chord down>F#</chord>
-        
-        <h3>Verse</h3>
-        <p>Arpeggio/reverb over bass playing verse</p>
-        <chord bass="D#"">D#m</chord>
-        <chord bass="G#">D#m</chord>
-        <chord bass="B">D#m/B</chord>
-        <chord bass="F#">F#</chord>
-        
-        <h3>Pre-Chorus</h3>
-        <p>Flat 4 on bass drum</p>
-        <chord>A#m</chord>
-        <chord>B</chord>
-        <chord>C#</chord>
-        <chord>D#m</chord>
-        
-        <p>Second round leads into chorus:</p>
-        <chord>A#m</chord>
-        <chord>B</chord>
-        <chord>C#sus4</chord>
-        <chord>C#7</chord>
-        
-        <h3>Chorus</h3>
-        <chord>D#m</chord>
-        <chord>B (Bb)</chord>
-        <chord>C#</chord>
-        <chord up>F#</chord>
 
-        <h3>Mellow delay solo over chorus (pensing)</h3>
-        <riff title="Solo" note="D#m arp into delay" repeat="4">
-            e------|
-            b------|
-        </riff>
-        <h3>Quiet/drums/scream</h3>
-        <chord>-</chord>
-        <h3>Heavy solo / dissontant</h3>
-        <chord>D#5</chord>
-        <chord>F#sus4</chord>
-        <chord>C#5</chord>
-        <chord>F#sus4</chord>
+        <chord>G</chord>
+        <chord>F#</chord>
+        <chord>Em</chord>
+        <p>Timing alternating</p>
 
-        <h3>Outro(chorus</h3>
+        <h3>Chorus part</h3>
+        <chord oct="2">G</chord>
+        <chord oct="2">Em</chord>
+        <chord oct="2">D</chord>
+        <chord oct="1">Bm</chord>
+        <p>Into major</p>
+        <chord>C</chord>
+
+        <h3>Solo</h3>
+        <p>E harmonic minor</p>
+        <chord>Em</chord>
         
+        <h3>"Favorite place" / scream / instr. silent </h3>
+        <p>Back to verse</p>
 
     </song>
+
+    <song>
+        <h2 id="blood-cut">Blood in the cut (cover)</h2>
+        <song-meta>
+            <span>Key: E</span>
+            <span>Effect/fuzz/dist Bank 01</span>
+        </song-meta>
+
+        <h3>Intro / fade in Em</h3>
+
+        <p>The rest is not written here</p>
+    </song>
+
 
     <song>
         <h2 id="pheromones">Pheromones</h2>
         <song-meta>
             <span>Key: Cm</span>
             <span>Tempo: 112 BPM</span>
-            <span>Bank: 01</span>
+            <span>Effect/clean/crunch Bank 01</span>
         </song-meta>
         
         <h3>Intro</h3>
@@ -153,7 +144,7 @@
         <p>Evt: G# Maj → D#maj7</p>
         
         <h3>Solo / build</h3>
-        <p>Two repetitions, last one building intensity into major C</p>
+        <p>Two repetitions, last one building intensity into major C. Drums mark/fill end of bar.</p>
         <chord bass="A#">A#</chord>
         <chord bass="A#">A#</chord>
         <chord bass="Dm">Dm</chord>
@@ -175,7 +166,7 @@
         <h2 id="sabotage">Sabotage (cover)</h2>
         <song-meta>
             <span>Key: Abm</span>
-            <span>Bank: 03 ??</span>
+            <span>Effect/fuzz/filter Bank 03</span>
         </song-meta>
         
         <h3>Intro</h3>
@@ -194,33 +185,87 @@
     </song>
 
     <song>
-        <h2 id="be-your-dog">I wanna be your dog (cover)</h2>
-        <song-meta>
-            <span>Key: Abm</span>
-            <span>Bank: 03 ??</span>
+        <h2 id="the-architect">The Architect (Fafa)</h2>
+        <song-meta data-octave-offset="+1">
+            <span>Key: D#m</span>
+            <span>Effect/crunch Bank 01</span>
         </song-meta>
-
-        <chord>G</chord>
-        <chord>F#</chord>
-        <chord>Em</chord>
-        <p>Timing alternating</p>
-
-        <h3>Chorus part</h3>
-        <chord oct="2">G</chord>
-        <chord oct="2">Em</chord>
-        <chord oct="2">D</chord>
-        <chord oct="1">Bm</chord>
-        <p>Into major</p>
-        <chord>C</chord>
-
-        <h3>Solo</h3>
-        <p>E harmonic minor</p>
-        <chord>Em</chord>
         
-        <h3>"Favorite place" / scream / instr. silent </h3>
-        <p>Back to verse</p>
+        <h3>Intro/Verse</h3>
+        <p>2 first bars: gitar starts (octaves)</p>
+        <chord oct="2">D#m</chord>
+        <chord oct="1">G#m</chord>
+        <chord>B</chord>
+        <chord>F#</chord><br/>
+        <chord>D#m</chord>
+        <chord up>G#m</chord>
+        <chord up>B</chord>
+        <chord down>F#</chord>
+        
+        <h3>Verse</h3>
+        <p>Arpeggio/reverb over bass playing verse</p>
+        <chord bass="D#"">D#m</chord>
+        <chord bass="G#">D#m</chord>
+        <chord bass="B">D#m/B</chord>
+        <chord bass="F#">F#</chord>
+        
+        <h3>Pre-Chorus</h3>
+        <p>Flat 4 on bass drum</p>
+        <chord>A#m</chord>
+        <chord>B</chord>
+        <chord>C#</chord>
+        <chord>D#m</chord>
+        
+        <p>Second round leads into chorus:</p>
+        <chord>A#m</chord>
+        <chord>B</chord>
+        <chord>C#sus4</chord>
+        <chord>C#7</chord>
+        
+        <h3>Chorus</h3>
+        <chord>D#m</chord>
+        <chord>B (Bb)</chord>
+        <chord>C#</chord>
+        <chord up>F#</chord>
+
+        <h3>Heavy solo</h3>
+        <riff title="Solo" note="D#m arp into delay" repeat="4">
+            e|--11----11h14p11------7----7h9p7-----------9----9h11p9---------14--16--14--|
+            B|0---0-0----------0-2-4-0--0--------0--------0--0--------0------0---0---0---|
+        </riff>
+
+        <h3>Quiet</h3>
+        <riff title="Mellow dark movement with delay">
+            g--11----11-----------11-13-|
+            d----------------11-13------|
+            a-14--13-------13-----------|
+            E-------------14------------|
+        </riff>
+        <p>Then complete silence</p>
+        <h3>DAM DAM/scream</h3>
+        <chord>-</chord>
+
+        <h3>Chorus / outro</h3>
+        <chord>D#m</chord>
+        <chord>B (Bb)</chord>
+        <chord>C#</chord>
+        <chord up>F#</chord>
+        
 
     </song>
+
+    <song>
+        <h2 id="killing-name">Killing in the name (Cover)</h2>
+        <song-meta data-octave-offset="0">
+            <span>Key: Drop-D tuning</span>
+            <span>Effect/crunch Bank 03</span>
+        </song-meta>
+
+        <p>Just have to remember this one</p>
+    </song>
+
+    <hr/>
+    
 
     <song>
         <h2 id="empathy">Empathy (Bonding 2)</h2>
