@@ -117,7 +117,8 @@ main.article-list {
     background: var(--riso-yellow, #ede7d0);
     padding: 16px 18px;
     margin-bottom: 20px;
-    border-left: 3px solid var(--riso-beige, #ebdeac)
+    border-left: 3px solid var(--riso-beige, #ebdeac);
+    display: flow-root;
 }
 
 .article h2 {
@@ -131,11 +132,23 @@ main.article-list {
 }
 
 .article img {
-    width: 60%;
+    width: 50%;
+    max-width: 50%;
     height: auto;
     float: left;
     margin-right: 15px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+}
+
+/* On narrow screens stack the image above text and disable float */
+@media (max-width: 820px) {
+    .article img {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
 }
 
 .lede {
