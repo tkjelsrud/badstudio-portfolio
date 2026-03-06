@@ -130,6 +130,14 @@ main.article-list {
     border: none
 }
 
+.article img {
+    max-width: 100%;
+    height: auto;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px
+}
+
 .lede {
     font-size: 0.75rem;
     text-transform: uppercase;
