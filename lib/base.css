@@ -80,6 +80,13 @@ p {
     text-transform: uppercase
 }
 
+.brand-home,
+.brand-home:hover,
+.brand-home:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
 .tagline {
     font-size: 0.85rem;
     color: var(--text-muted, #888);
@@ -236,3 +243,172 @@ footer.site-footer {
     font-size: 0.85rem;
 }
 .releases-table tr:last-child td { border-bottom: none; }
+
+/* Home: lean "signal page" style */
+.home-signal {
+    max-width: 760px;
+}
+
+.signal-feed {
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.55;
+}
+
+.signal-kicker {
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--text-muted, #888);
+}
+
+.signal-title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.7rem, 4.2vw, 2.6rem);
+    line-height: 1.1;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    animation: signal-jitter 14s infinite steps(2, end);
+}
+
+.signal-intro {
+    max-width: 62ch;
+    margin-bottom: 1.3rem;
+    color: var(--text, #353b35);
+}
+
+.signal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin: 0 0 2rem;
+}
+
+.signal-links a {
+    display: inline-block;
+    border: 1px dashed rgba(53, 59, 53, 0.45);
+    padding: 3px 8px;
+    text-decoration: none;
+    color: var(--riso-black, #222);
+}
+
+.signal-links a:hover {
+    text-decoration: none;
+    border-style: solid;
+    transform: translateY(-1px);
+}
+
+.entry {
+    margin-bottom: 2rem;
+    padding-top: 0.7rem;
+    border-top: 1px dotted rgba(53, 59, 53, 0.45);
+}
+
+.entry-meta {
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.7rem;
+    color: var(--text-muted, #888);
+}
+
+.entry h2 {
+    margin: 0 0 0.55rem;
+    font-size: 1.25rem;
+    line-height: 1.2;
+}
+
+.entry img {
+    display: block;
+    width: min(420px, 100%);
+    margin: 0.5rem 0 0.75rem;
+    border: 1px solid rgba(53, 59, 53, 0.25);
+}
+
+@media (max-width: 640px) {
+    .home-signal {
+        padding: 20px;
+    }
+}
+
+/* Mild horizontal jitter to avoid static "office" feel */
+@keyframes signal-jitter {
+    0%, 92%, 100% { transform: translateX(0); }
+    93% { transform: translateX(-0.5px); }
+    94% { transform: translateX(0.75px); }
+    95% { transform: translateX(-0.6px); }
+    96% { transform: translateX(0.35px); }
+}
+
+/* Used by pixel-drift.js */
+img.pixel-drift-active {
+    image-rendering: pixelated;
+    filter: contrast(1.05) saturate(0.92);
+}
+
+/* Used by text-drift.js */
+.drift-text-target {
+    position: relative;
+    transition: text-shadow 90ms linear, color 120ms ease;
+}
+
+.drift-text-target.is-drifting {
+    left: var(--drift-x, 0px);
+    top: var(--drift-y, 0px);
+    letter-spacing: var(--drift-ls, normal);
+    text-shadow:
+      calc(var(--drift-x, 0px) * -1) 0 rgba(58, 124, 165, 0.28),
+      calc(var(--drift-x, 0px) * 0.7) var(--drift-y, 0px) rgba(255, 107, 167, 0.22);
+}
+
+/* Used by sprite-ghost.js */
+.sprite-ghost-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+    transition: opacity 160ms linear;
+}
+
+.sprite-ghost-layer.is-scroll-rest {
+    opacity: 0;
+}
+
+.sprite-ghost-burst {
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sprite-ghost-tile {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 320ms ease, left 1700ms ease-out, top 1700ms ease-out, filter 220ms linear;
+    mix-blend-mode: normal;
+    border: 1px solid rgba(34, 34, 34, 0.09);
+    will-change: left, top, opacity, transform;
+}
+
+.sprite-ghost-tile.is-active {
+    opacity: var(--ghost-base-opacity, 0.05);
+    animation:
+      sprite-frag-jitter 540ms steps(2, end) infinite alternate,
+      sprite-frag-fade var(--ghost-fade-ms, 620ms) ease-in-out infinite alternate;
+    animation-delay: var(--ghost-jitter-delay, 0ms), var(--ghost-fade-delay, 0ms);
+}
+
+@keyframes sprite-frag-jitter {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(var(--ghost-jx, 0px), var(--ghost-jy, 0px), 0); }
+}
+
+@keyframes sprite-frag-fade {
+    0% { opacity: var(--ghost-base-opacity, 0.05); }
+    100% { opacity: var(--ghost-peak-opacity, 0.2); }
+}

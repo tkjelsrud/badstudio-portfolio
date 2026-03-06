@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 2025 som kreativt år
+title: 2025 oppsummert - Notoms
 date: 2026-02-03
 author: Notoms
 categories: [musikk, oppsummering]
@@ -14,7 +14,7 @@ tags: [notoms, bedby10, 2025]
 
 *Personlig notat i online form*
 
-# 2025 som kreativt år
+# 2025 oppsummert - Notoms
 
 **February 3, 2026 • Notoms**
 

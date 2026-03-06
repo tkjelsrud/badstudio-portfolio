@@ -3,56 +3,43 @@ layout: default
 title: badstudio.no - project Notoms - project BedBy10
 ---
 
-<div class="container">
-  <div class="layout">
-    <main class="article-list" role="main">
-      <article class="article">
-        <img src="/bedby10/img/thumb.jpg" alt="BedBy10 cover" style="float:right" />
-        <div class="lede">2026 Gig</div>
-        <h2>Band project: BedBy10</h2>
-        <div class="byline">2026 • Notoms</div>
-        <p>I'm playing guitar in a band we called BedBy10. Gig planned march 2026 in Oslo/Bekkestua.</p>
-      </article>
+<div class="container home-signal">
+  <main class="signal-feed" role="main">
+    <p class="signal-intro">
+      Music, fragments, and visuals from Oslo. This page stays lean on purpose:
+      now, recent artifacts, and where to find the rest.
+    </p>
 
-      <article class="article">
-        <img src="/images/2025-7 notoms 3.jpg" alt="Notoms #3 cover" />
-        <div class="lede">2025/2026 ongoing</div>
-        <h2><a href="releases.html">Notoms #3</a></h2>
-        <div class="byline">2026 • Notoms</div>
-        <p>A couple of new tracks released 2025-26, within roughly the same style, a combination of Norwegian spoken poetry, electronic dub/ambient.</p>
-        <p>
-          <a href="https://soundcloud.com/notoms/kra">Kra (SoundCloud)</a><br/>
-          <a href="https://soundcloud.com/notoms/som-om-ingenting-rakett-i-bane">Som om ingenting (SoundCloud)</a><br/>
-        </p>
-      </article>
+    <nav class="signal-links" aria-label="Primary navigation">
+      <a href="{{ '/releases.html' | relative_url }}">Releases</a>
+      <a href="{{ '/about.html' | relative_url }}">About / Contact</a>
+      <a href="{{ '/articles/' | relative_url }}"><s>Writings</s></a>
+      <a href="https://www.dfos.com/">dfos.com</a>
+    </nav>
 
-      <article class="article">
-        <h2>About the portfolio</h2>
-        <p>This site exists as a quiet container for music and visual work.
-        Some releases, some fragments, possibly a piece of writing or two.</p>
-        <p>I prefer hiding things here, on a simple, old-school web page.
-        Social media never really became the space it promised to be.
-        </p><p>
-        Less visible. More intentional.</p>
-      </article>
+    <article class="entry">
+      <div class="entry-meta">NOW • MARCH 2026</div>
+      <h2>BedBy10 live set in Oslo/Bekkestua</h2>
+      <img src="/bedby10/img/thumb.jpg" alt="BedBy10 cover" />
+      <p>Playing guitar in BedBy10. One gig planned for March 2026.</p>
+    </article>
 
-      <article class="article">
-        <img src="/images/0033690084_10.jpg" alt="Ambijens cassette" />
-        <div class="lede">2023 Release</div>
-        <h2><a href="ambijens-cassette.html">Ambijens — Cassette Edition</a></h2>
-        <div class="byline">2023 • Notoms</div>
-        <p>An ambient tape release with analog warmth and texture. Available on Bandcamp and streaming services.</p>
-      </article>
+    <article class="entry">
+      <div class="entry-meta">LATEST TRACKS • 2025/2026</div>
+      <h2><a href="{{ '/releases.html' | relative_url }}">Notoms #3 (ongoing)</a></h2>
+      <img src="/images/2025-7 notoms 3.jpg" alt="Notoms #3 cover" />
+      <p>New tracks in the same lane: spoken Norwegian poetry + electronic dub/ambient.</p>
+      <p>
+        <a href="https://soundcloud.com/notoms/kra">Kra (SoundCloud)</a><br/>
+        <a href="https://soundcloud.com/notoms/som-om-ingenting-rakett-i-bane">Som om ingenting (SoundCloud)</a>
+      </p>
+    </article>
 
-      <article class="article">
-        <div class="lede">Longform</div>
-        <h2><a href="{{ '/articles/example-article.html' | relative_url }}">Example Article — Longform Demo</a></h2>
-        <div class="byline">2026 • Notoms</div>
-        <p>A longer example article demonstrating the site layout and typography.</p>
-      </article>
-    </main>
-
-    {% include menu.html %}
-  </div>
+    <article class="entry">
+      <div class="entry-meta">ARCHIVE • 2023</div>
+      <h2><a href="{{ '/ambijens-cassette.html' | relative_url }}">Ambijens - Cassette Edition</a></h2>
+      <img src="/images/0033690084_10.jpg" alt="Ambijens cassette" />
+      <p>Ambient tape release with analog warmth and texture.</p>
+    </article>
+  </main>
 </div>
-
