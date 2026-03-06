@@ -127,7 +127,7 @@ main.article-list {
     font-weight: 400
 }
 
-.article h2 a {
+.article h2 a {git 
     border: none
 }
 
@@ -136,7 +136,7 @@ main.article-list {
     max-width: 35%;
     height: auto;
     float: left;
-    margin-right: 10px;
+    margin-right: 16px;
     margin-bottom: 10px;
 }
 
