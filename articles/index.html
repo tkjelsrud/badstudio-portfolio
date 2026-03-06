@@ -8,8 +8,8 @@ title: Articles
     <main class="article-list" role="main">
       <h1>Articles</h1>
       
-      {% assign sorted_articles = site.pages | where_exp: "page", "page.path contains 'articles/' and page.name != 'index.html'" | sort: "date" | reverse %}
-      
+      {% assign sorted_articles = site.documents | where: "collection", "articles" | sort: "date" | reverse %}
+
       {% for article in sorted_articles %}
         <article class="article">
           <h2><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h2>
