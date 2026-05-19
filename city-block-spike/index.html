@@ -1,0 +1,1641 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Street Corner Prototype</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #ece4da;
+        color: #241c12;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .city-spike {
+        width: min(100%, 960px);
+        margin: 0 auto;
+        padding: 8px;
+      }
+
+      .city-shell {
+        --theme-bg: linear-gradient(180deg, #f7e6cf 0%, #ead4b6 100%);
+        --theme-panel: rgba(255, 248, 238, 0.78);
+        --theme-panel-strong: rgba(255, 249, 241, 0.88);
+        --theme-border: rgba(167, 117, 42, 0.22);
+        --theme-text: #2e2315;
+        --theme-accent: #be7c28;
+        --theme-shadow: rgba(126, 84, 28, 0.16);
+        --theme-soft: rgba(255, 255, 255, 0.66);
+        min-height: calc(100vh - 16px);
+        padding: 12px;
+        border-radius: 28px;
+        border: 1px solid var(--theme-border);
+        background: var(--theme-bg);
+        color: var(--theme-text);
+        box-shadow: 0 24px 60px var(--theme-shadow);
+        transition: background 320ms ease, box-shadow 320ms ease, color 320ms ease, border-color 320ms ease;
+      }
+
+      .city-shell[data-theme="you"] {
+        --theme-bg: linear-gradient(180deg, #f7e6cf 0%, #ead4b6 100%);
+        --theme-panel: rgba(255, 248, 238, 0.78);
+        --theme-panel-strong: rgba(255, 249, 241, 0.88);
+        --theme-border: rgba(167, 117, 42, 0.22);
+        --theme-text: #2e2315;
+        --theme-accent: #be7c28;
+        --theme-shadow: rgba(126, 84, 28, 0.16);
+        --theme-soft: rgba(255, 255, 255, 0.66);
+      }
+
+      .city-shell[data-theme="ink"] {
+        --theme-bg: linear-gradient(180deg, #eee2d3 0%, #d9c1a4 100%);
+        --theme-panel: rgba(250, 244, 237, 0.78);
+        --theme-panel-strong: rgba(255, 247, 240, 0.9);
+        --theme-border: rgba(124, 89, 50, 0.22);
+        --theme-text: #302217;
+        --theme-accent: #8f4f28;
+        --theme-shadow: rgba(116, 77, 35, 0.16);
+        --theme-soft: rgba(255, 251, 246, 0.7);
+      }
+
+      .city-shell[data-theme="moss"] {
+        --theme-bg: linear-gradient(180deg, #dde9d7 0%, #c0d2b8 100%);
+        --theme-panel: rgba(248, 252, 246, 0.8);
+        --theme-panel-strong: rgba(252, 255, 251, 0.9);
+        --theme-border: rgba(69, 109, 61, 0.2);
+        --theme-text: #1d3420;
+        --theme-accent: #4f8850;
+        --theme-shadow: rgba(49, 88, 43, 0.15);
+        --theme-soft: rgba(255, 255, 255, 0.68);
+      }
+
+      .city-shell[data-theme="glow"] {
+        --theme-bg: linear-gradient(180deg, #f3d8e5 0%, #e9bdd0 100%);
+        --theme-panel: rgba(255, 247, 251, 0.8);
+        --theme-panel-strong: rgba(255, 250, 253, 0.9);
+        --theme-border: rgba(161, 75, 119, 0.2);
+        --theme-text: #47172e;
+        --theme-accent: #bf5388;
+        --theme-shadow: rgba(121, 41, 78, 0.16);
+        --theme-soft: rgba(255, 255, 255, 0.68);
+      }
+
+      .city-topbar {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .city-kicker,
+      .city-stage-label,
+      .city-business-type,
+      .city-action-target {
+        margin: 0;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      .city-heading {
+        margin: 4px 0 0;
+        font-size: clamp(1.4rem, 4vw, 2rem);
+        line-height: 1.05;
+      }
+
+      .city-subtitle {
+        margin: 6px 0 0;
+        max-width: 32rem;
+        font-size: 0.92rem;
+        font-weight: 600;
+        opacity: 0.78;
+      }
+
+      .city-tick-button,
+      .city-inspect-button,
+      .city-player-chip,
+      .city-action-button {
+        border: 1px solid var(--theme-border);
+        border-radius: 999px;
+        background: var(--theme-soft);
+        color: inherit;
+        backdrop-filter: blur(14px);
+      }
+
+      .city-tick-button,
+      .city-inspect-button,
+      .city-player-chip {
+        padding: 9px 13px;
+        font-weight: 700;
+      }
+
+      .city-tick-button {
+        flex: none;
+      }
+
+      .city-stage {
+        padding: 12px;
+        border-radius: 24px;
+        background: var(--theme-panel);
+        border: 1px solid var(--theme-border);
+        backdrop-filter: blur(16px);
+      }
+
+      .city-stage-meta {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .city-stage-title {
+        margin: 4px 0 0;
+        font-size: clamp(1.1rem, 4vw, 1.65rem);
+      }
+
+      .city-stage-note {
+        margin: 6px 0 0;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--theme-accent);
+      }
+
+      .city-stage-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: end;
+        gap: 8px;
+      }
+
+      .city-pill {
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid var(--theme-border);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .city-pill.is-accent {
+        background: color-mix(in srgb, var(--theme-accent) 18%, white);
+        color: var(--theme-text);
+      }
+
+      .city-stage-canvas-wrap {
+        position: relative;
+        min-height: 540px;
+        overflow: hidden;
+        border-radius: 20px;
+        padding: 14px;
+        background:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 42%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(110, 84, 36, 0.08) 100%);
+      }
+
+      .city-stage-canvas {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 370px;
+        touch-action: pan-y;
+      }
+
+      .city-player-rail {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: 12px;
+        z-index: 4;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .city-player-chip {
+        max-width: 34%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        opacity: 0.72;
+        transition: transform 160ms ease, opacity 160ms ease;
+      }
+
+      .city-player-chip.is-active {
+        transform: translateY(-1px);
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.88);
+      }
+
+      .city-player-chip.is-hidden {
+        display: none;
+      }
+
+      .city-inspect-button {
+        position: absolute;
+        left: 12px;
+        top: 58px;
+        z-index: 4;
+      }
+
+      .city-inspect-button.is-active {
+        background: var(--theme-accent);
+        color: white;
+        border-color: transparent;
+      }
+
+      .city-stage-swipe-hint {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: 112px;
+        z-index: 3;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: rgba(0, 0, 0, 0.42);
+        pointer-events: none;
+      }
+
+      .city-stage.is-inspecting .city-player-rail {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .city-stage.is-inspecting .city-stage-swipe-hint {
+        color: var(--theme-accent);
+      }
+
+      .city-dock {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 48%;
+        padding: 12px;
+        border-radius: 22px;
+        background: var(--theme-panel-strong);
+        border: 1px solid var(--theme-border);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(16px);
+      }
+
+      .city-stage.is-inspecting .city-dock {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        max-height: 54%;
+      }
+
+      .city-dock-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .city-dock-title {
+        margin: 4px 0 0;
+        font-size: 1rem;
+      }
+
+      .city-dock-status {
+        margin: 0;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--theme-accent);
+      }
+
+      .city-resource-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .city-resource-chip {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid var(--theme-border);
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+
+      .city-business-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        overflow: auto;
+        padding-right: 2px;
+      }
+
+      .city-business-panel {
+        border-radius: 18px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid var(--theme-border);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+
+      .city-business-head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .city-business-name {
+        margin: 4px 0 0;
+        font-size: 1rem;
+      }
+
+      .city-business-stats {
+        text-align: right;
+        font-size: 0.74rem;
+        font-weight: 800;
+      }
+
+      .city-business-stats strong,
+      .city-action-main strong,
+      .city-action-main span,
+      .city-business-flavor,
+      .city-business-tagline,
+      .city-action-main small,
+      .city-action-meta {
+        display: block;
+      }
+
+      .city-business-stats strong {
+        font-size: 0.86rem;
+      }
+
+      .city-business-tagline {
+        margin-top: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        opacity: 0.78;
+      }
+
+      .city-business-flavor {
+        margin-top: 8px;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        opacity: 0.78;
+      }
+
+      .city-action-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .city-action-button {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 16px;
+        text-align: left;
+        background: rgba(255, 255, 255, 0.88);
+      }
+
+      .city-action-button.is-ready {
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+      }
+
+      .city-action-button.is-cooling {
+        opacity: 0.58;
+      }
+
+      .city-action-button:disabled {
+        cursor: default;
+      }
+
+      .city-action-main strong {
+        font-size: 0.9rem;
+      }
+
+      .city-action-main span {
+        margin-top: 4px;
+        font-size: 0.79rem;
+        line-height: 1.35;
+        opacity: 0.78;
+      }
+
+      .city-action-main small {
+        margin-top: 6px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--theme-accent);
+      }
+
+      .city-action-meta {
+        min-width: 76px;
+        text-align: right;
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+
+      .city-action-meta.is-ready {
+        color: var(--theme-accent);
+      }
+
+      .city-status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+
+      .city-status-chip {
+        padding: 6px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid var(--theme-border);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+
+      .city-status-chip.is-negative {
+        background: rgba(191, 83, 136, 0.14);
+      }
+
+      .city-status-chip.is-positive {
+        background: rgba(79, 136, 80, 0.14);
+      }
+
+      @media (min-width: 720px) {
+        .city-dock {
+          max-height: 42%;
+        }
+
+        .city-business-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .city-spike {
+          padding: 0;
+        }
+
+        .city-shell {
+          min-height: 100vh;
+          border-radius: 0;
+          border-left: 0;
+          border-right: 0;
+          padding: 10px;
+        }
+
+        .city-topbar {
+          align-items: start;
+          flex-direction: column;
+          margin-bottom: 8px;
+        }
+
+        .city-subtitle {
+          font-size: 0.86rem;
+        }
+
+        .city-tick-button {
+          width: 100%;
+        }
+
+        .city-stage {
+          padding: 10px;
+        }
+
+        .city-stage-meta {
+          flex-direction: column;
+        }
+
+        .city-stage-pills {
+          justify-content: start;
+        }
+
+        .city-stage-canvas-wrap {
+          min-height: 560px;
+          padding: 12px;
+        }
+
+        .city-player-rail {
+          gap: 6px;
+        }
+
+        .city-player-chip {
+          max-width: 36%;
+          padding: 8px 10px;
+          font-size: 0.8rem;
+        }
+
+        .city-inspect-button {
+          top: 54px;
+          padding: 8px 10px;
+          font-size: 0.78rem;
+        }
+
+        .city-stage-swipe-hint {
+          top: 104px;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .city-dock {
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+          max-height: 52%;
+          padding: 10px;
+        }
+
+        .city-stage.is-inspecting .city-dock {
+          max-height: 58%;
+        }
+
+        .city-dock-head,
+        .city-business-head {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .city-business-stats,
+        .city-action-meta {
+          text-align: left;
+        }
+
+        .city-action-button {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="city-spike" role="main">
+      <section class="city-shell" data-theme="you">
+        <div class="city-topbar">
+          <div>
+            <p class="city-kicker">Street corner prototype</p>
+            <h1 class="city-heading">Open a corner. Use what you built.</h1>
+            <p class="city-subtitle">Swipe street. Open block. Fixed business abilities sit on cooldown instead of drawing random cards.</p>
+          </div>
+          <button class="city-tick-button" id="city-tick-button" type="button">Advance tick</button>
+        </div>
+
+        <section class="city-stage" aria-labelledby="city-stage-title">
+          <div class="city-stage-meta">
+            <div>
+              <p class="city-stage-label">Watching</p>
+              <h2 class="city-stage-title" id="city-stage-title">Ailo / Street view</h2>
+              <p class="city-stage-note" id="city-stage-note">Starter lane</p>
+            </div>
+            <div class="city-stage-pills">
+              <span class="city-pill" id="city-tick-pill">Tick 1</span>
+              <span class="city-pill is-accent" id="city-cash-pill">$4 cash</span>
+              <span class="city-pill" id="city-income-pill">+2 / tick</span>
+            </div>
+          </div>
+
+          <div class="city-stage-canvas-wrap">
+            <div class="city-player-rail" id="city-player-rail" aria-label="Players"></div>
+            <button class="city-inspect-button" id="city-inspect-toggle" type="button" aria-pressed="false">Open block</button>
+            <canvas class="city-stage-canvas" width="420" height="420" aria-label="City street scene"></canvas>
+            <div class="city-stage-swipe-hint" aria-hidden="true">
+              <span id="city-swipe-hint-primary">Swipe between corners</span>
+              <span id="city-swipe-hint-secondary">Open block to rotate and use business abilities</span>
+            </div>
+
+            <section class="city-dock" aria-labelledby="city-dock-title">
+              <div class="city-dock-head">
+                <div>
+                  <p class="city-stage-label" id="city-dock-label">Corner loadout</p>
+                  <h2 class="city-dock-title" id="city-dock-title">Ailo's businesses</h2>
+                </div>
+                <p class="city-dock-status" id="city-dock-status">1 business · 2 abilities · 2 ready</p>
+              </div>
+              <div class="city-resource-strip" id="city-resource-strip"></div>
+              <div class="city-business-grid" id="city-business-grid"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+    <script>
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+
+        const businessDefs = {
+          hotdogStand: {
+            id: 'hotdogStand',
+            label: 'Hot-dog stand',
+            tagline: 'Starter cash. Greasy sabotage.',
+            passiveIncome: 2,
+            passiveAttraction: 1,
+            passiveHeat: 0,
+            actionIds: ['serveRush', 'greaseSpill'],
+            flavor: 'Cheap food, quick turnover, not much class. Reliable starter corner.'
+          },
+          kebabShop: {
+            id: 'kebabShop',
+            label: 'Kebab',
+            tagline: 'Big pull. Big mess. Wrong crowd energy.',
+            passiveIncome: 3,
+            passiveAttraction: 2,
+            passiveHeat: 1,
+            actionIds: ['lateRush', 'driveByRuckus'],
+            flavor: 'Crowd-puller. Good cash. Brings noise, litter, and the wrong hangers-on.'
+          },
+          flowerStall: {
+            id: 'flowerStall',
+            label: 'Flower stall',
+            tagline: 'Soft charm. Sneaky nuisance.',
+            passiveIncome: 2,
+            passiveAttraction: 2,
+            passiveHeat: 0,
+            actionIds: ['sweetenQueue', 'pollenCloud'],
+            flavor: 'Looks harmless. Raises curb appeal. Can still make the whole street suffer.'
+          },
+          arcade: {
+            id: 'arcade',
+            label: 'Arcade',
+            tagline: 'Burst income. Loud pressure.',
+            passiveIncome: 2,
+            passiveAttraction: 2,
+            passiveHeat: 1,
+            actionIds: ['tokenDrop', 'bassRattle'],
+            flavor: 'Bright lights, late kids, noise spill, and a permanent sense of low-level chaos.'
+          }
+        };
+
+        const actionDefs = {
+          serveRush: {
+            id: 'serveRush',
+            label: 'Serve rush',
+            targetLabel: 'Self',
+            cooldown: 1,
+            summary: 'Grab the lunch queue for quick cash.',
+            flavor: 'Small play, fast money.',
+            effects: [
+              { to: 'self', type: 'cash', amount: 2 }
+            ]
+          },
+          greaseSpill: {
+            id: 'greaseSpill',
+            label: 'Grease spill',
+            targetLabel: 'Next block',
+            cooldown: 2,
+            summary: 'Make the next corner grimy and awkward.',
+            flavor: 'Low-rent sabotage.',
+            effects: [
+              { to: 'nextEnemy', type: 'status', statusId: 'greasyCurb', duration: 1 }
+            ]
+          },
+          lateRush: {
+            id: 'lateRush',
+            label: 'Late rush',
+            targetLabel: 'Self',
+            cooldown: 1,
+            summary: 'Milk the late queue for extra cash and extra heat.',
+            flavor: 'Looks good until the hangers-on settle in.',
+            effects: [
+              { to: 'self', type: 'cash', amount: 3 },
+              { to: 'self', type: 'heat', amount: 1 }
+            ]
+          },
+          driveByRuckus: {
+            id: 'driveByRuckus',
+            label: 'Drive-by',
+            targetLabel: 'Next block',
+            cooldown: 2,
+            summary: 'Litter, rev, shout, and throw the next corner off rhythm.',
+            flavor: 'Not a real attack, just enough chaos to ruin a tick.',
+            effects: [
+              { to: 'nextEnemy', type: 'status', statusId: 'driveByRuckus', duration: 2 },
+              { to: 'self', type: 'heat', amount: 1 }
+            ]
+          },
+          sweetenQueue: {
+            id: 'sweetenQueue',
+            label: 'Sweeten queue',
+            targetLabel: 'Self',
+            cooldown: 1,
+            summary: 'Turn curb appeal into a better income tick.',
+            flavor: 'Nice smell, nice photos, more foot traffic.',
+            effects: [
+              { to: 'self', type: 'status', statusId: 'sweetScent', duration: 1 }
+            ]
+          },
+          pollenCloud: {
+            id: 'pollenCloud',
+            label: 'Pollen cloud',
+            targetLabel: 'Next block',
+            cooldown: 2,
+            summary: 'Soft nuisance. Hard to prove. Still annoying.',
+            flavor: 'The whole corner turns sniffly.',
+            effects: [
+              { to: 'nextEnemy', type: 'status', statusId: 'pollenCloud', duration: 1 }
+            ]
+          },
+          tokenDrop: {
+            id: 'tokenDrop',
+            label: 'Token drop',
+            targetLabel: 'Self',
+            cooldown: 1,
+            summary: 'Flash a quick promo and spike the room.',
+            flavor: 'Good for a burst before the neighbors complain.',
+            effects: [
+              { to: 'self', type: 'cash', amount: 1 },
+              { to: 'self', type: 'status', statusId: 'tokenRush', duration: 1 }
+            ]
+          },
+          bassRattle: {
+            id: 'bassRattle',
+            label: 'Bass rattle',
+            targetLabel: 'Next block',
+            cooldown: 2,
+            summary: 'Shake the windows on the next corner.',
+            flavor: 'Not illegal enough to stop. Just miserable enough to matter.',
+            effects: [
+              { to: 'nextEnemy', type: 'status', statusId: 'bassRattle', duration: 1 }
+            ]
+          }
+        };
+
+        const statusDefs = {
+          greasyCurb: {
+            id: 'greasyCurb',
+            label: 'Greasy curb',
+            tone: 'negative',
+            incomeDelta: -1,
+            attractionDelta: 0,
+            flavor: 'Foot traffic hesitates.'
+          },
+          driveByRuckus: {
+            id: 'driveByRuckus',
+            label: 'Drive-by ruckus',
+            tone: 'negative',
+            incomeDelta: -1,
+            attractionDelta: -1,
+            flavor: 'Noise, litter, and bad energy sit on the corner.'
+          },
+          sweetScent: {
+            id: 'sweetScent',
+            label: 'Sweet scent',
+            tone: 'positive',
+            incomeDelta: 1,
+            attractionDelta: 1,
+            flavor: 'The block feels unusually inviting.'
+          },
+          pollenCloud: {
+            id: 'pollenCloud',
+            label: 'Pollen cloud',
+            tone: 'negative',
+            incomeDelta: 0,
+            attractionDelta: -1,
+            flavor: 'People keep moving instead of lingering.'
+          },
+          tokenRush: {
+            id: 'tokenRush',
+            label: 'Token rush',
+            tone: 'positive',
+            incomeDelta: 1,
+            attractionDelta: 0,
+            flavor: 'The lights pull in a quick rush.'
+          },
+          bassRattle: {
+            id: 'bassRattle',
+            label: 'Bass rattle',
+            tone: 'negative',
+            incomeDelta: -1,
+            attractionDelta: 0,
+            flavor: 'The whole block feels loud and cheap.'
+          }
+        };
+
+        const playerBlueprints = [
+          {
+            key: 'you',
+            name: 'Ailo',
+            laneStatus: 'Starter lane',
+            palette: {
+              base: '#d59d4a',
+              accent: '#8a5731',
+              tower: '#efcb76',
+              side: '#f7efe0',
+              prop: '#4e8a58',
+              road: '#b5a389'
+            },
+            layout: {
+              slabWidth: 104,
+              slabDepth: 80,
+              slabHeight: 12,
+              leftHeight: 54,
+              rightHeight: 38,
+              centerHeight: 64,
+              leftX: -28,
+              rightX: 30,
+              centerX: 4,
+              treeX: 38,
+              treeZ: 20,
+              lampX: -42,
+              signX: 10
+            },
+            businesses: [
+              {
+                defId: 'hotdogStand',
+                cooldowns: {
+                  serveRush: 0,
+                  greaseSpill: 1
+                }
+              }
+            ],
+            resources: { cash: 4, heat: 0 },
+            statuses: []
+          },
+          {
+            key: 'ink',
+            name: 'Yara',
+            laneStatus: 'Crowded corner',
+            palette: {
+              base: '#c7834d',
+              accent: '#7a4522',
+              tower: '#efb06c',
+              side: '#f8eadf',
+              prop: '#5d3c29',
+              road: '#b18d76'
+            },
+            layout: {
+              slabWidth: 108,
+              slabDepth: 82,
+              slabHeight: 12,
+              leftHeight: 34,
+              rightHeight: 58,
+              centerHeight: 70,
+              leftX: -34,
+              rightX: 24,
+              centerX: 8,
+              treeX: -38,
+              treeZ: 14,
+              lampX: 42,
+              signX: -6
+            },
+            businesses: [
+              {
+                defId: 'kebabShop',
+                cooldowns: {
+                  lateRush: 0,
+                  driveByRuckus: 0
+                }
+              }
+            ],
+            resources: { cash: 5, heat: 2 },
+            statuses: []
+          },
+          {
+            key: 'moss',
+            name: 'Mika',
+            laneStatus: 'Pretty block, hidden claws',
+            palette: {
+              base: '#79a166',
+              accent: '#425c35',
+              tower: '#c6df9d',
+              side: '#f0f7e8',
+              prop: '#d86f50',
+              road: '#9bae8f'
+            },
+            layout: {
+              slabWidth: 100,
+              slabDepth: 84,
+              slabHeight: 12,
+              leftHeight: 48,
+              rightHeight: 28,
+              centerHeight: 52,
+              leftX: -30,
+              rightX: 36,
+              centerX: 2,
+              treeX: 32,
+              treeZ: -6,
+              lampX: -44,
+              signX: 16
+            },
+            businesses: [
+              {
+                defId: 'flowerStall',
+                cooldowns: {
+                  sweetenQueue: 0,
+                  pollenCloud: 0
+                }
+              }
+            ],
+            resources: { cash: 4, heat: 0 },
+            statuses: []
+          },
+          {
+            key: 'glow',
+            name: 'Tora',
+            laneStatus: 'Loud lane',
+            palette: {
+              base: '#cf6da2',
+              accent: '#79365b',
+              tower: '#f2b8da',
+              side: '#fff0f8',
+              prop: '#6d66d8',
+              road: '#c8a2b7'
+            },
+            layout: {
+              slabWidth: 106,
+              slabDepth: 82,
+              slabHeight: 12,
+              leftHeight: 26,
+              rightHeight: 52,
+              centerHeight: 60,
+              leftX: -36,
+              rightX: 26,
+              centerX: 10,
+              treeX: 42,
+              treeZ: -12,
+              lampX: -40,
+              signX: 0
+            },
+            businesses: [
+              {
+                defId: 'arcade',
+                cooldowns: {
+                  tokenDrop: 0,
+                  bassRattle: 1
+                }
+              }
+            ],
+            resources: { cash: 6, heat: 1 },
+            statuses: []
+          }
+        ];
+
+        const players = playerBlueprints.map((player) => ({
+          ...player,
+          businesses: player.businesses.map((business, businessIndex) => ({
+            instanceId: `${player.key}-${business.defId}-${businessIndex}`,
+            defId: business.defId,
+            cooldowns: { ...business.cooldowns }
+          })),
+          resources: { ...player.resources },
+          statuses: player.statuses.map((status) => ({ ...status }))
+        }));
+
+        let tickCount = 1;
+        let latestEvent = 'Street open. Prototype tick flow ready.';
+
+        const shell = document.querySelector('.city-shell');
+        const stageEl = document.querySelector('.city-stage');
+        const canvas = document.querySelector('.city-stage-canvas');
+        const titleEl = document.getElementById('city-stage-title');
+        const stageNoteEl = document.getElementById('city-stage-note');
+        const tickPillEl = document.getElementById('city-tick-pill');
+        const cashPillEl = document.getElementById('city-cash-pill');
+        const incomePillEl = document.getElementById('city-income-pill');
+        const playerRailEl = document.getElementById('city-player-rail');
+        const inspectToggleEl = document.getElementById('city-inspect-toggle');
+        const swipeHintPrimaryEl = document.getElementById('city-swipe-hint-primary');
+        const swipeHintSecondaryEl = document.getElementById('city-swipe-hint-secondary');
+        const dockLabelEl = document.getElementById('city-dock-label');
+        const dockTitleEl = document.getElementById('city-dock-title');
+        const dockStatusEl = document.getElementById('city-dock-status');
+        const resourceStripEl = document.getElementById('city-resource-strip');
+        const businessGridEl = document.getElementById('city-business-grid');
+        const tickButtonEl = document.getElementById('city-tick-button');
+
+        const illo = new Zdog.Illustration({
+          element: canvas,
+          resize: true,
+          dragRotate: false,
+          zoom: 1,
+          rotate: { x: -0.62, y: -0.72 },
+          onResize(width) {
+            this.zoom = Math.max(0.96, Math.min(1.42, width / 300));
+          }
+        });
+
+        const street = new Zdog.Anchor({ addTo: illo, translate: { x: 0, y: 44, z: 0 } });
+        const atmosphere = new Zdog.Anchor({ addTo: illo, translate: { x: 0, y: -74, z: -120 } });
+        const blocks = [];
+
+        const overviewView = {
+          sceneRotateX: -0.62,
+          sceneRotateY: -0.72,
+          streetY: 44,
+          targetXOffset: -22,
+          zoomBoost: 1
+        };
+
+        const inspectView = {
+          sceneRotateX: -0.24,
+          sceneRotateY: -0.34,
+          streetY: 10,
+          targetXOffset: -24,
+          zoomBoost: 1.86
+        };
+
+        const streetSpacing = 156;
+        const blockTargetY = 6;
+        let sceneTargetRotateX = overviewView.sceneRotateX;
+        let sceneTargetRotateY = overviewView.sceneRotateY;
+        let streetTargetY = overviewView.streetY;
+        let zoomMultiplier = overviewView.zoomBoost;
+
+        new Zdog.Rect({
+          addTo: atmosphere,
+          width: 760,
+          height: 140,
+          stroke: false,
+          fill: true,
+          color: '#ffffff',
+          translate: { y: -8, z: -120 },
+          backface: false
+        });
+
+        players.forEach((player, index) => {
+          const block = buildBlock(player, index * streetSpacing);
+          blocks.push(block);
+        });
+
+        const streetSurface = new Zdog.Rect({
+          addTo: street,
+          width: 860,
+          height: 22,
+          stroke: 14,
+          color: '#70655d',
+          fill: true,
+          translate: { y: 74, z: -8 },
+          rotate: { x: Zdog.TAU / 4 }
+        });
+
+        let activeIndex = 0;
+        let targetX = 0;
+        let currentX = 0;
+        let pointerStartX = null;
+        let dragStartX = null;
+        let isInspecting = false;
+        let inspectStartX = null;
+        let inspectStartRotateY = 0;
+
+        const nameChips = players.map((player, index) => {
+          const button = document.createElement('button');
+          button.className = 'city-player-chip';
+          button.type = 'button';
+          button.setAttribute('role', 'tab');
+          button.setAttribute('aria-label', `Show ${player.name}`);
+          button.textContent = player.name;
+          button.addEventListener('click', () => setActiveIndex(index));
+          playerRailEl.appendChild(button);
+          return button;
+        });
+
+        inspectToggleEl.addEventListener('click', () => {
+          isInspecting = !isInspecting;
+          if (!isInspecting) {
+            blocks[activeIndex].inspectTargetRotateY = 0;
+          }
+          renderUI();
+        });
+
+        tickButtonEl.addEventListener('click', advanceTick);
+
+        canvas.addEventListener('pointerdown', (event) => {
+          pointerStartX = event.clientX;
+          if (isInspecting) {
+            inspectStartX = event.clientX;
+            inspectStartRotateY = blocks[activeIndex].inspectAnchor.rotate.y;
+          } else {
+            dragStartX = activeIndex;
+          }
+          canvas.setPointerCapture(event.pointerId);
+        });
+
+        canvas.addEventListener('pointerup', (event) => {
+          if (pointerStartX === null) {
+            return;
+          }
+
+          const deltaX = event.clientX - pointerStartX;
+
+          if (!isInspecting && Math.abs(deltaX) > 42) {
+            setActiveIndex(dragStartX + (deltaX < 0 ? 1 : -1));
+          }
+
+          pointerStartX = null;
+          dragStartX = null;
+          inspectStartX = null;
+          canvas.releasePointerCapture(event.pointerId);
+        });
+
+        canvas.addEventListener('pointermove', (event) => {
+          if (!isInspecting || inspectStartX === null) {
+            return;
+          }
+
+          const deltaX = event.clientX - inspectStartX;
+          blocks[activeIndex].inspectTargetRotateY = inspectStartRotateY + deltaX / 130;
+        });
+
+        canvas.addEventListener('pointerleave', () => {
+          pointerStartX = null;
+          dragStartX = null;
+          inspectStartX = null;
+        });
+
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft' && !isInspecting) {
+            setActiveIndex(activeIndex - 1);
+          }
+
+          if (event.key === 'ArrowRight' && !isInspecting) {
+            setActiveIndex(activeIndex + 1);
+          }
+        });
+
+        function buildBlock(player, x) {
+          const { palette, layout } = player;
+          const block = new Zdog.Anchor({
+            addTo: street,
+            translate: { x, y: blockTargetY, z: 0 }
+          });
+
+          const inspectAnchor = new Zdog.Anchor({ addTo: block });
+          block.inspectAnchor = inspectAnchor;
+          block.inspectTargetRotateY = 0;
+          block.currentScale = 1;
+          block.scale = 1;
+
+          new Zdog.Box({
+            addTo: inspectAnchor,
+            width: layout.slabWidth,
+            height: layout.slabHeight,
+            depth: layout.slabDepth,
+            stroke: false,
+            color: palette.base,
+            frontFace: palette.base,
+            rearFace: shadeHex(palette.base, -18),
+            leftFace: shadeHex(palette.base, -8),
+            rightFace: shadeHex(palette.base, -14),
+            topFace: shadeHex(palette.base, 18),
+            bottomFace: shadeHex(palette.base, -24),
+            translate: { y: 28, z: 0 }
+          });
+
+          new Zdog.Box({
+            addTo: inspectAnchor,
+            width: 34,
+            height: layout.leftHeight,
+            depth: 28,
+            stroke: false,
+            color: palette.side,
+            frontFace: palette.side,
+            rearFace: shadeHex(palette.side, -12),
+            leftFace: shadeHex(palette.side, -8),
+            rightFace: shadeHex(palette.side, -18),
+            topFace: shadeHex(palette.side, 12),
+            translate: { x: layout.leftX, y: 28 - layout.leftHeight / 2, z: -10 }
+          });
+
+          new Zdog.Box({
+            addTo: inspectAnchor,
+            width: 28,
+            height: layout.centerHeight,
+            depth: 28,
+            stroke: false,
+            color: palette.tower,
+            frontFace: palette.tower,
+            rearFace: shadeHex(palette.tower, -16),
+            leftFace: shadeHex(palette.tower, -8),
+            rightFace: shadeHex(palette.tower, -22),
+            topFace: shadeHex(palette.tower, 10),
+            translate: { x: layout.centerX, y: 28 - layout.centerHeight / 2, z: 8 }
+          });
+
+          new Zdog.Box({
+            addTo: inspectAnchor,
+            width: 30,
+            height: layout.rightHeight,
+            depth: 22,
+            stroke: false,
+            color: palette.accent,
+            frontFace: palette.accent,
+            rearFace: shadeHex(palette.accent, -12),
+            leftFace: shadeHex(palette.accent, -4),
+            rightFace: shadeHex(palette.accent, -18),
+            topFace: shadeHex(palette.accent, 12),
+            translate: { x: layout.rightX, y: 28 - layout.rightHeight / 2, z: -2 }
+          });
+
+          new Zdog.Cylinder({
+            addTo: inspectAnchor,
+            diameter: 12,
+            length: 24,
+            stroke: false,
+            color: shadeHex(palette.prop, -10),
+            frontFace: shadeHex(palette.prop, -10),
+            backface: shadeHex(palette.prop, -22),
+            translate: { x: layout.treeX, y: 20, z: layout.treeZ },
+            rotate: { x: Zdog.TAU / 4 }
+          });
+
+          new Zdog.Hemisphere({
+            addTo: inspectAnchor,
+            diameter: 30,
+            stroke: false,
+            color: palette.prop,
+            translate: { x: layout.treeX, y: 2, z: layout.treeZ }
+          });
+
+          new Zdog.Cylinder({
+            addTo: inspectAnchor,
+            diameter: 6,
+            length: 34,
+            stroke: false,
+            color: '#65574d',
+            frontFace: '#65574d',
+            backface: '#4f433b',
+            translate: { x: layout.lampX, y: 12, z: 24 },
+            rotate: { x: Zdog.TAU / 4 }
+          });
+
+          new Zdog.Shape({
+            addTo: inspectAnchor,
+            stroke: 12,
+            color: '#fff6d9',
+            translate: { x: layout.lampX, y: -8, z: 24 }
+          });
+
+          new Zdog.Box({
+            addTo: inspectAnchor,
+            width: 20,
+            height: 10,
+            depth: 4,
+            stroke: false,
+            color: palette.prop,
+            leftFace: shadeHex(palette.prop, -8),
+            rightFace: shadeHex(palette.prop, -18),
+            topFace: shadeHex(palette.prop, 12),
+            translate: { x: layout.signX, y: 8, z: 40 }
+          });
+
+          new Zdog.Shape({
+            addTo: inspectAnchor,
+            path: [
+              { x: -52, y: 32, z: 40 },
+              { x: 52, y: 32, z: 40 }
+            ],
+            stroke: 6,
+            color: palette.road
+          });
+
+          new Zdog.Shape({
+            addTo: inspectAnchor,
+            path: [
+              { x: -52, y: 32, z: 40 },
+              { x: -52, y: 20, z: 40 }
+            ],
+            stroke: 4,
+            color: shadeHex(palette.road, -16)
+          });
+
+          return block;
+        }
+
+        function shadeHex(hex, amount) {
+          const raw = hex.replace('#', '');
+          const value = parseInt(raw, 16);
+          const clamp = (part) => Math.max(0, Math.min(255, part));
+          const r = clamp((value >> 16) + amount);
+          const g = clamp(((value >> 8) & 0xff) + amount);
+          const b = clamp((value & 0xff) + amount);
+          return `#${[r, g, b].map((part) => part.toString(16).padStart(2, '0')).join('')}`;
+        }
+
+        function summarizePlayer(player) {
+          const passiveIncome = player.businesses.reduce((sum, business) => sum + businessDefs[business.defId].passiveIncome, 0);
+          const passiveAttraction = player.businesses.reduce((sum, business) => sum + businessDefs[business.defId].passiveAttraction, 0);
+          const passiveHeat = player.businesses.reduce((sum, business) => sum + businessDefs[business.defId].passiveHeat, 0);
+          const statusIncome = player.statuses.reduce((sum, status) => sum + statusDefs[status.statusId].incomeDelta, 0);
+          const statusAttraction = player.statuses.reduce((sum, status) => sum + statusDefs[status.statusId].attractionDelta, 0);
+          const totalActions = player.businesses.reduce((sum, business) => sum + businessDefs[business.defId].actionIds.length, 0);
+          const readyActions = player.businesses.reduce((sum, business) => sum + businessDefs[business.defId].actionIds.filter((actionId) => !business.cooldowns[actionId]).length, 0);
+
+          return {
+            passiveIncome,
+            passiveAttraction,
+            passiveHeat,
+            totalIncome: Math.max(0, passiveIncome + statusIncome),
+            totalAttraction: Math.max(0, passiveAttraction + statusAttraction),
+            totalActions,
+            readyActions
+          };
+        }
+
+        function resolveTargetIndex(sourceIndex, targetKey) {
+          if (targetKey === 'self') {
+            return sourceIndex;
+          }
+
+          if (targetKey === 'nextEnemy') {
+            return (sourceIndex + 1) % players.length;
+          }
+
+          return sourceIndex;
+        }
+
+        function addStatus(targetIndex, statusId, duration) {
+          const target = players[targetIndex];
+          const existing = target.statuses.find((status) => status.statusId === statusId);
+
+          if (existing) {
+            existing.duration = Math.max(existing.duration, duration);
+            return;
+          }
+
+          target.statuses.push({ statusId, duration });
+        }
+
+        function applyEffect(sourceIndex, effect) {
+          const targetIndex = resolveTargetIndex(sourceIndex, effect.to || 'self');
+          const targetPlayer = players[targetIndex];
+
+          if (effect.type === 'cash') {
+            targetPlayer.resources.cash += effect.amount;
+          }
+
+          if (effect.type === 'heat') {
+            targetPlayer.resources.heat = Math.max(0, targetPlayer.resources.heat + effect.amount);
+          }
+
+          if (effect.type === 'status') {
+            addStatus(targetIndex, effect.statusId, effect.duration);
+          }
+        }
+
+        function useAction(playerIndex, businessIndex, actionId) {
+          const player = players[playerIndex];
+          const business = player.businesses[businessIndex];
+          const action = actionDefs[actionId];
+          const currentCooldown = business.cooldowns[actionId] || 0;
+
+          if (currentCooldown > 0) {
+            return;
+          }
+
+          action.effects.forEach((effect) => applyEffect(playerIndex, effect));
+          business.cooldowns[actionId] = action.cooldown;
+
+          const targetName = action.effects.some((effect) => effect.to === 'nextEnemy')
+            ? players[(playerIndex + 1) % players.length].name
+            : player.name;
+
+          latestEvent = `${player.name} used ${action.label} on ${targetName}.`;
+          renderUI();
+        }
+
+        function advanceTick() {
+          tickCount += 1;
+
+          players.forEach((player) => {
+            const summary = summarizePlayer(player);
+            player.resources.cash += summary.totalIncome;
+            player.resources.heat = Math.max(0, player.resources.heat + summary.passiveHeat);
+
+            player.businesses.forEach((business) => {
+              Object.keys(business.cooldowns).forEach((actionId) => {
+                business.cooldowns[actionId] = Math.max(0, business.cooldowns[actionId] - 1);
+              });
+            });
+
+            player.statuses = player.statuses
+              .map((status) => ({ ...status, duration: status.duration - 1 }))
+              .filter((status) => status.duration > 0);
+          });
+
+          latestEvent = `Tick ${tickCount} paid out every corner and cooled one step.`;
+          renderUI();
+        }
+
+        function renderResourceStrip(player, summary) {
+          resourceStripEl.innerHTML = '';
+
+          [
+            `$${player.resources.cash} cash`,
+            `+${summary.totalIncome} / tick`,
+            `${summary.totalAttraction} pull`,
+            `${player.resources.heat} heat`,
+            `${summary.readyActions}/${summary.totalActions} ready`
+          ].forEach((label) => {
+            const chip = document.createElement('span');
+            chip.className = 'city-resource-chip';
+            chip.textContent = label;
+            resourceStripEl.appendChild(chip);
+          });
+        }
+
+        function renderBusinessPanels(player, playerIndex) {
+          businessGridEl.innerHTML = '';
+
+          player.businesses.forEach((business, businessIndex) => {
+            const businessDef = businessDefs[business.defId];
+            const panel = document.createElement('article');
+            panel.className = 'city-business-panel';
+
+            const statusMarkup = player.statuses.length
+              ? `<div class="city-status-row">${player.statuses.map((status) => {
+                  const statusDef = statusDefs[status.statusId];
+                  return `<span class="city-status-chip is-${statusDef.tone}">${statusDef.label} · ${status.duration}t</span>`;
+                }).join('')}</div>`
+              : '';
+
+            panel.innerHTML = `
+              <div class="city-business-head">
+                <div>
+                  <p class="city-business-type">${businessDef.label === 'Kebab' ? 'Off-kilter staple' : 'Business'}</p>
+                  <h3 class="city-business-name">${businessDef.label}</h3>
+                </div>
+                <div class="city-business-stats">
+                  <strong>+${businessDef.passiveIncome} / tick</strong>
+                  <span>pull ${businessDef.passiveAttraction}</span>
+                  <span>heat +${businessDef.passiveHeat}</span>
+                </div>
+              </div>
+              <span class="city-business-tagline">${businessDef.tagline}</span>
+              <span class="city-business-flavor">${businessDef.flavor}</span>
+              ${statusMarkup}
+            `;
+
+            const actionList = document.createElement('div');
+            actionList.className = 'city-action-list';
+
+            businessDef.actionIds.forEach((actionId) => {
+              const actionDef = actionDefs[actionId];
+              const cooldown = business.cooldowns[actionId] || 0;
+              const button = document.createElement('button');
+              button.type = 'button';
+              button.className = `city-action-button ${cooldown > 0 ? 'is-cooling' : 'is-ready'}`;
+              button.disabled = cooldown > 0;
+              button.addEventListener('click', () => useAction(playerIndex, businessIndex, actionId));
+              button.innerHTML = `
+                <span class="city-action-main">
+                  <strong>${actionDef.label}</strong>
+                  <span>${actionDef.summary}</span>
+                  <small>${actionDef.targetLabel}</small>
+                </span>
+                <span class="city-action-meta ${cooldown > 0 ? '' : 'is-ready'}">${cooldown > 0 ? `${cooldown} tick` : 'Ready'}</span>
+              `;
+              actionList.appendChild(button);
+            });
+
+            panel.appendChild(actionList);
+            businessGridEl.appendChild(panel);
+          });
+        }
+
+        function updatePlayerRail() {
+          const prevIndex = (activeIndex - 1 + players.length) % players.length;
+          const nextIndex = (activeIndex + 1) % players.length;
+
+          nameChips.forEach((button, index) => {
+            const isActive = index === activeIndex;
+            const isNeighbor = index === prevIndex || index === nextIndex;
+            button.classList.toggle('is-active', isActive);
+            button.classList.toggle('is-hidden', !isActive && !isNeighbor);
+            button.setAttribute('aria-selected', String(isActive));
+          });
+        }
+
+        function renderUI() {
+          const activePlayer = players[activeIndex];
+          const summary = summarizePlayer(activePlayer);
+
+          shell.dataset.theme = activePlayer.key;
+          stageEl.classList.toggle('is-inspecting', isInspecting);
+          inspectToggleEl.classList.toggle('is-active', isInspecting);
+          inspectToggleEl.setAttribute('aria-pressed', String(isInspecting));
+          inspectToggleEl.textContent = isInspecting ? 'Out to street' : 'Open block';
+
+          swipeHintPrimaryEl.textContent = isInspecting ? 'Drag to rotate this block' : 'Swipe between corners';
+          swipeHintSecondaryEl.textContent = isInspecting ? 'Abilities stay tied to the businesses below' : 'Open block to inspect and fire abilities';
+
+          titleEl.textContent = isInspecting ? `${activePlayer.name} / Block view` : `${activePlayer.name} / Street view`;
+          stageNoteEl.textContent = latestEvent;
+          tickPillEl.textContent = `Tick ${tickCount}`;
+          cashPillEl.textContent = `$${activePlayer.resources.cash} cash`;
+          incomePillEl.textContent = `+${summary.totalIncome} / tick`;
+
+          dockLabelEl.textContent = isInspecting ? 'Business abilities' : 'Corner loadout';
+          dockTitleEl.textContent = `${activePlayer.name}'s businesses`;
+          dockStatusEl.textContent = `${activePlayer.businesses.length} business${activePlayer.businesses.length === 1 ? '' : 'es'} · ${summary.totalActions} abilities · ${summary.readyActions} ready`;
+
+          renderResourceStrip(activePlayer, summary);
+          renderBusinessPanels(activePlayer, activeIndex);
+          updatePlayerRail();
+
+          sceneTargetRotateX = isInspecting ? inspectView.sceneRotateX : overviewView.sceneRotateX;
+          sceneTargetRotateY = isInspecting ? inspectView.sceneRotateY : overviewView.sceneRotateY;
+          streetTargetY = isInspecting ? inspectView.streetY : overviewView.streetY;
+          streetSurface.visible = !isInspecting;
+          zoomMultiplier = isInspecting ? inspectView.zoomBoost : overviewView.zoomBoost;
+          targetX = -activeIndex * streetSpacing + (isInspecting ? inspectView.targetXOffset : overviewView.targetXOffset);
+        }
+
+        function setActiveIndex(nextIndex) {
+          activeIndex = (nextIndex + players.length) % players.length;
+          isInspecting = false;
+          blocks.forEach((block, index) => {
+            block.inspectTargetRotateY = index === activeIndex ? 0 : block.inspectTargetRotateY * 0.3;
+          });
+          latestEvent = `${players[activeIndex].name} in view. Each business exposes fixed abilities with cooldowns.`;
+          renderUI();
+        }
+
+        function animate() {
+          currentX += (targetX - currentX) * 0.12;
+          street.translate.x = currentX;
+          street.translate.y += (streetTargetY - street.translate.y) * 0.1;
+          illo.rotate.x += (sceneTargetRotateX - illo.rotate.x) * 0.1;
+          illo.rotate.y += (sceneTargetRotateY - illo.rotate.y) * 0.1;
+          const baseZoom = Math.max(0.96, Math.min(1.42, canvas.clientWidth / 300));
+          illo.zoom += ((baseZoom * zoomMultiplier) - illo.zoom) * 0.1;
+
+          blocks.forEach((block, index) => {
+            const distance = Math.abs(index - activeIndex);
+            const isActive = index === activeIndex;
+            const activeLift = isActive ? (isInspecting ? -24 : -7) : 0;
+            block.translate.y += ((blockTargetY + activeLift) - block.translate.y) * 0.12;
+            block.rotate.y += ((isActive && !isInspecting ? 0.04 : 0) - block.rotate.y) * 0.12;
+
+            let targetBlockZ = distance === 0 ? 10 : distance * -12;
+            let targetScale = 1;
+            let targetBlockX = index * streetSpacing;
+            let targetOpacity = 1;
+
+            if (isInspecting) {
+              targetBlockZ = isActive ? 98 : -520;
+              targetScale = isActive ? 1.58 : 0.01;
+              targetBlockX = isActive ? index * streetSpacing : index * streetSpacing + (index < activeIndex ? -360 : 360);
+              targetOpacity = isActive ? 1 : 0;
+            }
+
+            block.translate.x += (targetBlockX - block.translate.x) * 0.12;
+            block.translate.z += (targetBlockZ - block.translate.z) * 0.12;
+            block.currentScale += (targetScale - block.currentScale) * 0.12;
+            block.scale = block.currentScale;
+            block.visible = targetOpacity > 0.02 || block.currentScale > 0.02;
+
+            const targetInspectRotation = isActive ? block.inspectTargetRotateY : 0;
+            block.inspectAnchor.rotate.y += (targetInspectRotation - block.inspectAnchor.rotate.y) * 0.18;
+          });
+
+          atmosphere.rotate.z = Math.sin(Date.now() / 3200) * 0.01;
+          illo.updateRenderGraph();
+          requestAnimationFrame(animate);
+        }
+
+        const initialPlayer = Number.parseInt(params.get('player') || '0', 10);
+        setActiveIndex(Number.isNaN(initialPlayer) ? 0 : initialPlayer);
+
+        if (params.get('inspect') === '1') {
+          isInspecting = true;
+          latestEvent = `${players[activeIndex].name} isolated. Drag the block, test the business kit below.`;
+          renderUI();
+        }
+
+        animate();
+      })();
+    </script>
+  </body>
+</html>
