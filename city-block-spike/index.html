@@ -296,9 +296,9 @@
         z-index: 3;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        max-height: 48%;
-        padding: 12px;
+        gap: 8px;
+        max-height: 34%;
+        padding: 10px;
         border-radius: 22px;
         background: var(--theme-panel-strong);
         border: 1px solid var(--theme-border);
@@ -310,7 +310,7 @@
         left: 12px;
         right: 12px;
         bottom: 12px;
-        max-height: 54%;
+        max-height: 48%;
       }
 
       .city-dock-head {
@@ -322,12 +322,12 @@
 
       .city-dock-title {
         margin: 4px 0 0;
-        font-size: 1rem;
+        font-size: 0.94rem;
       }
 
       .city-dock-status {
         margin: 0;
-        font-size: 0.82rem;
+        font-size: 0.76rem;
         font-weight: 700;
         color: var(--theme-accent);
       }
@@ -335,21 +335,21 @@
       .city-resource-strip {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 6px;
       }
 
       .city-resource-chip {
-        padding: 7px 10px;
+        padding: 6px 8px;
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.74);
         border: 1px solid var(--theme-border);
-        font-size: 0.76rem;
+        font-size: 0.7rem;
         font-weight: 800;
       }
 
       .city-business-grid {
         display: grid;
-        gap: 10px;
+        gap: 8px;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         overflow: auto;
         padding-right: 2px;
@@ -357,7 +357,7 @@
 
       .city-business-panel {
         border-radius: 18px;
-        padding: 12px;
+        padding: 10px;
         background: rgba(255, 255, 255, 0.78);
         border: 1px solid var(--theme-border);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -372,12 +372,12 @@
 
       .city-business-name {
         margin: 4px 0 0;
-        font-size: 1rem;
+        font-size: 0.94rem;
       }
 
       .city-business-stats {
         text-align: right;
-        font-size: 0.74rem;
+        font-size: 0.7rem;
         font-weight: 800;
       }
 
@@ -392,27 +392,27 @@
       }
 
       .city-business-stats strong {
-        font-size: 0.86rem;
+        font-size: 0.8rem;
       }
 
       .city-business-tagline {
-        margin-top: 6px;
-        font-size: 0.82rem;
+        margin-top: 4px;
+        font-size: 0.76rem;
         font-weight: 700;
         opacity: 0.78;
       }
 
       .city-business-flavor {
-        margin-top: 8px;
-        font-size: 0.82rem;
-        line-height: 1.4;
+        margin-top: 6px;
+        font-size: 0.75rem;
+        line-height: 1.3;
         opacity: 0.78;
       }
 
       .city-action-list {
         display: grid;
-        gap: 8px;
-        margin-top: 10px;
+        gap: 6px;
+        margin-top: 8px;
       }
 
       .city-action-button {
@@ -421,7 +421,7 @@
         justify-content: space-between;
         gap: 12px;
         width: 100%;
-        padding: 10px 12px;
+        padding: 8px 10px;
         border-radius: 16px;
         text-align: left;
         background: rgba(255, 255, 255, 0.88);
@@ -440,19 +440,19 @@
       }
 
       .city-action-main strong {
-        font-size: 0.9rem;
+        font-size: 0.84rem;
       }
 
       .city-action-main span {
-        margin-top: 4px;
-        font-size: 0.79rem;
-        line-height: 1.35;
+        margin-top: 3px;
+        font-size: 0.74rem;
+        line-height: 1.25;
         opacity: 0.78;
       }
 
       .city-action-main small {
-        margin-top: 6px;
-        font-size: 0.7rem;
+        margin-top: 5px;
+        font-size: 0.64rem;
         font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -460,9 +460,9 @@
       }
 
       .city-action-meta {
-        min-width: 76px;
+        min-width: 62px;
         text-align: right;
-        font-size: 0.76rem;
+        font-size: 0.7rem;
         font-weight: 800;
       }
 
@@ -474,15 +474,15 @@
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
-        margin-top: 10px;
+        margin-top: 8px;
       }
 
       .city-status-chip {
-        padding: 6px 8px;
+        padding: 5px 7px;
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.74);
         border: 1px solid var(--theme-border);
-        font-size: 0.72rem;
+        font-size: 0.66rem;
         font-weight: 800;
       }
 
@@ -496,11 +496,15 @@
 
       @media (min-width: 720px) {
         .city-dock {
-          max-height: 42%;
+          max-height: 30%;
         }
 
         .city-business-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .city-stage.is-inspecting .city-dock {
+          max-height: 42%;
         }
       }
 
@@ -574,12 +578,12 @@
           left: 10px;
           right: 10px;
           bottom: 10px;
-          max-height: 52%;
-          padding: 10px;
+          max-height: 30%;
+          padding: 8px;
         }
 
         .city-stage.is-inspecting .city-dock {
-          max-height: 58%;
+          max-height: 44%;
         }
 
         .city-dock-head,
@@ -595,6 +599,11 @@
 
         .city-action-button {
           flex-direction: column;
+        }
+
+        .city-business-flavor,
+        .city-action-main span {
+          display: none;
         }
       }
     </style>
