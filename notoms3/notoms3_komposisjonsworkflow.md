@@ -93,6 +93,10 @@ Ikke ønskelig etter live-take:
 - mange nye lag som kompenserer for at kjernen ikke fungerer
 - detaljbygging som trekker prosjektet tilbake i DAW-grind
 
+## Scene
+vokal sub. rolig akk gitar over rolig ord. patch skift. 
+ut fra mic gitaren spiller arps over minimalt arr. A B. 
+
 ## Låtlogg
 
 Hver aktiv låt skal ha sin egen `tr_*.md`-fil.
