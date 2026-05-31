@@ -63,6 +63,9 @@ Gode kilder:
 - opptak / voice-notater fra iOS: mye særpreg og personlig materiale, men kan være tidkrevende og ubehagelig å rote gjennom
 - `BBC Sound Effects` i `jottacloud/samples`: god kilde til feltlyd, rom, natur og konkrete stemningslag
 
+Opptaksutstyr:
+- hold alltid lightning/iOS/USB-adapter klar på opptaksbenken for rask opptak av samples fra iOS-enheter
+
 ## Bassregel
 
 Bass trenger ikke være del av live-kjernen.
