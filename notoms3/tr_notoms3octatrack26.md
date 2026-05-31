@@ -34,9 +34,14 @@ key: E(m), B06 change
 ### B09
 Gm
 
-### Academy Sketch X1
+### Academy Sketch 
+
+- 1
 D Maj7, Bm, G, A | A#6
 tidlig fragment i Reaper DAW
+
+-2 G Maj (lydian) A, Bm (fin!)
+A, D
 
 # Loop A36 (EHX22500)
 
