@@ -22,8 +22,9 @@ går ned til B i kort periode, “unresolved”, tidlig fragment
 ### B01
 90 bpm, denne treffer stilen.
 Voc: pretend, out, corner of your eye
-soft pressure moment, and I don’t find words
-Like my lid may fly, I’ll lie to myself to get by
+soft pressure moment, lost for words
+Like your lid may ...
+Lie to yourself to get by
 
 
 ### B05 Gaze
@@ -32,8 +33,6 @@ key: E(m), B06 change
 
 ### B09
 Gm
-
-
 
 ### Academy Sketch X1
 D Maj7, Bm, G, A | A#6
@@ -44,3 +43,9 @@ tidlig fragment i Reaper DAW
 ## Fotnoter
 ASM Hydrasynth, Bass F# E054 Plastic Pearl
 Vocal -> Mic Mechanic
+
+G 5 el 5 mot M7 (arp) - B minor (riff)
+
+_resist the urge to explain
+Bad: "I feel lost and disconnected"
+Better: "ceiling fan, 3pm, the blinds half closed"_
