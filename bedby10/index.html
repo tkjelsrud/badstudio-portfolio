@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bandet Vårt - Låter</title>
+    <title>Bed By 10 - Låter og skisser</title>
 
     <style>
         .header {
@@ -23,7 +23,7 @@
     <!-- OPTIONAL: Enkel JS for auto-parsing (laster nederst) -->
 </head>
 <body>
-    <div class="header">Other links: <a href="/bedby10/setlist/">setlist 2026</a> | <a href="recordings.html">Recordings ('25)</a> | <a href="pics.html">Pics</a> | <a href="https://tkjelsrud.github.io/chords/examples/">Other chords</a></div>
+    <div class="header"><a href="#let-go">Let go</a> først | <a href="#sketch">Sketch</a> nederst | <a href="/bedby10/setlist/">setlist 2026</a> | <a href="recordings.html">Recordings ('25)</a> | <a href="pics.html">Pics</a> | <a href="https://tkjelsrud.github.io/chords/examples/">Other chords</a></div>
 
     <nav id="song-nav" style="padding: 4px;"></nav>
     <script>
@@ -46,55 +46,38 @@
     </script>
 
     <song>
-        <h2 id="sketch">Sketch</h2>
+        <h2 id="let-go">Let go</h2>
         <song-meta>
-            <span>Key: B 146bpm</span>
-            <span>Effect/fuzz/dist ---</span>
+            <span>Key: G / Bm area</span>
+            <span>Status: Ny skisse</span>
         </song-meta>
 
-        <p>Bass starts, guitar suble fade in chords, drum visps</p>
-        <riff note="Bass riff starting">
-              B      F#m                     D          E Maj?
-            d----------------------------|----4-7---------6-9--|
-            a--2-2-2---0-0-0--------0----|---5----------7------|
-            E--------2------2----0-2--2--|---------------------|
-        </riff>
-        <p>Guitar then doubles the riff</p>
-        <p>Drums enter</p>
+        <p>Vers har riff. Samme materiale spilles høyere på nakken i refrenget.</p>
+        <p>Mulig forbedring: finne tydeligere harmonisk kontrast mellom vers og refreng.</p>
 
         <h3>Verse</h3>
-        <chord>G</chord>
-        <chord>G</chord>
-        <chord>G</chord>
-        <chord>G</chord>
-        <chord>A</chord>
+        <riff note="G Maj7 riff">
+			d-------4----2---|
+            a----x-----------|
+            E--3-------------|
+        </riff>
         <chord>Bm</chord>
-        <chord>Bm</chord>
-        <chord>Bm</chord>
-        <p>-</p>
-        <chord>E</chord>
-        <chord>E</chord>
-        <chord>C</chord>
-        <chord>A</chord>
-        <chord>A/Bb</chord>
-        <p>Back to riff / interlude</p>
+
         <h3>Chorus</h3>
-        <p>-</p>
-        <h3>Riff low arp</h3>
-        <chord>G</chord>
-        <chord>F#m</chord>
-        <chord>Bm</chord>
-        <h3>Riff high arp</h3>
+        <chord>Gmaj7</chord>
         <chord>D</chord>
         <chord>F#m</chord>
-        <h3>Alt rise</h3>
-        <chord>G</chord>
-        <chord>A</chord>
         <chord>Bm</chord>
-        <br/>
-        <chord>G</chord>
+
+        <h3>Bridge</h3>
+        <chord>Em</chord>
+        <chord>Am</chord>
+        <chord>D</chord>
         <chord>A</chord>
-        <chord alt="8-7-9">C7</chord>
+
+        <h3>Notes</h3>
+        <p>Vegard foreslo å bruke Em og Am inn her, muligens som mellomparti / bridge.</p>
+        <p>Kan også testes som vei inn i refreng hvis vers og refreng blir for like.</p>
     </song>
 
 
@@ -620,6 +603,58 @@
         <br>
         <chord>G</chord>
         <chord>A</chord>
+    </song>
+
+    <song>
+        <h2 id="sketch">Sketch</h2>
+        <song-meta>
+            <span>Key: B 146bpm</span>
+            <span>Effect/fuzz/dist ---</span>
+        </song-meta>
+
+        <p>Bass starts, guitar suble fade in chords, drum visps</p>
+        <riff note="Bass riff starting">
+              B      F#m                     D          E Maj?
+            d----------------------------|----4-7---------6-9--|
+            a--2-2-2---0-0-0--------0----|---5----------7------|
+            E--------2------2----0-2--2--|---------------------|
+        </riff>
+        <p>Guitar then doubles the riff</p>
+        <p>Drums enter</p>
+
+        <h3>Verse</h3>
+        <chord>G</chord>
+        <chord>G</chord>
+        <chord>G</chord>
+        <chord>G</chord>
+        <chord>A</chord>
+        <chord>Bm</chord>
+        <chord>Bm</chord>
+        <chord>Bm</chord>
+        <p>-</p>
+        <chord>E</chord>
+        <chord>E</chord>
+        <chord>C</chord>
+        <chord>A</chord>
+        <chord>A/Bb</chord>
+        <p>Back to riff / interlude</p>
+        <h3>Chorus</h3>
+        <p>-</p>
+        <h3>Riff low arp</h3>
+        <chord>G</chord>
+        <chord>F#m</chord>
+        <chord>Bm</chord>
+        <h3>Riff high arp</h3>
+        <chord>D</chord>
+        <chord>F#m</chord>
+        <h3>Alt rise</h3>
+        <chord>G</chord>
+        <chord>A</chord>
+        <chord>Bm</chord>
+        <br/>
+        <chord>G</chord>
+        <chord>A</chord>
+        <chord alt="8-7-9">C7</chord>
     </song>
 
     <!-- Libraries for chord diagrams -->
