@@ -106,6 +106,12 @@ p {
     gap: 60px
 }
 
+/* Allow grid columns to shrink below content min-width so wide tables
+   (overflow-x) scroll inside the column instead of overflowing the page. */
+.layout > * {
+    min-width: 0;
+}
+
 @media (max-width:820px) {
     .layout {
         grid-template-columns: 1fr
