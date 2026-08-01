@@ -282,5 +282,41 @@
         "playerUrl": "https://soundcloud.com/notoms/kra",
         "lyricsUrl": "",
         "credits": {}
+    },
+    {
+        "isin": "",
+        "year": 2026,
+        "workingTitle": "Sol ring",
+        "releaseTitle": "Sol ring (Det går over)",
+        "releaseDate": "",
+        "sequenceId": 14,
+        "state": "finished",
+        "format": "single",
+        "promoText": "This is a new take on a production I made during the pandemic but never released. It came together in the first months of claustrophobia. Off-pattern chord droning in a lo-fi 8-bit feel. One of the first tracks where I tried vocals. Deep bass and breakbeats pushing energy into what feels like an immovable object. Written/created in July 2020, re-structured and re-mixed in Reaper DAW, June 2026. Status: finished, but unmastered.",
+        "production": {},
+        "feedbackText": "",
+        "artworkUrl": "",
+        "downloadUrl": "",
+        "playerUrl": "https://soundcloud.com/notoms/sol-ring-det-gar-over",
+        "lyricsUrl": "",
+        "credits": {}
+    },
+    {
+        "isin": "",
+        "year": 2026,
+        "workingTitle": "Blueprint (nomelody 2013 archive remix)",
+        "releaseTitle": "Blueprint (nomelody 2013 archive remix)",
+        "releaseDate": "",
+        "sequenceId": 15,
+        "state": "finished",
+        "format": "single",
+        "promoText": "Originally created in 2013 as nomelody, built on Monomachine and Machinedrum playing off each other. In many ways it is a blueprint for my hardware-based electronic sound. The rule was simple: no melodies allowed. It is one of the heavier electronic/techno tracks I have released, and it still holds up 13 years later. It also does not really follow standard EDM timings; the structure is more restless and slightly hectic, which is part of what gives it its drive. I recently did a quick remix and decided it was worth bringing back.",
+        "production": {},
+        "feedbackText": "",
+        "artworkUrl": "",
+        "downloadUrl": "",
+        "playerUrl": "https://soundcloud.com/notoms/blueprint-2013",
+        "lyricsUrl": "",
+        "credits": {}
     }
 ]
