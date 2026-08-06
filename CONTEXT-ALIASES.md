@@ -4,6 +4,7 @@ Korte aliaser for filer og dokumenter som brukes ofte i denne repoen.
 
 - `låtskriving-bedby10` -> `bedby10/index.html`
 - `bedby10-setlist` -> `bedby10/setlist/index.html`
+- `bedby10-notasjon` -> `bedby10/NOTATION.md` (referanse for `<chord>`/`<riff>`-notasjonen brukt i `bedby10/index.html`)
 - `kjeller-doc` -> Husk dokument `Kjellerstudio` (`fFnK1y1oKP6rfucH4oAf`)
 - `inspirasjon-doc` -> Husk dokument `Inspirasjon` (`84tL8SFp1ox7AuYlqT3H`)
 - `gear-doc` -> Husk dokument `Gear: vurderinger` (`FJm93IHcBVXXNMQeiZBd`)
