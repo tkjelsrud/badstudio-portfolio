@@ -120,22 +120,47 @@ The same seed should produce the same sequence if the underlying archive has not
 
 ---
 
-## 3.3 Continuous Stream
+## 3.3 Continuous Stream (Radio)
 
 The player should preselect the next segment before the current segment finishes.
 
 The experience should therefore feel continuous rather than like repeatedly loading files.
 
-The application may initially use hard cuts between clips.
+**Crossfading is cheap now, not a "future maybe."** §8a's decision to render small, fully-local compiled clips (mono, ≤10s, a few hundred KB) instead of seeking into large originals means the *entire* next clip can be prefetched and decoded via the Web Audio API (`decodeAudioData`) ahead of time. A scheduled `GainNode` ramp between outgoing and incoming sources gives a real crossfade with no gap — this wasn't practical under the original "seek into a multi-GB file" assumption, but it is now, so it's in scope for v1 rather than deferred. Hard-cut remains the fallback if crossfading isn't ready in time.
 
-Future versions could experiment with:
+**Transport is tape-deck style:** Play/Pause, Skip Back, Skip Ahead — not just "Next." Skip Back replays the actual previous segment (not a fresh random pick), so hearing something interesting and wanting to rewind ~10 seconds works as expected. This reuses §17's `sessions`/`session_items` log as real playback history: every segment played (whether freshly chosen or replayed via Skip Back) is appended to the current session's item list, and Skip Back/Skip Ahead just move a play-head index through that list rather than generating new random picks.
 
-- short crossfades
-- overlaps
-- level matching
-- subtle transitions
+---
 
-These should not be prerequisites for the MVP.
+## 3.4 Favorites Pad
+
+A second, independent playback surface alongside the Radio: a grid/list of your touched clips (§3.5), each with its own trigger.
+
+- Triggering a pad clip **loops it until you stop it** — the point is building up a layered texture by triggering several at once, not a one-shot preview.
+- Pad playback **never affects the Radio** — triggering a favorite does not pause, duck, or otherwise touch the main stream. If you want quiet, you pause the Radio yourself.
+- Each pad clip plays through its own independent Web Audio source, so multiple can genuinely overlap.
+
+---
+
+## 3.5 Clip Detail, Tagging & Rating
+
+Clicking the currently-playing clip (in the Radio or, later, elsewhere) opens **Clip Detail**: the Radio's forward progress pauses and that one clip loops, giving you time to tag/rate it without the stream moving on. Closing Clip Detail resumes the Radio going forward.
+
+- **Merely opening Clip Detail marks the clip `touched`** — tagging or rating is optional on top of that, not required to count as touched. Given how much of an auto-segmented archive is going to be incoherent fragments (one track drums, one vocals, etc.), tagging *every* clip that streams by isn't realistic — this is deliberately an opt-in, per-interesting-clip action, not a mandatory step.
+- **A touched clip is a favorite by default.** There is no separate "add to pad" toggle — Favorites Pad (§3.4) membership is simply *touched AND not thumbed-down* (see rating, below). Touching a clip and thumbing it down at the same time means "I looked, I don't want this" — it's excluded from the pad (and everywhere else), not added to it.
+- **Tags:** free-form, but picked via a quick-select over tags you've already used rather than typed fresh each time. A clip may also carry a free-text note (kept separate from tags, for the "great unstable bass texture"-style remark that doesn't fit a tag).
+- **Default year tag:** for Jottacloud-sourced clips, the year is the batch year already known at ingestion time (§5a) — not derived from cloud file-modified-time, which is unverified to survive the round trip. For already-local files, it falls back to filesystem modified time.
+- **Rating is per-clip/segment, not per-file.** Thumbs-down excludes only that specific clip from ever being selected again (Radio or Curated Radio, §3.6) — other segments from the same source file remain fully eligible, since a file can easily contain both junk and something worth keeping.
+
+---
+
+## 3.6 Effects & Ambient Mode
+
+A simple effects block in the player: light reverb (`ConvolverNode` with a small static impulse-response asset) and delay (`DelayNode` + feedback `GainNode`), inserted into the same Web Audio graph used for crossfading (§3.3), with a wet/dry mix control.
+
+This is entirely client-side — it runs in the listener's browser and adds no load to the home server or the processing pipeline. Settings (reverb/delay amount, ambient toggle) are ephemeral UI state, not written to the database.
+
+**Ambient Mode is the same knob turned up, not a separate feature.** Cranking the wet mix all the way drenches every clip in reverb/delay, and combined with crossfading, the reverb tail of one clip bleeds into the next one's onset — turning the same Radio stream into a generative ambient wash without any additional logic beyond the effect parameters themselves.
 
 ---
 
@@ -420,20 +445,29 @@ peak
 rendered_path
 rendered_duration
 rendered_sample_rate
+touched_at        (set the first time Clip Detail is opened, §3.5)
+rating            (-1 | 0 | 1 — thumbs down/none/up, per-clip not per-file)
+note              (free text, separate from tags)
 ```
 
-`rendered_path` points at the compiled clip file (§8a) — this is what the player actually streams, never the original.
+`rendered_path` points at the compiled clip file (§8a) — this is what the player actually streams, never the original. There is no separate `bookmarks` table: Favorites Pad (§3.4) membership is derived directly from `touched_at IS NOT NULL AND rating != -1`, so "remembering" a clip doesn't need its own row — it's the same action as opening Clip Detail.
 
-### bookmarks
+### tags
 
 ```text
 id
-segment_id
-created_at
-rating
-note
-label
+name
 ```
+
+### segment_tags
+
+```text
+segment_id
+tag_id
+source            ('user' | 'auto')
+```
+
+`source` distinguishes tags you picked via quick-select from any auto-generated tags (e.g. a default year tag, or future auto-tagging — see §8) — kept separate so an improved auto-tagger can be re-run later without touching anything you tagged by hand.
 
 ### sessions
 
