@@ -135,7 +135,8 @@ a:hover { border-bottom-color: var(--ink); }
   float: none;
   margin: 0.6rem 0;
   border: 1px solid var(--rule);
-  filter: grayscale(1) contrast(1.12);
+  filter: grayscale(var(--img-gray, 1)) contrast(1.12);
+  transition: filter var(--img-gray-ms, 900ms) ease;
 }
 
 /* ---- interior pages ---- */

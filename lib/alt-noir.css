@@ -209,7 +209,7 @@ a { color: inherit; text-decoration: none; }
 .entry:nth-of-type(even) h2,
 .entry:nth-of-type(even) p { max-width: 52ch; }
 .entry:nth-of-type(even) p a { text-decoration-color: var(--rule-dark); }
-.entry:nth-of-type(even) img { filter: grayscale(1) contrast(1.45) brightness(1.08); }
+.entry:nth-of-type(even) img { filter: grayscale(var(--img-gray, 1)) contrast(1.45) brightness(1.08); }
 
 /* big noir plates */
 .entry img, .article img, .hero {
@@ -220,7 +220,8 @@ a { color: inherit; text-decoration: none; }
   float: none;
   margin: 2.2rem 0;
   border: none;
-  filter: grayscale(1) contrast(1.4) brightness(1.02);
+  filter: grayscale(var(--img-gray, 1)) contrast(1.4) brightness(1.02);
+  transition: filter var(--img-gray-ms, 900ms) ease;
 }
 
 /* a second blurred band closes the feed */

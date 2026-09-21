@@ -131,9 +131,9 @@ a:hover { border-bottom-color: var(--accent); color: var(--accent); }
   margin: 1.4rem 0;
   border: none;
   float: none;
-  filter: grayscale(1) contrast(1.06);
+  filter: grayscale(var(--img-gray, 1)) contrast(1.06);
   opacity: 0.82;
-  transition: filter 900ms ease, opacity 900ms ease;
+  transition: filter var(--img-gray-ms, 900ms) ease, opacity 900ms ease;
 }
 .entry img:hover, .article img:hover, .hero:hover { filter: grayscale(0) contrast(1); opacity: 1; }
 
