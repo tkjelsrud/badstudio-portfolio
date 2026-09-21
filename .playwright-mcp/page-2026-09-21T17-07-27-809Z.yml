@@ -1,0 +1,70 @@
+- generic [active] [ref=f33e1]:
+  - banner [ref=f33e2]:
+    - img "Badger Studio Logo" [ref=f33e3]
+    - generic [ref=f33e4]:
+      - link "badstudio.no — Notoms" [ref=f33e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f33e6]: Music • Coding/Testing • Visuals • Notes
+  - generic [ref=f33e8]:
+    - main [ref=f33e9]:
+      - article [ref=f33e10]:
+        - paragraph [ref=f33e11]:
+          - emphasis [ref=f33e12]: A personal note in online form
+        - heading "2025 in review - Notoms" [level=1] [ref=f33e13]
+        - paragraph [ref=f33e14]:
+          - strong [ref=f33e15]: 3 February 2026 • Notoms
+        - heading "// Own releases / Notoms" [level=2] [ref=f33e16]
+        - paragraph [ref=f33e17]: "2025 was a fairly productive year for Notoms: four releases, live gigs, and several ideas still floating."
+        - paragraph [ref=f33e18]: The tracks never settled neatly into a coherent EP, even though they share a musical and visual identity.
+        - paragraph [ref=f33e19]: Getting my own voice into the productions was the main challenge. The starting point was Massive Attack, but it landed closer to Odd Børretzen more often than not.
+        - paragraph [ref=f33e20]:
+          - strong [ref=f33e21]: "2025 releases:"
+          - text: "-"
+          - link "Solidify" [ref=f33e22] [cursor=pointer]:
+            - /url: https://soundcloud.com/notoms/solidify-quiet-collapse
+          - text: "A track with clear roots in dark trip hop. DSI Mopho X4 and Diva in Reaper, vocals through an MS-20 filter. Generally happy with where the sound ended up, though in hindsight the track may have turned out a little heavy. Mastering: Oslo Mastering (Henning Bortne), Studer A80 tape and analogue outboard. -"
+          - link "Som om ingenting (rakett i bane)" [ref=f33e23] [cursor=pointer]:
+            - /url: https://soundcloud.com/notoms/som-om-ingenting-rakett-i-bane
+          - text: A track that started over a guitar loop and a vocal built on a very visual dream. Doesn't quite meet the style of the other work — it became its own thing. -
+          - link "Tiny Tiny" [ref=f33e24] [cursor=pointer]:
+            - /url: https://soundcloud.com/notoms/n3-tiny-tiny
+          - text: A track that is out there, but doesn't feel entirely finished. - Fridaffen — instrumental, later unpublished. Gave the listener little that was new.
+        - separator [ref=f33e25]
+        - 'heading "// Band: BedBy10" [level=2] [ref=f33e26]'
+        - paragraph [ref=f33e27]: BedBy10 played Onkel Blaa (Stabekk) in 2025. It was good to show the material we have worked on over time, and to feel the band moving forward. The music sits somewhere between punk and hard rock.
+        - separator [ref=f33e28]
+        - heading "// An experiment that didn't quite land" [level=2] [ref=f33e29]
+        - paragraph [ref=f33e30]: I was also part of a looser experimental project — a group that went from jamming in a flat to recording in a studio with little preparation and a lot of improvisation. The end result remains to be seen (if it amounted to anything).
+        - separator [ref=f33e31]
+        - heading "// Work band" [level=2] [ref=f33e32]
+        - paragraph [ref=f33e33]: The work band played the summer party. It was fun, and at the same time a little tense in the shoulders. With more calm and better preparation the result could have been better still. A useful reminder of the difference between knowing the songs and landing them. A new line-up became relevant for 2026.
+        - separator [ref=f33e34]
+    - complementary [ref=f33e35]:
+      - navigation [ref=f33e36]:
+        - list [ref=f33e37]:
+          - listitem [ref=f33e38]:
+            - link "→ Home" [ref=f33e39] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f33e40]:
+            - link "→ About / Contact" [ref=f33e41] [cursor=pointer]:
+              - /url: /about.html
+          - listitem [ref=f33e42]:
+            - link "→ Releases" [ref=f33e43] [cursor=pointer]:
+              - /url: /releases.html
+          - listitem [ref=f33e44]:
+            - link "→ Writings" [ref=f33e45] [cursor=pointer]:
+              - /url: /articles/
+          - listitem [ref=f33e46]:
+            - link "→ dfos.com" [ref=f33e47] [cursor=pointer]:
+              - /url: https://www.dfos.com/
+  - contentinfo [ref=f33e48]:
+    - generic [ref=f33e49]:
+      - link "Home" [ref=f33e50] [cursor=pointer]:
+        - /url: /
+      - text: •
+      - link "About" [ref=f33e51] [cursor=pointer]:
+        - /url: /about.html
+      - text: •
+      - link "Linktree" [ref=f33e52] [cursor=pointer]:
+        - /url: https://linktr.ee/notoms
+      - generic [ref=f33e53]: © 2026 Badger Studio Kjelsrud | Org. nr 924 921 390

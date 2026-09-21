@@ -1,0 +1,9 @@
+[      14ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8782/bedby10/img/thumb.jpg:0
+[    2286ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8782/bedby10/img/thumb.jpg:0
+[    7782ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8781/bedby10/img/thumb.jpg:0
+[    7900ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8781/favicon.ico:0
+[   13054ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8781/bedby10/img/thumb.jpg:0
+[   32197ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8781/bedby10/img/thumb.jpg:0
+[   80072ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8781/bedby10/img/thumb.jpg:0
+[   83578ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8783/bedby10/img/thumb.jpg:0
+[   83947ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8783/favicon.ico:0
