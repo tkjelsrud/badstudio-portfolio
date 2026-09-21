@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bed By 10 - Tidligere gigs</title>
+
+    <style>
+        .header {
+            background-color: #dbdca5;
+            color: #747070;
+            padding: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+
+    <!-- Importer CSS -->
+    <link rel="stylesheet" href="https://tkjelsrud.github.io/chords/lib/chord-simple.css">
+    <link rel="stylesheet" href="https://tkjelsrud.github.io/chords/lib/chord-modal.css">
+</head>
+<body>
+    <div class="header"><a href="/bedby10/">Tilbake til l&aring;ter og skisser</a> | <a href="/bedby10/setlist/">setlist 2026</a> | <a href="recordings.html">Recordings ('25)</a> | <a href="pics.html">Pics</a> | <a href="https://tkjelsrud.github.io/chords/examples/">Other chords</a></div>
+
+    <nav id="song-nav" style="padding: 4px;"></nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nav = document.getElementById("song-nav");
+            const headings = Array.from(document.querySelectorAll("song h2[id]"));
+            if (!nav || headings.length === 0) return;
+
+            nav.textContent = "";
+            headings.forEach((heading, index) => {
+                const link = document.createElement("a");
+                link.href = "#" + heading.id;
+                link.textContent = heading.textContent.trim();
+                nav.appendChild(link);
+                if (index < headings.length - 1) {
+                    nav.appendChild(document.createTextNode(" | "));
+                }
+            });
+        });
+    </script>
+
+    <h1 style="font-size: 18px;">GIG 17.9.2026</h1>
+
+    <h2 style="font-size: 15px;">Tidligere gigs</h2>
+
+    <h3 style="font-size: 14px;">GD-Sensommerfest-2026</h3>
+    <p style="font-size: 13px;">Alle l&aring;tene er covere.</p>
+
+    <song>
+        <h2 id="man-i-need">Man I Need (Olivia Dean)</h2>
+        <song-meta data-octave-offset="0">
+            <span>Key: C#</span>
+        </song-meta>
+
+        <riff note="Repeating into delay">
+            e------------|
+            b--------2---|
+            g--6-----3---|
+            d--6-----4---|
+            a--8-----4---|
+            E------------|
+        </riff>
+
+        <riff note="Slap delay">
+            e--x-------|
+            b--x-------|
+            g--6-------|
+            d--x-------|
+            a--(8)-(9)-|
+            E----------|
+        </riff>
+
+        <h3>Intro</h3>
+        <chord bass="sus2">C#</chord>
+        <chord>C#</chord>
+        <chord>F#</chord>
+        <br/>
+        <chord bass="sus2">C#</chord>
+        <chord>C#</chord>
+        <chord>F#</chord>
+        <chord>N.C.</chord>
+
+        <h3>Verse</h3>
+        <p>C#/F - F# vamp, x2</p>
+        <chord bass="F">C#</chord>
+        <chord>F#</chord>
+
+        <h3>Pre-Chorus</h3>
+        <chord>A#m</chord>
+        <chord>C#</chord>
+        <chord>G#</chord>
+        <chord>F#</chord><br/>
+        <chord up>F#</chord>
+        <chord>C#</chord>
+
+        <riff note="Pre chorus detail">
+            e--x---------x--------2-----|
+            b--6-----6---4--------2---6-|
+            g--6-----6---5--------3---6-|
+            d--8-----6---6------------6-|
+            a--8-----4---6---(4)------4-|
+            E--6---------4----2---------|
+        </riff>
+
+
+        <h3>Outro</h3>
+        <p>Pay C#/F# higher, improv C# maj (Fm) in minor shape with maj1-2-3 shape up</p>
+
+        <riff note="Riff solo C# Maj into F#maj">
+            e---------------------------------------------------|
+            b-------------------------(13-14)--------14--16--18-|
+            g-------13----------------(13-15)------15-----------|
+            d--13-15-----------11-----(13-15)----16-------------|
+            a-------------11-13---------------------------------|
+            E---------------------------------------------------|
+        </riff>
+
+    </song>
+
+    <song>
+        <h2 id="its-raining-men">It's Raining Men</h2>
+        <song-meta data-octave-offset="0">
+            <span>Key: Fm</span>
+        </song-meta>
+
+        <h3>Intro</h3>
+        <p>Down movement</p>
+        <chord down>Fm</chord>
+        <chord>F5</chord>
+
+
+        <riff note="Quick pull">
+            e-------------------|
+            b-------------------|
+            g--13-15-(16)-------|
+            d----------13-15-13-|
+            a-------------------|
+            E-------------------|
+        </riff>
+
+        <h3>Verse</h3>
+        <chord>Fm</chord>
+        <chord>C7</chord>
+        <chord>Fm</chord>
+        <chord>A#m</chord>
+        <chord>C</chord>
+        <chord>C7</chord>
+
+        <h3>Chorus</h3>
+        <chord>C#</chord>
+        <chord>D#</chord>
+        <chord>C</chord>
+        <chord>Fm</chord>
+        <chord>A#m</chord>
+        <chord>C</chord>
+        <chord>C7</chord>
+
+        <h3>Bridge</h3>
+        <p>Start low</p>
+        <chord>Fm</chord>
+        <chord>G#</chord>
+        <chord>C#</chord>
+        <chord>C</chord>
+        <p>"God bless" part</p>
+        <chord>C#maj7</chord>
+        <chord>D#</chord>
+        <chord>C7</chord>
+        <chord>Fm</chord>
+        <br/>
+        <chord>C#</chord>
+        <chord>C7</chord>
+    </song>
+
+    <song>
+        <h2 id="signed-sealed-delivered">Signed, Sealed, Delivered</h2>
+        <song-meta data-octave-offset="0">
+            <span>Effect: Compressed/OD, Boost chorus</span>
+            <span>Key: think Dm</span>
+        </song-meta>
+
+        <h3>Intro/riff</h3>
+        <riff note="Down riff (OD)">
+            e------------------|
+            b------------------|
+            g------------------|
+            d--3-1-0-----------|
+            a-------3-1-1-0----|
+            E---------------1--|
+        </riff>
+        <p>Down octaves or single notes</p>
+        <chord>F</chord>
+        <chord>D#</chord>
+        <chord>D</chord>
+        <chord>C</chord>
+        <chord>A#</chord>
+        <chord>A#</chord>
+        <chord>A</chord>
+        <chord>F</chord>
+
+        <h3>Verse</h3>
+        <chord>F</chord>
+        <chord>Dm7</chord>
+        <chord bass="F">Eb</chord>
+        <chord>Bb</chord>
+        <chord bass="C">Bb</chord>
+        <chord>F</chord>
+
+        <h3>Chorus</h3>
+        <chord>F</chord>
+        <chord bass="G">Eb</chord>
+        <chord>Bb</chord>
+        <chord bass="C">Bb</chord>
+        <br/>
+        <chord>F</chord>
+        <chord bass="G">Eb</chord>
+        <chord>Bb</chord>
+        <chord alt>Gm</chord>
+
+        <p>More parts to add.</p>
+    </song>
+
+    <song>
+        <h2 id="handerna">Händerna</h2>
+        <song-meta data-octave-offset="0">
+            <span>Effect: Reverb scene, delay effect, looper at end</span>
+        </song-meta>
+
+        <h3>Intro/Verse</h3>
+        <chord>Bb</chord>
+        <chord>C</chord>
+        <chord>Dm</chord>
+        <chord>F</chord>
+        <br/>
+        <chord>Bb</chord>
+        <chord>C</chord>
+        <chord>Bb</chord>
+        <chord>F</chord>
+
+        <h3>Chorus build</h3>
+        <riff note="Repeating into delay">
+            e------------|
+            b------------|
+            g--10---9----|
+        </riff>
+
+        <h3>Chorus arp</h3>
+        <riff note="Bb F F Dm9">
+            e--x-------x------|
+            b--10--10--10--13-|
+            g--10--10--10--9--|
+            d--8---10--x---12-|
+            A----------8------|
+        </riff>
+
+        <h3>Bridge</h3>
+        <riff note="arp">
+            e--x--x--x--x--|
+            b--8--x--10-x--|
+            g--x--10----10-|
+        </riff>
+        <riff note="high arp">
+            e--x--x---8--x--|
+            b--x--(8)-x--x--|
+            g--9--10--x--10-|
+        </riff>
+
+        <p>Arp in Dm progressively higher (with delay)</p>
+
+        <riff note="Outro doodle">
+            e--x--x---8--x--|
+            b--x--(8)-x--x--|
+            g--9--10--x--10-|
+        </riff>
+
+    </song>
+
+    <song>
+        <h2 id="stromvind">Stromvind</h2>
+        <song-meta data-octave-offset="0">
+            <span>Effect: Clean/Compressed, OD chorus</span>
+        </song-meta>
+
+        <h3>Intro</h3>
+        <chord up>F#</chord>
+        <chord up>C#</chord>
+        <br/>
+        <chord>G#</chord>
+        <chord>G#sus4</chord>
+        <chord>A#m7</chord>
+        <chord>(inv G#)</chord>
+        <chord>(inv A#)</chord>
+
+        <h3>Verse</h3>
+        <chord bass="sus4">A#</chord>
+        <chord bass="sus4">Dm7</chord>
+        <chord>Cm7</chord>
+        <chord>A#</chord>
+        <chord>D#</chord>
+        <chord>F</chord>
+
+        <h3>Stick</h3>
+        <chord>E</chord>
+        <chord>B</chord>
+        <chord>C#m</chord>
+        <chord>B</chord>
+        <br/>
+        <chord>E</chord>
+        <chord>B</chord>
+        <chord>C#m</chord>
+        <chord>G#</chord>
+
+        <p>Chorus, then modulate up a whole step until end.</p>
+    </song>
+
+    <!-- Libraries for chord diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/vexchords@1.2.0/dist/vexchords.js"></script>
+    <script src="https://tkjelsrud.github.io/chords/lib/chord-fingerings.js"></script>
+    <script src="https://tkjelsrud.github.io/chords/lib/chord-simple.js"></script>
+
+</body>
+</html>
