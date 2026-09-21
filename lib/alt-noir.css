@@ -26,8 +26,8 @@
      images are meant to be hand-blurred abstracts already. The two below
      are placeholders. Set --band-blur to ~6px only if you ever point these
      at a literal photo and want the effect done in CSS instead.        */
-  --band-1: url("/images/notoms-bg-2.jpg");
-  --band-2: url("/images/IMG_4055bw.jpg");
+  --band-1: url("/images/IMG_4055bw.jpg");
+  --band-2: url("/images/notoms-bg-2.jpg");
   --band-blur: 0px;
   --band-wash: rgba(15, 15, 14, 0.22);
 }
@@ -132,7 +132,7 @@ a { color: inherit; text-decoration: none; }
   height: 58vh;
   background:
     linear-gradient(var(--band-wash), var(--band-wash)),
-    var(--band-1) center / cover no-repeat;
+    var(--band-1) center 40% / cover no-repeat;
   filter: grayscale(1) contrast(1.25) blur(var(--band-blur));
 }
 
@@ -233,7 +233,7 @@ a { color: inherit; text-decoration: none; }
   height: 46vh;
   background:
     linear-gradient(var(--band-wash), var(--band-wash)),
-    var(--band-2) center 40% / cover no-repeat;
+    var(--band-2) center / cover no-repeat;
   filter: grayscale(1) contrast(1.25) blur(var(--band-blur));
 }
 
