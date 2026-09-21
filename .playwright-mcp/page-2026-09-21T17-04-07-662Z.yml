@@ -1,0 +1,64 @@
+- generic [active] [ref=f30e1]:
+  - banner [ref=f30e2]:
+    - img "Badger Studio Logo" [ref=f30e3]
+    - generic [ref=f30e4]:
+      - link "badstudio.no — Notoms" [ref=f30e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f30e6]: Music • Coding/Testing • Visuals • Notes
+  - main [ref=f30e8]:
+    - paragraph [ref=f30e9]: Music, fragments, and visuals.
+    - navigation "Primary navigation" [ref=f30e10]:
+      - link "Releases" [ref=f30e11] [cursor=pointer]:
+        - /url: /releases.html
+      - link "About / Contact" [ref=f30e12] [cursor=pointer]:
+        - /url: /about.html
+      - link "Writings" [ref=f30e13] [cursor=pointer]:
+        - /url: /articles/
+      - link "dfos.com" [ref=f30e14] [cursor=pointer]:
+        - /url: https://www.dfos.com/
+    - article [ref=f30e15]:
+      - generic [ref=f30e16]: 13. MARCH 2026
+      - heading "Bed By 10 live set in Oslo/Bekkestua" [level=2] [ref=f30e17]
+      - img "Bed By 10 cover" [ref=f30e18]
+      - paragraph [ref=f30e19]:
+        - text: Playing guitar in Bed By 10. We a nice bunch. Don't do drugs. Gig 13. March 2026 at Uncle Blaa, Bekkestua.
+        - link "FB event link" [ref=f30e20] [cursor=pointer]:
+          - /url: https://www.facebook.com/events/3949170788716903/?_rdr
+    - article [ref=f30e21]:
+      - generic [ref=f30e22]: TRACKS • 2025/2026
+      - heading [level=2] [ref=f30e23]:
+        - 'link "Notoms #3 (ongoing)" [ref=f30e24] [cursor=pointer]':
+          - /url: /releases.html
+      - 'img "Notoms #3 cover" [ref=f30e25]'
+      - paragraph [ref=f30e26]: "New tracks in the same lane: spoken Norwegian poetry + electronic dub/ambient."
+      - paragraph [ref=f30e27]:
+        - link "Kra (SoundCloud)" [ref=f30e28] [cursor=pointer]:
+          - /url: https://soundcloud.com/notoms/kra
+        - link "Som om ingenting (SoundCloud)" [ref=f30e29] [cursor=pointer]:
+          - /url: https://soundcloud.com/notoms/som-om-ingenting-rakett-i-bane
+    - article [ref=f30e30]:
+      - generic [ref=f30e31]: ARCHIVE • 2023
+      - heading [level=2] [ref=f30e32]:
+        - link "Ambijens - Cassette Edition" [ref=f30e33] [cursor=pointer]:
+          - /url: /ambijens-cassette.html
+      - img "Ambijens cassette" [ref=f30e34]
+      - paragraph [ref=f30e35]: Ambient tape release with analog warmth and texture.
+    - article [ref=f30e36]:
+      - generic [ref=f30e37]: ARCHIVE • 2009-2014
+      - heading [level=2] [ref=f30e38]:
+        - link "Earlier Notoms Work 2009-2014" [ref=f30e39] [cursor=pointer]:
+          - /url: /music-web-archive.html
+      - img "Blueprint cover" [ref=f30e40]
+      - paragraph [ref=f30e41]: "A condensed version of an older sketchbook site: MP3 bounces, rough notes, and selected demos from the pre-Bad Studio years."
+  - contentinfo [ref=f30e42]:
+    - generic [ref=f30e43]:
+      - link "Home" [ref=f30e44] [cursor=pointer]:
+        - /url: /
+      - text: •
+      - link "About" [ref=f30e45] [cursor=pointer]:
+        - /url: /about.html
+      - text: •
+      - link "Linktree" [ref=f30e46] [cursor=pointer]:
+        - /url: https://linktr.ee/notoms
+      - generic [ref=f30e47]: © 2026 Badger Studio Kjelsrud | Org. nr 924 921 390
+  - button "move to read — click here for light" [ref=f30e48] [cursor=pointer]

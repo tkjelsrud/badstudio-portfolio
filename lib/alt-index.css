@@ -1,0 +1,210 @@
+/* ALT: INDEX (catalogue)
+   The site reads as a card catalogue rather than a page: monospace, hairline
+   rules, uppercase meta lines, arrow markers, "//" section prefixes.
+   Everything is visible at rest — nothing folds, nothing animates in or out,
+   so it behaves identically on a phone as on a desktop. The only hover is a
+   flat background/inversion on things that are genuinely links.
+   Drop-in replacement for base.css + riso.css. */
+
+:root {
+  --paper: #f7f6f3;
+  --ink: #141413;
+  --ghost: #8d8a82;
+  --rule: #c9c5bb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.75;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-bottom-color: var(--ink); }
+
+/* ---- header: the top rule of the catalogue ---- */
+.site-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  max-width: none;
+  margin: 0;
+  padding: 4vh 4vw 0.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+.site-logo {
+  width: 30px;
+  height: auto;
+  flex: 0 0 30px;
+  align-self: center;
+  filter: grayscale(1);
+}
+.header-text { display: flex; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; }
+.brand { font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.brand-home, .brand-home:hover, .brand-home:focus { color: inherit; border: none; }
+.tagline { font-size: 0.85rem; color: var(--ghost); }
+
+.container, .home-signal {
+  max-width: none;
+  margin: 0;
+  padding: 0 4vw 10vh;
+}
+
+.signal-feed { font-family: inherit; }
+
+.signal-intro {
+  font-size: 1rem;
+  color: var(--ghost);
+  max-width: none;
+  margin: 0;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ---- navigation: more rows in the catalogue ---- */
+.signal-links { display: block; margin: 0 0 2.5rem; }
+.signal-links a {
+  display: block;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--ink);
+  transition: background 120ms linear, padding-left 120ms linear;
+}
+.signal-links a::before { content: "\2192\00a0"; color: var(--ghost); }
+.signal-links a:hover { background: var(--ink); color: var(--paper); padding-left: 0.6rem; }
+.signal-links a:hover::before { color: var(--paper); }
+.signal-links a s { text-decoration: none; }
+
+/* ---- entries: always open, separated by hairlines ---- */
+.entry, .article {
+  display: block;
+  margin: 0;
+  padding: 1.1rem 0 1.3rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry-meta, .byline {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ghost);
+  margin: 0;
+  padding: 0;
+}
+
+.entry h2, .article h2 {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+.entry h2::before, .article h2::before { content: none; }
+.entry h2 a, .article h2 a { border: none; border-bottom: 1px solid var(--rule); }
+
+.entry p, .article p {
+  margin: 0 0 0.5em;
+  font-size: 0.97rem;
+  max-width: 72ch;
+  color: var(--ink);
+}
+.entry > p:last-child, .article > p:last-child { margin-bottom: 0; }
+
+.entry img, .article img, .hero {
+  display: block;
+  width: min(340px, 100%);
+  max-width: min(340px, 100%);
+  height: auto;
+  float: none;
+  margin: 0.6rem 0;
+  border: 1px solid var(--rule);
+  filter: grayscale(1) contrast(1.12);
+}
+
+/* ---- interior pages ---- */
+.layout { display: block; }
+main.article-list { max-width: none; padding-top: 1.5rem; }
+
+/* An article page carries its own h1 and is plain prose, not a list row. */
+.article:has(h1) { border-bottom: none; padding: 0; }
+.article:has(h1) h2 { margin: 2.5rem 0 0.6rem; }
+.article:has(h1) h2::before { content: "//\00a0"; color: var(--ghost); }
+.article:has(h1) img { margin: 1.2rem 0; }
+
+h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+h2 { font-size: 1rem; font-weight: 400; margin: 2.5rem 0 0.6rem; color: var(--ink); }
+h3 { font-size: 0.97rem; font-weight: 400; margin: 1.5rem 0 0.4rem; }
+p { margin: 0 0 1.2em; max-width: 72ch; }
+
+.lede { font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ghost); display: block; margin-bottom: 0.5rem; }
+.muted, .riso-accent { color: var(--ghost); background: none; padding: 0; }
+
+ul, ol { padding-left: 1.3rem; margin: 0 0 1.2em; max-width: 72ch; }
+li { margin-bottom: 0.3em; }
+li::marker { color: var(--ghost); }
+blockquote { margin: 0 0 1.2em; padding: 0.4rem 0 0.4rem 1rem; border-left: 2px solid var(--rule); color: var(--ghost); max-width: 72ch; }
+hr { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+aside.site-nav { margin-top: 3rem; border-top: 1px solid var(--ink); padding-top: 0.5rem; font-size: 1rem; }
+.site-nav nav ul { list-style: none; padding: 0; }
+.site-nav nav li { margin: 0; }
+.site-nav nav a {
+  display: block;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.45rem 0;
+  transition: background 120ms linear, padding-left 120ms linear;
+}
+.site-nav nav a::before { content: "\2192\00a0"; color: var(--ghost); }
+.site-nav nav a:hover { background: var(--ink); color: var(--paper); padding-left: 0.6rem; }
+.site-nav nav a:hover::before { color: var(--paper); }
+.site-nav nav br { display: none; }
+.site-nav .small { display: none; }
+
+footer.site-footer {
+  max-width: none;
+  margin: 0;
+  padding: 0 4vw 4vh;
+  font-size: 0.85rem;
+  color: var(--ghost);
+  border: none;
+}
+footer.site-footer div { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+footer.site-footer a { border: none; color: var(--ghost); }
+footer.site-footer a:hover { color: var(--ink); }
+
+.releases-table { width: 100%; border-collapse: collapse; font-size: 0.97rem; }
+.releases-table th, .releases-table td { padding: 8px 12px 8px 0; border-bottom: 1px solid var(--rule); text-align: left; }
+.releases-table th { font-weight: 400; font-size: 0.85rem; text-transform: uppercase; color: var(--ghost); }
+
+@media (max-width: 720px) {
+  .site-header { padding-left: 6vw; padding-right: 6vw; }
+  .header-text { flex-direction: column; gap: 0; }
+  .container, .home-signal, footer.site-footer { padding-left: 6vw; padding-right: 6vw; }
+}
