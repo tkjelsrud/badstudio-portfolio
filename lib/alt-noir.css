@@ -1,0 +1,315 @@
+/* ALT: NOIR
+   Bone paper and near-black, alternating: light sections and full-bleed black
+   sections invert each other down the page. Big blurred abstract black-and-
+   white bands act as breathing room between them, and the whole thing is set
+   on a lot of space. The page's own column grid is left visible as faint
+   vertical rules. Micro-labels carry bracketed index numbers ([01], [02]...)
+   generated with CSS counters.
+   Static — nothing depends on hover to be readable.
+   Drop-in replacement for base.css + riso.css. */
+
+:root {
+  --paper: #f4f3ef;
+  --ink: #0f0f0e;
+  --ghost: #8a8780;
+  --ghost-dark: #7d7a73;            /* muted text on black */
+  --rule: #d9d6cf;
+  --rule-dark: #33322f;
+  --guide: rgba(15, 15, 14, 0.055);
+  --col: 12.5%;                     /* eight visible columns */
+  --pad: 6vw;
+
+  /* ---- the two full-bleed abstract bands --------------------------------
+     Swap these for your own images: drop the file in /images/ and change
+     the url() here — nothing else needs to move.
+     --band-blur is 0: the bands are NOT blurred by CSS, because the source
+     images are meant to be hand-blurred abstracts already. The two below
+     are placeholders. Set --band-blur to ~6px only if you ever point these
+     at a literal photo and want the effect done in CSS instead.        */
+  --band-1: url("/images/notoms-bg-2.jpg");
+  --band-2: url("/images/IMG_4055bw.jpg");
+  --band-blur: 0px;
+  --band-wash: rgba(15, 15, 14, 0.22);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(var(--col) - 1px),
+      var(--guide) calc(var(--col) - 1px),
+      var(--guide) var(--col));
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;               /* full-bleed children must not scroll */
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---- micro-label: the unit this design is built from ---- */
+.entry-meta, .byline, .lede, .tagline, .site-nav nav a, .signal-links a {
+  font-size: 0.76rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+/* ---- header: oversized lowercase wordmark, then a lot of nothing ---- */
+.site-header {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 10vh var(--pad) 0;
+}
+.site-logo { display: none; }       /* the wordmark is the mark here */
+.header-text { display: flex; flex-direction: column; gap: 0.8rem; }
+.brand {
+  font-size: clamp(2.8rem, 9vw, 7rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.048em;
+  text-transform: lowercase;
+}
+.tagline { color: var(--ghost); }
+
+/* the thin diagonal mark under the wordmark */
+.header-text::after {
+  content: "";
+  width: 34px;
+  height: 34px;
+  margin-top: 2rem;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.6px), var(--ink) calc(50% - 0.6px), var(--ink) calc(50% + 0.6px), transparent calc(50% + 0.6px)),
+    linear-gradient(var(--ink), var(--ink)) bottom right / 12px 1.2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) bottom right / 1.2px 12px no-repeat;
+}
+
+.container, .home-signal {
+  max-width: none;
+  margin: 0;
+  padding: 14vh var(--pad) 16vh;
+}
+
+.signal-feed { font-family: inherit; counter-reset: entry; }
+
+/* ---- the statement, then a big blurred abstract band ---- */
+.signal-intro {
+  position: relative;
+  max-width: 34ch;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  margin: 0;
+  padding-top: 3rem;
+}
+.signal-intro::before {
+  content: "\2733\00a0\00a0\2733\00a0\00a0\2733";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+/* blurred abstract plate — full-bleed, soft-edged on purpose */
+.signal-intro::after {
+  content: "";
+  display: block;
+  /* Escape the 34ch column. A percentage margin resolves against the
+     CONTAINING BLOCK, so the usual calc(50% - 50vw) trick measures the
+     narrow column here and lands the band short of the right edge.
+     The parent's content box starts exactly --pad from the viewport. */
+  width: 100vw;
+  margin-left: calc(var(--pad) * -1);
+  margin-top: 12vh;
+  height: 58vh;
+  background:
+    linear-gradient(var(--band-wash), var(--band-wash)),
+    var(--band-1) center / cover no-repeat;
+  filter: grayscale(1) contrast(1.25) blur(var(--band-blur));
+}
+
+/* ---- navigation: outlined pill arrows ---- */
+.signal-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 12vh 0 14vh; }
+.signal-links a {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.55rem 1.15rem 0.55rem 1rem;
+  transition: background 140ms linear, border-color 140ms linear, color 140ms linear;
+}
+.signal-links a::after { content: "\00a0\2192"; color: var(--ghost); }
+.signal-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); transform: none; }
+.signal-links a:hover::after { color: var(--paper); }
+.signal-links a s { text-decoration: none; }
+
+/* ---- entries: alternating light plate / full-bleed black plate ---- */
+.entry {
+  counter-increment: entry;
+  margin: 0;
+  padding: 14vh 0;
+  border: none;
+  max-width: 62ch;
+}
+
+.entry-meta, .byline {
+  display: block;
+  color: var(--ghost);
+  margin: 0 0 0.8rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+}
+.entry-meta::before {
+  content: "[" counter(entry, decimal-leading-zero) "]\00a0\00a0";
+  color: inherit;
+}
+
+/* The generic h2 below is the small uppercase section label used on article
+   pages. An entry title is a different thing entirely, so every property it
+   would otherwise inherit from that rule is reset here explicitly. */
+.entry h2 {
+  margin: 0 0 1.2rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+  text-transform: none;
+  color: var(--ink);
+}
+.entry:nth-of-type(even) h2 { color: var(--paper); }
+.entry h2 a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+.entry p { margin: 0 0 0.8em; max-width: 52ch; }
+.entry p a, .article p a, .article li a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule);
+}
+.entry p a:hover, .article p a:hover, .article li a:hover { text-decoration-color: currentColor; }
+
+/* every other entry inverts: white on black, edge to edge */
+.entry:nth-of-type(even) {
+  background: var(--ink);
+  color: var(--paper);
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 16vh var(--pad);
+}
+.entry:nth-of-type(even) .entry-meta { color: var(--ghost-dark); border-bottom-color: var(--rule-dark); }
+.entry:nth-of-type(even) .entry-meta::before { color: var(--paper); }
+.entry:nth-of-type(even) h2,
+.entry:nth-of-type(even) p { max-width: 52ch; }
+.entry:nth-of-type(even) p a { text-decoration-color: var(--rule-dark); }
+.entry:nth-of-type(even) img { filter: grayscale(1) contrast(1.45) brightness(1.08); }
+
+/* big noir plates */
+.entry img, .article img, .hero {
+  display: block;
+  width: min(760px, 100%);
+  max-width: min(760px, 100%);
+  height: auto;
+  float: none;
+  margin: 2.2rem 0;
+  border: none;
+  filter: grayscale(1) contrast(1.4) brightness(1.02);
+}
+
+/* a second blurred band closes the feed */
+.signal-feed::after {
+  content: "";
+  display: block;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 46vh;
+  background:
+    linear-gradient(var(--band-wash), var(--band-wash)),
+    var(--band-2) center 40% / cover no-repeat;
+  filter: grayscale(1) contrast(1.25) blur(var(--band-blur));
+}
+
+/* ---- interior pages ---- */
+.layout { display: block; }
+main.article-list { max-width: 68ch; }
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -0.038em;
+  line-height: 1.04;
+  margin: 0 0 2.5rem;
+}
+h2 {
+  font-size: 0.76rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--ghost);
+  margin: 4.5rem 0 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+h3 { font-size: 1.05rem; font-weight: 400; margin: 2rem 0 0.5rem; }
+p { margin: 0 0 1.4em; max-width: 62ch; }
+
+.article { background: none; border: none; padding: 0; margin: 0 0 3rem; display: block; }
+.article h2 { font-size: 0.76rem; }
+
+.byline { color: var(--ghost); }
+.lede { color: var(--ghost); display: block; margin-bottom: 0.6rem; }
+.muted, .riso-accent { color: var(--ghost); background: none; padding: 0; }
+
+ul, ol { padding-left: 1.2rem; margin: 0 0 1.4em; max-width: 62ch; }
+li { margin-bottom: 0.45em; }
+li::marker { color: var(--ghost); font-size: 0.85em; }
+blockquote { margin: 0 0 1.4em; padding-left: 1.2rem; border-left: 1px solid var(--rule); color: var(--ghost); max-width: 62ch; }
+hr { border: none; border-top: 1px solid var(--rule); margin: 4rem 0; }
+
+aside.site-nav { margin-top: 10vh; padding-top: 1.2rem; border-top: 1px solid var(--ink); }
+.site-nav nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.site-nav nav li { margin: 0; }
+.site-nav nav a {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.5rem 1.05rem;
+  transition: background 140ms linear, border-color 140ms linear, color 140ms linear;
+}
+.site-nav nav a:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.site-nav nav br { display: none; }
+.site-nav .small { display: none; }
+
+footer.site-footer {
+  max-width: none;
+  margin: 0;
+  padding: 0 var(--pad) 8vh;
+  color: var(--ghost);
+  font-size: 0.76rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  border: none;
+}
+footer.site-footer div { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+footer.site-footer a:hover { color: var(--ink); }
+
+.releases-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.releases-table th, .releases-table td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); text-align: left; }
+.releases-table th { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ghost); }
+
+@media (max-width: 720px) {
+  :root { --col: 25%; --pad: 7vw; } /* four guides on a phone, not eight */
+  .container, .home-signal { padding-top: 9vh; padding-bottom: 10vh; }
+  .entry { padding: 9vh 0; }
+  .signal-intro::after { height: 40vh; margin-top: 8vh; }
+  .entry:nth-of-type(even) { padding-top: 10vh; padding-bottom: 10vh; }
+  .signal-feed::after { height: 32vh; }
+  .signal-links { margin: 8vh 0 9vh; }
+}
