@@ -18,6 +18,7 @@
   --guide: rgba(15, 15, 14, 0.055);
   --col: 12.5%;                     /* eight visible columns */
   --pad: 6vw;
+  --logo-size: clamp(2.2rem, 7vw, 5.4rem);
 
   /* ---- the two full-bleed abstract bands --------------------------------
      Swap these for your own images: drop the file in /images/ and change
@@ -64,13 +65,29 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- header: oversized lowercase wordmark, then a lot of nothing ---- */
 .site-header {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 1.6vw, 26px);
   max-width: none;
   margin: 0;
   padding: 10vh var(--pad) 0;
 }
-.site-logo { display: none; }       /* the wordmark is the mark here */
-.header-text { display: flex; flex-direction: column; gap: 0.8rem; }
+/* The badger sits at the head of the wordmark, scaled against it rather
+   than to a fixed pixel size, so the two stay locked together as the
+   wordmark reflows. The top offset is optical, not metric: the mark is a
+   full-height disc while the lowercase glyphs beside it have no ascender
+   at the left edge, so a flush top reads as if the badger floats high.
+   It is a ratio of --logo-size, not a fixed pixel nudge, so the same
+   correction holds when the header scales down on a phone. */
+.site-logo {
+  display: block;
+  width: var(--logo-size);
+  height: auto;
+  flex: none;
+  margin-top: calc(var(--logo-size) * 0.068);
+  filter: grayscale(1) contrast(1.12);
+}
+.header-text { display: flex; flex-direction: column; gap: 0.8rem; min-width: 0; }
 .brand {
   font-size: clamp(2.8rem, 9vw, 7rem);
   line-height: 0.9;
