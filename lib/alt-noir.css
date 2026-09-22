@@ -20,6 +20,15 @@
   --pad: 6vw;
   --logo-size: clamp(2.2rem, 7vw, 5.4rem);
 
+  /* Image plates are sized from this token, never from the width of the
+     post they sit in: the light posts are capped by a 62ch column and the
+     inverted ones are full-bleed, so anything relative would render the
+     same picture at two different sizes down the page. */
+  --plate-w: min(34rem, 100%);
+
+  /* Posts step sideways as you scroll rather than sitting on one line. */
+  --indent-step: clamp(0px, 2.6vw, 44px);
+
   /* ---- the two full-bleed abstract bands --------------------------------
      Swap these for your own images: drop the file in /images/ and change
      the url() here — nothing else needs to move.
@@ -161,10 +170,18 @@ a { color: inherit; text-decoration: none; }
 .entry {
   counter-increment: entry;
   margin: 0;
-  padding: 14vh 0;
+  padding: 14vh 0 14vh var(--entry-indent, 0px);
   border: none;
-  max-width: 62ch;
+  /* The measure stays a constant 62ch however far the post is indented, so
+     the indent moves the post across without narrowing it. */
+  max-width: calc(62ch + var(--entry-indent, 0px));
 }
+
+/* A four-step stagger: out, further out, back. */
+.entry:nth-of-type(4n + 1) { --entry-indent: 0px; }
+.entry:nth-of-type(4n + 2) { --entry-indent: var(--indent-step); }
+.entry:nth-of-type(4n + 3) { --entry-indent: calc(var(--indent-step) * 2); }
+.entry:nth-of-type(4n + 4) { --entry-indent: var(--indent-step); }
 
 .entry-meta, .byline {
   display: block;
@@ -210,7 +227,7 @@ a { color: inherit; text-decoration: none; }
   max-width: none;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  padding: 16vh var(--pad);
+  padding: 16vh var(--pad) 16vh calc(var(--pad) + var(--entry-indent, 0px));
 }
 .entry:nth-of-type(even) .entry-meta { color: var(--ghost-dark); border-bottom-color: var(--rule-dark); }
 .entry:nth-of-type(even) .entry-meta::before { color: var(--paper); }
@@ -222,8 +239,8 @@ a { color: inherit; text-decoration: none; }
 /* big noir plates */
 .entry img, .article img, .hero {
   display: block;
-  width: min(760px, 100%);
-  max-width: min(760px, 100%);
+  width: var(--plate-w);
+  max-width: var(--plate-w);
   height: auto;
   float: none;
   margin: 2.2rem 0;
@@ -314,7 +331,10 @@ footer.site-footer a:hover { color: var(--ink); }
 .releases-table th { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ghost); }
 
 @media (max-width: 720px) {
-  :root { --col: 25%; --pad: 7vw; } /* four guides on a phone, not eight */
+  /* No stagger on a phone: 10px is invisible as a rhythm, but it still
+     narrows the inverted posts (their bleed padding absorbs it) and so
+     renders the plates at two different widths down the page. */
+  :root { --col: 25%; --pad: 7vw; --indent-step: 0px; }
   .container, .home-signal { padding-top: 9vh; padding-bottom: 10vh; }
   .entry { padding: 9vh 0; }
   .signal-intro::after { height: 40vh; margin-top: 8vh; }
