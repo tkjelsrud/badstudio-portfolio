@@ -117,7 +117,7 @@ a { color: inherit; text-decoration: none; }
 
 .signal-feed { font-family: inherit; counter-reset: entry; }
 
-/* ---- the statement, then a big blurred abstract band ---- */
+/* ---- the statement, then a big full-bleed abstract band ---- */
 .signal-intro {
   position: relative;
   max-width: 34ch;
@@ -125,15 +125,6 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.25;
   letter-spacing: -0.025em;
   margin: 0;
-  padding-top: 3rem;
-}
-.signal-intro::before {
-  content: "\2733\00a0\00a0\2733\00a0\00a0\2733";
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
 }
 /* blurred abstract plate — full-bleed, soft-edged on purpose */
 .signal-intro::after {
