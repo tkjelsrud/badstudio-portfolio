@@ -102,12 +102,6 @@ body::after {
   pointer-events: none;
 }
 
-/* .signal-intro is deliberately NOT blended: it owns the first band as a
-   pseudo-element, and blending the element blends that band with it,
-   splitting the photograph along the triangle's edge. The intro sits in a
-   34ch column on the left, which the triangle never reaches, so it has no
-   need to invert. The blending itself lives at the end of this file. */
-.signal-intro { color: var(--ink); }
 
 /* ---- micro-label: the unit this design is built from ---- */
 .entry-meta, .byline, .lede, .tagline, .site-nav nav a, .signal-links a {
@@ -179,27 +173,37 @@ body::after {
   letter-spacing: -0.025em;
   margin: 0;
 }
-/* blurred abstract plate — full-bleed, soft-edged on purpose */
-.signal-intro::after {
+
+/* ---- navigation: outlined pill arrows ----
+   The first band hangs off .signal-links::before rather than off the intro.
+   It occupies the same place in the flow — .signal-links is the intro's next
+   sibling — but it is no longer part of a blended element. Blending an
+   element blends its pseudo-elements with it, so while the band lived on
+   .signal-intro::after the intro could never invert without the photograph
+   inverting too and tearing along the wedge's edge.
+   Block layout rather than flex, so the band is an ordinary block child
+   instead of a flex item that would try to sit in the pill row. */
+.signal-links { display: block; margin: 0 0 14vh; }
+.signal-links::before {
   content: "";
   display: block;
   /* Escape the 34ch column. A percentage margin resolves against the
-     CONTAINING BLOCK, so the usual calc(50% - 50vw) trick measures the
-     narrow column here and lands the band short of the right edge.
-     The parent's content box starts exactly --pad from the viewport. */
+     CONTAINING BLOCK, so the usual calc(50% - 50vw) trick would measure
+     that narrow column and land the band short of the right edge. The
+     parent's content box starts exactly --pad from the viewport. */
   width: 100vw;
   margin-left: calc(var(--pad) * -1);
   margin-top: 12vh;
+  margin-bottom: 12vh;
   height: 58vh;
   background:
     linear-gradient(var(--band-wash), var(--band-wash)),
     var(--band-1) center 40% / cover no-repeat;
   filter: grayscale(1) contrast(1.25) blur(var(--band-blur));
 }
-
-/* ---- navigation: outlined pill arrows ---- */
-.signal-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 12vh 0 14vh; }
 .signal-links a {
+  display: inline-block;
+  margin: 0 10px 10px 0;
   border: 1px solid var(--rule);
   border-radius: 999px;
   padding: 0.55rem 1.15rem 0.55rem 1rem;
@@ -371,14 +375,13 @@ footer.site-footer a:hover { color: var(--ink); }
    `color` wins while `mix-blend-mode` still applies — leaving ink
    differenced against paper, i.e. a title rendered pale grey.
 
-   .signal-intro is excluded on purpose: it owns the first band as a
-   pseudo-element, and blending the element blends that photograph with it,
-   splitting it along the wedge's edge. It sits in a column the wedge never
-   reaches. */
+   The wedge's height is in vh, so on a short window its diagonal is
+   steeper and reaches further left: the intro can end up partly over the
+   black, and it inverts along with everything else. */
 .brand,
 h1,
 .entry h2,
-p:not(.signal-intro),
+p,
 li,
 .releases-table td,
 .site-nav nav a,
@@ -420,7 +423,7 @@ h1, h2 { border-bottom-color: currentColor; }
   :root { --col: 25%; --pad: 7vw; --indent-step: 0px; }
   .container, .home-signal { padding-top: 9vh; padding-bottom: 10vh; }
   .entry { padding: 9vh 0; }
-  .signal-intro::after { height: 40vh; margin-top: 8vh; }
+  .signal-links::before { height: 40vh; margin-top: 8vh; margin-bottom: 8vh; }
   .signal-feed::after { height: 32vh; }
-  .signal-links { margin: 8vh 0 9vh; }
+  .signal-links { margin: 0 0 9vh; }
 }
