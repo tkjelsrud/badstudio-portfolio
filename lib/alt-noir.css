@@ -279,7 +279,7 @@ body::after {
   margin: 2.2rem 0;
   border: none;
   filter: grayscale(var(--img-gray, 1)) contrast(1.4) brightness(1.02);
-  transition: filter var(--img-gray-ms, 900ms) ease;
+  transition: filter var(--img-gray-ms, 900ms) ease-in-out;
 }
 
 /* a second blurred band closes the feed */
